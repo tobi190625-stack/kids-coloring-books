@@ -1,0 +1,168 @@
+{
+  "title": "Benny the Bear's Cozy Day",
+  "subtitle": "A Bold & Easy Color & Read Story Book for Kids Ages 3-6",
+  "author": "Your Pen Name",
+  "trim": "8.5x11",
+  "paper": "white",
+  "font": "fonts/kids.ttf",
+  "text_size": 54,
+  "blank_backs": true,
+  "pages": [
+    {
+      "text": "Benny the bear wakes up. Good morning, sun!",
+      "art": "art/01.png",
+      "scene": "waking up and stretching happily in his cozy bed with a patchwork blanket, a window shows a big smiling sun",
+      "canva_media_id": "MAHWej7Y13Q"
+    },
+    {
+      "text": "Benny brushes his teeth. Brush, brush, brush!",
+      "art": "art/02.png",
+      "scene": "standing on a little stool at the bathroom sink brushing his teeth, toothpaste tube and cup on the sink"
+    },
+    {
+      "text": "Benny eats pancakes with honey. Yum, yum!",
+      "art": "art/03.png",
+      "scene": "sitting at a kitchen table eating a tall stack of pancakes with a honey pot next to the plate",
+      "canva_media_id": "MAHWer8VVds"
+    },
+    {
+      "text": "Benny puts on his boots. Time to go outside!",
+      "art": "art/04.png",
+      "scene": "putting on rain boots and a raincoat at the open front door of a cozy little house",
+      "canva_media_id": "MAHWeod9e7I"
+    },
+    {
+      "text": "Benny meets Bella the bunny in the garden.",
+      "art": "art/05.png",
+      "scene": "waving hello to a cute little bunny named Bella in a vegetable garden with big carrots and flowers"
+    },
+    {
+      "text": "Bella shows Benny her big, orange carrots.",
+      "art": "art/06.png",
+      "scene": "and Bella the bunny holding up giant carrots in the garden, both smiling"
+    },
+    {
+      "text": "They water the flowers together.",
+      "art": "art/07.png",
+      "scene": "and Bella the bunny watering big simple flowers with little watering cans"
+    },
+    {
+      "text": "Oh no, it starts to rain!",
+      "art": "art/08.png",
+      "scene": "and Bella the bunny looking up at big rain clouds and raindrops, holding a leaf over their heads"
+    },
+    {
+      "text": "They jump in the puddles. Splish, splash!",
+      "art": "art/09.png",
+      "scene": "in rain boots and Bella the bunny jumping and splashing in big puddles with simple splash shapes"
+    },
+    {
+      "text": "Look! A rainbow in the sky!",
+      "art": "art/10.png",
+      "scene": "and Bella the bunny pointing at a big rainbow over hills with puffy clouds"
+    },
+    {
+      "text": "Benny and Bella meet Ollie the owl.",
+      "art": "art/11.png",
+      "scene": "and Bella the bunny waving at a cute round owl named Ollie sitting on a tree branch"
+    },
+    {
+      "text": "Ollie reads them a story.",
+      "art": "art/12.png",
+      "scene": "and Bella the bunny sitting on the grass listening to Ollie the owl reading a big book"
+    },
+    {
+      "text": "They walk to the pond. Hello, little frog!",
+      "art": "art/13.png",
+      "scene": "and Bella the bunny at the edge of a pond saying hello to a cute frog on a lily pad"
+    },
+    {
+      "text": "A family of ducks swims by. Quack, quack!",
+      "art": "art/14.png",
+      "scene": "and Bella the bunny watching a mother duck and three ducklings swimming on a pond"
+    },
+    {
+      "text": "Benny and Bella have a picnic under a tree.",
+      "art": "art/15.png",
+      "scene": "and Bella the bunny having a picnic on a checkered blanket under a big round tree with a picnic basket"
+    },
+    {
+      "text": "Benny shares his honey sandwich with Bella.",
+      "art": "art/16.png",
+      "scene": "handing a sandwich to Bella the bunny on a picnic blanket, both smiling"
+    },
+    {
+      "text": "A butterfly lands on Benny's nose. Hello!",
+      "art": "art/17.png",
+      "scene": "with a big friendly butterfly landing on his nose, looking at it cross-eyed and smiling, among big flowers"
+    },
+    {
+      "text": "They pick berries in the forest.",
+      "art": "art/18.png",
+      "scene": "and Bella the bunny picking big berries from bushes into a basket, simple trees behind them"
+    },
+    {
+      "text": "Benny finds a big pinecone.",
+      "art": "art/19.png",
+      "scene": "holding up a giant pinecone proudly in a forest, Bella the bunny clapping"
+    },
+    {
+      "text": "They build a little house out of sticks.",
+      "art": "art/20.png",
+      "scene": "and Bella the bunny building a small cute hut from sticks and leaves"
+    },
+    {
+      "text": "They fly a kite high up in the sky.",
+      "art": "art/21.png",
+      "scene": "and Bella the bunny flying a big diamond-shaped kite on a hill with puffy clouds"
+    },
+    {
+      "text": "Whee! Benny rolls down the grassy hill.",
+      "art": "art/22.png",
+      "scene": "rolling happily down a gentle grassy hill with flowers, Bella the bunny laughing at the top"
+    },
+    {
+      "text": "They play hide and seek. Where is Bella?",
+      "art": "art/23.png",
+      "scene": "covering his eyes and counting next to a tree, bunny ears peeking out from behind a bush"
+    },
+    {
+      "text": "Found you! Bella hides behind a mushroom.",
+      "art": "art/24.png",
+      "scene": "finding Bella the bunny hiding behind a giant spotted mushroom, both laughing"
+    },
+    {
+      "text": "Time to go home. Bye-bye, Bella!",
+      "art": "art/25.png",
+      "scene": "waving goodbye to Bella the bunny at a garden gate at sunset"
+    },
+    {
+      "text": "Benny helps Mama Bear bake cookies.",
+      "art": "art/26.png",
+      "scene": "and a bigger Mama Bear wearing an apron cutting cookie shapes on a kitchen table"
+    },
+    {
+      "text": "Bath time! Benny loves big bubbles.",
+      "art": "art/27.png",
+      "scene": "taking a bubble bath in a round bathtub full of big bubbles, holding a rubber duck"
+    },
+    {
+      "text": "Benny puts on his cozy pajamas.",
+      "art": "art/28.png",
+      "scene": "wearing cute pajamas with stars and holding a teddy toy in his bedroom"
+    },
+    {
+      "text": "Mama Bear reads Benny a bedtime story.",
+      "art": "art/29.png",
+      "scene": "tucked in bed while Mama Bear sits beside him reading a storybook, a lamp on the nightstand"
+    },
+    {
+      "text": "Goodnight, Benny. Sweet dreams!",
+      "art": "art/30.png",
+      "scene": "asleep in his cozy bed hugging a teddy toy, eyes closed, window shows a smiling crescent moon and big stars"
+    }
+  ],
+  "ending": "The End",
+  "style_prompt": "Children's coloring book page, black and white line art only, same style and same bear character as the reference image (Benny the bear cub: round head, small round ears, big round eyes, tiny smile, round tummy). Very thick clean black outlines, big simple shapes, cute kawaii style, no shading, no gray, no color fills, pure white background, no text, no border. Scene: Benny the bear ",
+  "character_reference": "MAHWej7Y13Q"
+}

@@ -1,0 +1,27 @@
+{
+  "title": "Leo Learns to Roar",
+  "subtitle": "A Color & Read Story Book for Kids Ages 3-6",
+  "author": "Your Pen Name",
+  "trim": "8.5x11",
+  "paper": "white",
+  "font": "fonts/kids.ttf",
+  "text_size": 54,
+  "blank_backs": true,
+  "pages": [
+    { "text": "Leo is a little lion. He lives in a big, sunny jungle.", "art": "art/01-leo.svg" },
+    { "text": "Leo wants to ROAR like his dad. But he can only squeak!", "art": "art/02-squeak.svg" },
+    { "text": "Leo meets Ella the elephant. \"Try again!\" she says.", "art": "art/03-elephant.svg" },
+    { "text": "Leo meets Tiko the monkey high up in a tree.", "art": "art/04-monkey.svg" },
+    { "text": "Pip the bird sings, \"Take a BIG breath!\"", "art": "art/05-bird.svg" },
+    { "text": "Leo takes a big breath... and ROARS!", "art": "art/06-roar.svg" },
+    { "text": "All his friends cheer. Hooray for Leo!", "art": "art/07-cheer.svg" },
+    { "text": "Goodnight, Leo. Sweet dreams under the stars.", "art": "art/08-goodnight.svg" }
+  ],
+  "ending": "The End",
+  "cover": {
+    "art": "art/06-roar.svg",
+    "color": "#FFB703",
+    "accent": "#023047",
+    "blurb": "Leo is a little lion with a big dream: he wants to ROAR!\n\nColor Leo and his jungle friends as you read along. Big, easy words make it perfect for early readers, and thick, simple lines are made for little hands.\n\n- Short story with BIG letters\n- 8 fun pages to color\n- One-sided pages so markers don't bleed through"
+  }
+}

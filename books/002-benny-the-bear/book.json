@@ -164,5 +164,24 @@
   ],
   "ending": "The End",
   "style_prompt": "Children's coloring book page, black and white line art only, same style and same bear character as the reference image (Benny the bear cub: round head, small round ears, big round eyes, tiny smile, round tummy). Very thick clean black outlines, big simple shapes, cute kawaii style, no shading, no gray, no color fills, pure white background, no text, no border. Scene: Benny the bear ",
-  "character_reference": "MAHWej7Y13Q"
+  "character_reference": "MAHWej7Y13Q",
+  "cover": {
+    "front_image": "cover/front.png",
+    "back_image": "cover/back.png",
+    "front_erase": [
+      18,
+      18,
+      100,
+      84
+    ],
+    "back_erase": [
+      18,
+      18,
+      100,
+      80
+    ],
+    "front_top": 1.3,
+    "text_color": "#4A3526",
+    "blurb": "Color and read along with Benny!\n\nIt's a brand new day, and Benny the bear can't wait to play. He eats pancakes with honey, splashes in puddles with his best friend Bella the bunny, flies a kite high in the sky, and snuggles up for a cozy bedtime story.\n\nEvery page has one short sentence in BIG, easy letters and one big, bold picture that's just right for little hands.\n\n\u2022 30 adorable coloring pages that tell one sweet story\n\u2022 Bold, thick lines that are easy to color\n\u2022 Big letters for early readers\n\u2022 Printed on one side, so markers don't bleed through\n\u2022 Perfect for ages 3-6"
+  }
 }

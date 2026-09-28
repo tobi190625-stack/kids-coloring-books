@@ -50,7 +50,8 @@ def panel(art_path, width_px, height_px, top_px, erase=None):
     """Art scaled to panel width, placed top_px from the top, over a blurred fill."""
     art = Image.open(art_path).convert("RGB")
     if erase:
-        erase_box(art, erase)
+        for box in (erase if isinstance(erase[0], list) else [erase]):
+            erase_box(art, box)
     scale = width_px / art.width
     art = art.resize((width_px, round(art.height * scale)), Image.LANCZOS)
 

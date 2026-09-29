@@ -31,9 +31,10 @@ Claude writes the story, draws or prompts the art, builds both PDFs.
 Text is set in **Grandstander ExtraBold** (`fonts/`, SIL OFL). Two page layouts:
 
 - **Full page** (`"layout": "fullbleed"`, used by Benny): every drawing covers the whole
-  page edge to edge, and the sentence sits right on the picture in solid black, with the
-  drawing cleared away just around the letters. The builder finds the spot that hides the
-  least drawing and never covers a face. Square 8.5x8.5 books with bleed.
+  page edge to edge, and each sentence sits in a white rounded bubble with a thin outline,
+  in solid black letters. The builder puts the bubble where it hides the least drawing and
+  no faces. Square 8.5x8.5 books with bleed. (`"text_style": "knockout"` drops the bubble
+  and clears the drawing just around the letters instead.)
 - **Framed** (default, used by Leo): drawing in a rounded frame, sentence in bubble letters
   inside a cloud. For 8.5x11 books without bleed.
 

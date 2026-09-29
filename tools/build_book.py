@@ -96,7 +96,8 @@ def wrap(text, font, size, max_width):
     return lines
 
 
-ARTICLES = {"a", "an", "the"}
+# never end a line on these: they belong with the word after them (weighted double)
+ARTICLES = {"a", "an", "the", "his", "her", "my", "their", "your", "our", "its"}
 WEAK_ENDINGS = {"a", "an", "the", "and", "of", "to", "with", "it", "is",
                 "in", "on", "at", "by", "his", "her", "my", "their"}
 
@@ -305,12 +306,22 @@ def page_badge(c, cx, cy, number, font):
 # line art behind them, so the text reads cleanly without a box or border.
 
 BLEED = 0.125 * inch
-SAFE = 0.45 * inch          # text stays this far inside the trim (KDP minimum 0.25in)
+SAFE = 0.45 * inch          # text stays this far inside the trim (KDP minimum 0.375in with bleed)
 SAFE_GUTTER = 0.6 * inch    # ...and this far from the spine (KDP minimum 0.375in)
 LEADING = 1.12
 HALO = 0.30                 # knockout around the letters, as a fraction of the type size
 FACE_WEIGHT = 1.0           # covering a face costs as much as covering solid black ink
 BODY_WEIGHT = 0.4           # a body under a face is worth keeping clear too, but less so
+
+# "bubble" text style (the default): the words sit in a white rounded bubble with a thin
+# outline, like a label placed on the picture.
+BUBBLE_SAFE = 0.375 * inch          # bubble edge stays this far inside the trim...
+BUBBLE_SAFE_GUTTER = 0.5 * inch     # ...and from the spine; the words sit further in still
+BUBBLE_PAD_X = 0.32 * inch          # room between the words and the bubble's edge
+BUBBLE_PAD_Y = 0.2 * inch
+BUBBLE_LINE = 3.0                   # outline weight, matched to the drawings' lines
+BUBBLE_RADIUS = 0.5 * inch
+PART_GAP = 0.16 * inch              # between a title and its subtitle, words and a name line
 
 
 def ink_extent(font):
@@ -318,6 +329,13 @@ def ink_extent(font):
     from PIL import ImageFont
     f = ImageFont.truetype(str(FONT_FILES[font]), 200)
     return -f.getbbox("bdfhklBDHT!", anchor="ls")[1] / 200, f.getbbox("gjpqy,", anchor="ls")[3] / 200
+
+
+def cap_height(font):
+    """Height of the capitals above the baseline, per point of size (for optical centering)."""
+    from PIL import ImageFont
+    f = ImageFont.truetype(str(FONT_FILES[font]), 200)
+    return -f.getbbox("HBEN", anchor="ls")[1] / 200
 
 
 class InkMap:
@@ -413,7 +431,66 @@ def layout_block(parts, font, cx, top):
     return items, rects, top - y
 
 
-def place_block(variants, font, safe, ink, zone="auto", offset=None):
+def layout_bubble(parts, font, cx, top):
+    """Words (and a name line to write on) inside one white bubble whose top edge is `top`.
+
+    Lines are centered on the band from the capitals' tops to the baseline, so a line
+    without descenders doesn't look like it floats high in its bubble.
+    """
+    cap = cap_height(font)
+    items, widths = [], []
+    y = top - BUBBLE_PAD_Y
+    for i, part in enumerate(parts):
+        if part["kind"] == "text":
+            size = part["size"]
+            base = y
+            for j, line in enumerate(part["lines"]):
+                base = y - cap * size - j * size * LEADING
+                width = pdfmetrics.stringWidth(line, font, size)
+                items.append(("text", line, size, cx - width / 2, base, 0))
+                widths.append(width)
+            y = base - 0.1 * size
+        else:  # room to write a name, with a dotted line at the bottom
+            w, h = part["w"], part["h"]
+            items.append(("plate", cx - w / 2, y - h, w, h, y))
+            widths.append(w)
+            y -= h
+        if i < len(parts) - 1:
+            y -= PART_GAP
+    half = max(widths) / 2 + BUBBLE_PAD_X
+    rect = (cx - half, y - BUBBLE_PAD_Y, cx + half, top)
+    return [("bubble", rect)] + items, [rect], top - rect[1]
+
+
+def draw_bubble(c, parts, font, cx, top):
+    items, _, _ = layout_bubble(parts, font, cx, top)
+    c.saveState()
+    c.setFont(font, 12)  # never let a text object fall back to unembedded Helvetica
+    for item in items:
+        if item[0] == "bubble":
+            x0, y0, x1, y1 = item[1]
+            c.setLineWidth(BUBBLE_LINE)
+            c.setLineJoin(1)
+            c.setStrokeColor(black)
+            c.setFillColor(white)
+            c.roundRect(x0, y0, x1 - x0, y1 - y0, min((y1 - y0) / 2, BUBBLE_RADIUS), stroke=1, fill=1)
+    c.setFillColor(black)
+    for item in items:
+        if item[0] == "text":
+            _, line, size, x, base, _ = item
+            c.setFont(font, size)
+            c.drawString(x, base, line)
+        elif item[0] == "plate":
+            _, px, py, w, h, _ = item
+            c.setLineWidth(2.4)
+            c.setLineCap(1)
+            c.setDash(1, 7)
+            c.line(px, py + 0.22 * inch, px + w, py + 0.22 * inch)
+            c.setDash()
+    c.restoreState()
+
+
+def place_block(variants, font, safe, ink, zone="auto", offset=None, layout=layout_block):
     """Pick the layout and spot that hide the least drawing (and no faces).
 
     `variants` maps an anchor ("center", "left", "right") to the block's parts; each is tried
@@ -423,10 +500,11 @@ def place_block(variants, font, safe, ink, zone="auto", offset=None):
     step, travel = 0.05 * inch, 1.8 * inch
     candidates = []
     for anchor, parts in variants.items():
-        _, rects, height = layout_block(parts, font, 0, 0)
-        block_w = max(r[2] for r in rects) - min(r[0] for r in rects)
-        text_w = block_w - 2 * max(p.get("halo", 0) for p in parts)
-        cx = {"center": (x0 + x1) / 2, "left": x0 + text_w / 2, "right": x1 - text_w / 2}[anchor]
+        _, rects, height = layout(parts, font, 0, 0)
+        left, right = min(r[0] for r in rects), max(r[2] for r in rects)
+        # knockout halos may reach past the safe line; a bubble's edge may not
+        inset = max(p.get("halo", 0) for p in parts) if layout is layout_block else 0
+        cx = {"center": (x0 + x1) / 2, "left": x0 - left - inset, "right": x1 - right + inset}[anchor]
         if offset is not None:  # manual override: inches down from the top / up from the bottom
             top = y1 - offset * inch if zone != "bottom" else y0 + height + offset * inch
             candidates.append((0, len(candidates), parts, cx, top))
@@ -508,10 +586,13 @@ def full_page_art(c, art_path, trim_cx, page_w, page_h, warnings):
     return x, y, w, h
 
 
-def story_fit_size(texts, font, width, max_lines=2, max_size=54, min_size=28):
-    """One type size for the whole book: the largest where every sentence fits in max_lines."""
+def story_fit_size(texts, font, inner_width, max_lines=2, max_size=54, min_size=28):
+    """One type size for the whole book: the largest where every sentence fits in max_lines.
+
+    `inner_width(size)` is the room the words get at that size.
+    """
     for size in range(max_size, min_size - 1, -1):
-        w = width - 2 * max(6, size * HALO)
+        w = inner_width(size)
         if all(len(balanced_wrap(t, font, size, w, max_lines=max_lines)) <= max_lines for t in texts):
             return size
     return min_size
@@ -525,14 +606,17 @@ def build_fullbleed(book, book_dir, font, out, warnings):
     c.setAuthor(book.get("author", ""))
     pages = active_pages(book)
     state = {"n": 0}
+    bubble = book.get("text_style", "bubble") == "bubble"
+    layout, draw = (layout_bubble, draw_bubble) if bubble else (layout_block, draw_block)
+    edge, spine_edge = (BUBBLE_SAFE, BUBBLE_SAFE_GUTTER) if bubble else (SAFE, SAFE_GUTTER)
 
     def frame():
-        """Trim center and the safe text area for the current page (odd pages: spine on the left)."""
+        """Trim center and the safe area for the current page (odd pages: spine on the left)."""
         right_hand = state["n"] % 2 == 0
         trim_x0 = 0 if right_hand else BLEED
-        x0 = trim_x0 + (SAFE_GUTTER if right_hand else SAFE)
-        x1 = trim_x0 + trim_w - (SAFE if right_hand else SAFE_GUTTER)
-        safe = (x0, BLEED + SAFE, x1, BLEED + trim_h - SAFE)
+        x0 = trim_x0 + (spine_edge if right_hand else edge)
+        x1 = trim_x0 + trim_w - (edge if right_hand else spine_edge)
+        safe = (x0, BLEED + edge, x1, BLEED + trim_h - edge)
         return trim_x0 + trim_w / 2, safe
 
     def page(art, blocks):
@@ -542,43 +626,53 @@ def build_fullbleed(book, book_dir, font, out, warnings):
         ink = InkMap(book_dir / art, placement)
         placed = []
         for variants, zone, offset in blocks:
-            parts, cx, top = place_block(variants, font, safe, ink, zone, offset)
-            ink.occupied = tuple(ink.occupied) + tuple(layout_block(parts, font, cx, top)[1])
+            parts, cx, top = place_block(variants, font, safe, ink, zone, offset, layout)
+            ink.occupied = tuple(ink.occupied) + tuple(layout(parts, font, cx, top)[1])
             placed.append((parts, cx, top))
         for parts, cx, top in placed:
-            draw_block(c, parts, font, cx, top)
+            draw(c, parts, font, cx, top)
         c.showPage()
         state["n"] += 1
 
     _, safe = frame()
     safe_w = safe[2] - safe[0]
-    size = story_fit_size([p["text"] for p in pages], font, safe_w)
-    halo = max(6, size * HALO)
-    text_w = safe_w - 2 * halo
-    side_w = safe_w * 0.62 - 2 * halo  # narrower block that can tuck into a corner
+
+    def inner(width, size):
+        """Room for the words in a block `width` wide (minus bubble padding or halo)."""
+        return width - 2 * (BUBBLE_PAD_X if bubble else max(6, size * HALO))
+
+    # one size for every page: pinned in book.json, or the largest that fits two lines
+    size = book.get("text_size") or story_fit_size([p["text"] for p in pages], font,
+                                                   lambda s_: inner(safe_w, s_))
+    text_w = inner(safe_w, size)
+    side_w = inner(safe_w * 0.62, size)  # narrower block that can tuck into a corner
 
     # Title page
-    title_size = clean_title_size(book["title"], font, safe_w - 40, 2.6 * inch, max_size=74)
-    parts = [text_part(balanced_wrap(book["title"], font, title_size, safe_w - 2 * title_size * HALO),
-                       title_size)]
+    title_w = inner(safe_w, 66)
+    title_size = clean_title_size(book["title"], font, title_w, 2.6 * inch, max_size=74)
+    parts = [text_part(balanced_wrap(book["title"], font, title_size, title_w), title_size)]
     tagline = book.get("title_page_subtitle", book.get("subtitle"))
     if tagline:
-        parts.append(text_part(balanced_wrap(tagline, font, 24, safe_w * 0.8), 24))
+        parts.append(text_part(balanced_wrap(tagline, font, 28, title_w * 0.8), 28))
     if book.get("author"):
         parts.append(text_part([book["author"]], 22))
-    page(book["title_art"], [({"center": parts}, "top", None)])
+    page(book["title_art"], [({"center": parts}, book.get("title_zone", "top"), None)])
 
     # This book belongs to
-    page(book["belongs_art"], [({"center": [text_part(["This book belongs to:"], 44),
-                                            {"kind": "plate", "w": safe_w * 0.92, "h": 1.05 * inch, "wrap": True}]},
+    if bubble:
+        writing = {"kind": "plate", "w": text_w, "h": 0.95 * inch}
+    else:
+        writing = {"kind": "plate", "w": safe_w * 0.92, "h": 1.05 * inch, "wrap": True}
+    page(book["belongs_art"], [({"center": [text_part(["This book belongs to:"], 44), writing]},
                                 book.get("belongs_zone", "auto"), None)])
 
-    def story_variants(text, align):
+    def story_variants(text, align, width=None):
         centered = [text_part(balanced_wrap(text, font, size, text_w), size)]
         forced = align in ("left", "right")
-        side_lines = balanced_wrap(text, font, size, side_w, max_lines=4 if forced else 3)
+        corner_w = inner(safe_w * width, size) if width else side_w
+        side_lines = balanced_wrap(text, font, size, corner_w, max_lines=4 if forced else 3)
         side_ok = (len(side_lines) <= 3
-                   and max(pdfmetrics.stringWidth(l, font, size) for l in side_lines) <= side_w
+                   and max(pdfmetrics.stringWidth(l, font, size) for l in side_lines) <= corner_w
                    and not any(re.search(r"[.!?] +\S", l) for l in side_lines)
                    and not any(l.split(" ")[-1].lower() in WEAK_ENDINGS for l in side_lines[:-1])
                    and not any(" " not in l and not l.endswith(("!", "?")) for l in side_lines))
@@ -592,10 +686,11 @@ def build_fullbleed(book, book_dir, font, out, warnings):
     for p in pages:
         # A page can split its words into separate blocks (e.g. a sound effect near the ducks).
         blocks = p.get("blocks") or [p]
-        page(p["art"], [(story_variants(b["text"], b.get("text_align")),
+        page(p["art"], [(story_variants(b["text"], b.get("text_align"), b.get("text_width")),
                          b.get("text_pos", "auto"), b.get("text_offset")) for b in blocks])
 
-    page(book["end_art"], [({"center": [text_part([book.get("ending", "The End")], 110)]},
+    end_parts = [text_part([book.get("ending", "The End")], book.get("end_size", 110))]
+    page(book["end_art"], [({book.get("end_align", "center"): end_parts},
                              book.get("end_zone", "auto"), None)])
     while state["n"] < 24 or state["n"] % 2:
         c.showPage()

@@ -30,12 +30,18 @@ This folder produces Amazon KDP paperback coloring/story books. Read `README.md`
 
 ## Full-page books (`"layout": "fullbleed"`, see `books/002-benny-the-bear/book.json`)
 - Square art → `"trim": "8.5x8.5"`; also set `title_art`, `belongs_art`, `end_art`.
-- The builder places each sentence automatically (least drawing covered, faces avoided).
-  Look at every page, then steer the ones that need it, per page:
-  `"text_pos": "top" | "bottom"`, `"text_align": "center" | "left" | "right"`,
-  `"text_offset": <inches from that edge>`, or split the words into separate spots with
-  `"blocks": [{"text": ..., "text_pos": ...}, ...]` (e.g. a sound effect near the ducks).
-- Keep phrases together with a no-break space (`\u00a0`), e.g. `Mama\u00a0Bear`.
+- Each sentence goes in a white bubble (default `"text_style": "bubble"`), one type size
+  for the whole book (`"text_size"` pins it; Benny uses 41).
+- The builder places each bubble automatically (least drawing covered, faces avoided).
+  Look at every page, and wherever a bubble hides what the sentence is about (the kite,
+  the mushroom, the boots), render the other spots side by side and pick by eye. Steer
+  per page: `"text_pos": "top" | "bottom"`, `"text_align": "center" | "left" | "right"`,
+  `"text_offset": <inches from that edge>`, `"text_width": <0-1, share of the page width
+  for a corner bubble>`, or split the words into separate bubbles with
+  `"blocks": [{"text": ..., "text_pos": ...}, ...]`. Title and end pages: `"title_zone"`,
+  `"end_align"`, `"end_zone"`, `"end_size"`.
+- Keep phrases together with a no-break space (`\u00a0`), e.g. `Mama\u00a0Bear`,
+  `little\u00a0house`, so lines break at natural phrases for early readers.
 - If a sentence can't sit anywhere without covering the picture, shorten it and tell the user.
 
 ## Rules

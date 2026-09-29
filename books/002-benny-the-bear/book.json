@@ -5,7 +5,7 @@
   "trim": "8.5x8.5",
   "paper": "white",
   "font": "fonts/Grandstander-ExtraBold.ttf",
-  "text_size": 54,
+  "text_size": 41,
   "blank_backs": false,
   "pages": [
     {
@@ -21,10 +21,7 @@
     {
       "text": "Benny eats pancakes. Yum, yum!",
       "art": "art/03.png",
-      "scene": "sitting at a kitchen table eating a tall stack of pancakes with a honey pot next to the plate",
-      "text_align": "center",
-      "text_pos": "bottom",
-      "text_offset": 0
+      "scene": "sitting at a kitchen table eating a tall stack of pancakes with a honey pot next to the plate"
     },
     {
       "text": "Boots on! Time to go outside!",
@@ -47,9 +44,7 @@
     {
       "text": "They water the flowers together.",
       "art": "art/07.png",
-      "scene": "and Bella the bunny watering big simple flowers with little watering cans",
-      "text_pos": "bottom",
-      "text_offset": 0
+      "scene": "and Bella the bunny watering big simple flowers with little watering cans"
     },
     {
       "text": "Oh no, it starts to rain!",
@@ -87,20 +82,7 @@
     {
       "text": "Ducks swim by. Quack, quack!",
       "art": "art/14.png",
-      "scene": "and Bella the bunny watching a mother duck and three ducklings swimming on a pond",
-      "blocks": [
-        {
-          "text": "Ducks swim by.",
-          "text_align": "center",
-          "text_pos": "top",
-          "text_offset": 0
-        },
-        {
-          "text": "Quack, quack!",
-          "text_align": "center",
-          "text_pos": "bottom"
-        }
-      ]
+      "scene": "and Bella the bunny watching a mother duck and three ducklings swimming on a pond"
     },
     {
       "text": "Benny and Bella have a picnic under a tree.",
@@ -108,43 +90,50 @@
       "scene": "and Bella the bunny having a picnic on a checkered blanket under a big round tree with a picnic basket"
     },
     {
-      "text": "Benny shares his honey sandwich with Bella.",
+      "text": "Benny shares his honey sandwich with Bella.",
       "art": "art/16.png",
       "scene": "handing a sandwich to Bella the bunny on a picnic blanket, both smiling"
     },
     {
       "text": "A butterfly lands on Benny's nose. Hello!",
       "art": "art/17.png",
-      "scene": "with a big friendly butterfly landing on his nose, looking at it cross-eyed and smiling, among big flowers"
+      "scene": "with a big friendly butterfly landing on his nose, looking at it cross-eyed and smiling, among big flowers",
+      "text_align": "center",
+      "text_pos": "bottom"
     },
     {
       "text": "They pick berries in the forest.",
       "art": "art/18.png",
       "scene": "and Bella the bunny picking big berries from bushes into a basket, simple trees behind them",
+      "text_align": "center",
       "text_pos": "top"
     },
     {
       "text": "Benny finds a big pinecone.",
       "art": "art/19.png",
       "scene": "holding up a giant pinecone proudly in a forest, Bella the bunny clapping",
+      "text_align": "center",
       "text_pos": "bottom"
     },
     {
-      "text": "They build a little house out of sticks.",
+      "text": "They build a little house out of sticks.",
       "art": "art/20.png",
       "scene": "and Bella the bunny building a small cute hut from sticks and leaves"
     },
     {
       "text": "They fly a kite high up in the sky.",
       "art": "art/21.png",
-      "scene": "and Bella the bunny flying a big diamond-shaped kite on a hill with puffy clouds"
+      "scene": "and Bella the bunny flying a big diamond-shaped kite on a hill with puffy clouds",
+      "text_align": "center",
+      "text_pos": "bottom"
     },
     {
       "text": "Whee! Benny rolls down the grassy hill.",
       "art": "art/22.png",
       "scene": "rolling happily down a gentle grassy hill with flowers, Bella the bunny laughing at the top",
       "text_align": "left",
-      "text_pos": "top"
+      "text_pos": "top",
+      "text_width": 0.7
     },
     {
       "text": "They play hide and seek. Where is Bella?",
@@ -155,6 +144,7 @@
       "text": "Found you! Bella hides behind a mushroom.",
       "art": "art/24.png",
       "scene": "finding Bella the bunny hiding behind a giant spotted mushroom, both laughing",
+      "text_align": "center",
       "text_pos": "bottom"
     },
     {
@@ -175,7 +165,10 @@
     {
       "text": "Benny puts on his cozy pajamas.",
       "art": "art/28.png",
-      "scene": "wearing cute pajamas with stars and holding a teddy toy in his bedroom"
+      "scene": "wearing cute pajamas with stars and holding a teddy toy in his bedroom",
+      "text_align": "left",
+      "text_pos": "top",
+      "text_width": 0.76
     },
     {
       "text": "Mama Bear reads Benny a bedtime story.",
@@ -225,5 +218,9 @@
   "layout": "fullbleed",
   "belongs_art": "art/belongs.png",
   "end_art": "art/end.png",
-  "title_page_subtitle": "A Color & Read Story Book"
+  "title_page_subtitle": "A Color & Read Story Book",
+  "text_style": "bubble",
+  "end_align": "left",
+  "end_zone": "top",
+  "end_size": 96
 }

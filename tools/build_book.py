@@ -36,10 +36,15 @@ def gutter_for(page_count):
     return 0.625 * inch + 0.25 * inch
 
 
+def active_pages(book):
+    """Story pages to print; pages marked "skip" (art not ready yet) are left out."""
+    return [p for p in book["pages"] if not p.get("skip")]
+
+
 def final_page_count(book):
     """Pages in the finished interior: front matter, story pages, The End, padded."""
     per_story = 2 if book.get("blank_backs", True) else 1
-    n = max(2 + len(book["pages"]) * per_story + 1, 24)  # KDP minimum is 24
+    n = max(2 + len(active_pages(book)) * per_story + 1, 24)  # KDP minimum is 24
     return n + n % 2
 
 
@@ -129,7 +134,7 @@ def build(book_file):
     blank_backs = book.get("blank_backs", True)
     text_size = book.get("text_size", 54)
 
-    pages = book["pages"]
+    pages = active_pages(book)
     gutter = gutter_for(final_page_count(book))
 
     out_dir = book_dir / "out"

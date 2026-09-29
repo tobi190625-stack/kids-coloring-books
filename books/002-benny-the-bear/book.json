@@ -1,7 +1,7 @@
 {
   "title": "Benny the Bear's Cozy Day",
   "subtitle": "A Bold & Easy Color & Read Story Book for Kids Ages 3-6",
-  "author": "Your Pen Name",
+  "author": "",
   "trim": "8.5x11",
   "paper": "white",
   "font": "fonts/kids.ttf",
@@ -11,8 +11,7 @@
     {
       "text": "Benny the bear wakes up. Good morning, sun!",
       "art": "art/01.png",
-      "scene": "waking up and stretching happily in his cozy bed with a patchwork blanket, a window shows a big smiling sun",
-      "canva_media_id": "MAHWej7Y13Q"
+      "scene": "waking up and stretching happily in his cozy bed with a patchwork blanket, a window shows a big smiling sun"
     },
     {
       "text": "Benny brushes his teeth. Brush, brush, brush!",
@@ -22,14 +21,12 @@
     {
       "text": "Benny eats pancakes with honey. Yum, yum!",
       "art": "art/03.png",
-      "scene": "sitting at a kitchen table eating a tall stack of pancakes with a honey pot next to the plate",
-      "canva_media_id": "MAHWer8VVds"
+      "scene": "sitting at a kitchen table eating a tall stack of pancakes with a honey pot next to the plate"
     },
     {
       "text": "Benny puts on his boots. Time to go outside!",
       "art": "art/04.png",
-      "scene": "putting on rain boots and a raincoat at the open front door of a cozy little house",
-      "canva_media_id": "MAHWeod9e7I"
+      "scene": "putting on rain boots and a raincoat at the open front door of a cozy little house"
     },
     {
       "text": "Benny meets Bella the bunny in the garden.",
@@ -54,12 +51,14 @@
     {
       "text": "They jump in the puddles. Splish, splash!",
       "art": "art/09.png",
-      "scene": "in rain boots and Bella the bunny jumping and splashing in big puddles with simple splash shapes"
+      "scene": "in rain boots and Bella the bunny jumping and splashing in big puddles with simple splash shapes",
+      "skip": true
     },
     {
       "text": "Look! A rainbow in the sky!",
       "art": "art/10.png",
-      "scene": "and Bella the bunny pointing at a big rainbow over hills with puffy clouds"
+      "scene": "and Bella the bunny pointing at a big rainbow over hills with puffy clouds",
+      "skip": true
     },
     {
       "text": "Benny and Bella meet Ollie the owl.",
@@ -74,7 +73,8 @@
     {
       "text": "They walk to the pond. Hello, little frog!",
       "art": "art/13.png",
-      "scene": "and Bella the bunny at the edge of a pond saying hello to a cute frog on a lily pad"
+      "scene": "and Bella the bunny at the edge of a pond saying hello to a cute frog on a lily pad",
+      "skip": true
     },
     {
       "text": "A family of ducks swims by. Quack, quack!",
@@ -192,6 +192,6 @@
     ],
     "front_top": 1.3,
     "text_color": "#4A3526",
-    "blurb": "Color and read along with Benny!\n\nIt's a brand new day, and Benny the bear can't wait to play. He eats pancakes with honey, splashes in puddles with his best friend Bella the bunny, flies a kite high in the sky, and snuggles up for a cozy bedtime story.\n\nEvery page has one short sentence in BIG, easy letters and one big, bold picture that's just right for little hands.\n\n\u2022 30 adorable coloring pages that tell one sweet story\n\u2022 Bold, thick lines that are easy to color\n\u2022 Big letters for early readers\n\u2022 Printed on one side, so markers don't bleed through\n\u2022 Perfect for ages 3-6"
+    "blurb": "Color and read along with Benny!\n\nIt's a brand new day, and Benny the bear can't wait to play. He eats pancakes with honey, splashes in puddles with his best friend Bella the bunny, flies a kite high in the sky, and snuggles up for a cozy bedtime story.\n\nEvery page has one short sentence in BIG, easy letters and one big, bold picture that's just right for little hands.\n\n\u2022 Adorable coloring pages that tell one sweet story\n\u2022 Bold, thick lines that are easy to color\n\u2022 Big letters for early readers\n\u2022 Printed on one side, so markers don't bleed through\n\u2022 Perfect for ages 3-6"
   }
 }

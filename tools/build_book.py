@@ -577,15 +577,25 @@ def draw_block(c, parts, font, cx, top):
 
 
 def full_page_art(c, art_path, trim_cx, page_w, page_h, warnings):
-    """Cover the whole page (bleed included), centered on the trimmed page. Returns placement."""
-    img = ImageReader(str(art_path))
-    iw, ih = img.getSize()
+    """Cover the whole page (bleed included), centered on the trimmed page. Returns placement.
+
+    The art is cropped to exactly the page before it goes into the PDF. Scaled square art
+    is wider than the page, and KDP's checker reports any image reaching past the page
+    edge (even invisibly, on the spine side) as "image is outside the margins".
+    """
+    from PIL import Image
+    src = Image.open(art_path)
+    iw, ih = src.size
     scale = max(page_w / iw, page_h / ih)
     w, h = iw * scale, ih * scale
     x, y = trim_cx - w / 2, (page_h - h) / 2
     if iw / (w / inch) < 300:
         warnings.append(f"{Path(art_path).name}: only {iw / (w / inch):.0f} DPI at print size")
-    c.drawImage(img, x, y, w, h, mask="auto")
+    # the part of the source image that lands on the page (PDF y runs up, image y runs down)
+    left, right = round((0 - x) / scale), round((page_w - x) / scale)
+    top, bottom = round((y + h - page_h) / scale), round((y + h) / scale)
+    crop = src.crop((max(0, left), max(0, top), min(iw, right), min(ih, bottom)))
+    c.drawImage(ImageReader(crop.convert("L")), 0, 0, page_w, page_h)
     return x, y, w, h
 
 

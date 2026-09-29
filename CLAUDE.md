@@ -22,7 +22,9 @@ This folder produces Amazon KDP paperback coloring/story books. Read `README.md`
    python3 tools/build_book.py books/NNN-slug/book.json
    python3 tools/build_cover.py books/NNN-slug/book.json
    ```
-   Render a few pages to PNG (pymupdf) and look at them before calling it done.
+   Render a few pages to PNG (pymupdf) and look at them before calling it done, then run
+   the pre-flight check, which must pass before the user uploads anything:
+   `python3 tools/check_kdp.py books/NNN-slug/book.json`
    For AI (PNG) art, first run `python3 tools/clean_art.py books/NNN-slug` on `art/raw/`, and
    use `tools/build_image_cover.py` when the cover comes as front/back images.
 6. Fill a listing in `kdp/listing-template.md` style as `books/NNN-slug/listing.md`

@@ -9,6 +9,7 @@ on TikTok, Instagram/Facebook Reels and YouTube Shorts.
 | Path | What it is |
 |---|---|
 | `tools/build_book.py` | Turns `book.json` + drawings into a KDP-ready **interior PDF** |
+| `tools/check_kdp.py` | Pre-flight check against KDP's print rules (run before every upload) |
 | `tools/build_cover.py` | Builds the wrap-around **cover PDF** (back + spine + front) sized to the page count |
 | `books/001-leo-the-lion/` | Finished sample book: story, 8 drawings, `out/interior.pdf`, `out/cover.pdf` |
 | `kdp/specs.md` | KDP print rules (sizes, margins, spine, DPI, AI disclosure) |

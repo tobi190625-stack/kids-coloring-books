@@ -27,6 +27,14 @@ Verify against KDP's current help pages before each upload; KDP changes these oc
   The builder leaves that area white.
 - Keep text 0.25 in inside the trim line (builder does this).
 
+## Previewer errors we have hit
+- **"This image is outside the margins"** on every even page: the full-page art reached past
+  the page edge on the spine side (invisible, but KDP counts it). The builder now crops every
+  picture to exactly the page; `tools/check_kdp.py` catches it.
+- **Pages show up tall with white bands above and below:** the KDP trim size setting doesn't
+  match the PDF (e.g. still 8.5 x 11 for a square 8.5 x 8.5 book). Fix the trim size in KDP
+  (Paperback Content → Print Options → Trim Size), then re-upload interior and cover.
+
 ## Upload checklist
 1. KDP Bookshelf → *Create* → *Paperback*.
 2. Details: title, subtitle, author (pen name), description, 7 keywords, 3 categories

@@ -27,6 +27,14 @@ Verify against KDP's current help pages before each upload; KDP changes these oc
   The builder leaves that area white.
 - Keep text 0.25 in inside the trim line (builder does this).
 
+## The rule that caused the "outside the margins" errors
+KDP defaults to **No bleed**. In a No-bleed book the Previewer's guides sit about 0.25 in from
+the outside, top and bottom edges and 0.375 in from the spine, and it rejects any picture that
+reaches into them ("This image is outside the margins"). Pictures that run to the page edge are
+only accepted with **Bleed (PDF only)** selected. So a no-bleed book must keep its pictures
+inside the margins: `"bleed": false` in `book.json` does that (0.3 in outside, 0.5 in at the
+spine), and `tools/check_kdp.py` checks it. The PDF page size must equal the KDP trim size.
+
 ## Previewer errors we have hit
 - **"This image is outside the margins"** on every even page: the full-page art reached past
   the page edge on the spine side (invisible, but KDP counts it). The builder now crops every

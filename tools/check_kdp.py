@@ -38,7 +38,8 @@ def main(book_file):
     book_dir = book_file.parent
     book = json.loads(book_file.read_text())
     trim_w, trim_h = (float(v) for v in book.get("trim", "8.5x11").split("x"))
-    bleed = book.get("layout") == "fullbleed"
+    bleed = book.get("layout") == "fullbleed" and book.get("bleed", True)
+    fullpage = book.get("layout") == "fullbleed"
     problems = []
 
     def check(ok, message):
@@ -63,10 +64,20 @@ def main(book_file):
             check(f[1] != "n/a" and "+" in f[3], f"page {n}: font {f[3]} is not embedded")
         for im in p.get_images(full=True):
             check(not im[1], f"page {n}: image has transparency")
+        recto_ = i % 2 == 0
         for info in p.get_image_info():
             r = fitz.Rect(info["bbox"])
             check(r.x0 > -0.5 and r.y0 > -0.5 and r.x1 < p.rect.width + 0.5 and r.y1 < p.rect.height + 0.5,
                   f"page {n}: an image reaches past the page edge (KDP: 'image outside the margins')")
+            if not bleed:
+                # KDP's No-bleed rule: pictures stay inside the margins (0.25 in outside and
+                # top/bottom, 0.375 in at the spine, measured on the Previewer's guides)
+                lo = fitz.Rect(0.25 * IN, 0.25 * IN, p.rect.width - 0.25 * IN, p.rect.height - 0.25 * IN)
+                lo.x0, lo.x1 = ((0.375 * IN, lo.x1) if recto_ else (lo.x0, p.rect.width - 0.375 * IN))
+                check(r.x0 >= lo.x0 - 0.5 and r.x1 <= lo.x1 + 0.5 and r.y0 >= lo.y0 - 0.5 and r.y1 <= lo.y1 + 0.5,
+                      f"page {n}: picture reaches into the margins "
+                      f"(left {r.x0/IN:.2f}, right {(p.rect.width-r.x1)/IN:.2f}, "
+                      f"top {r.y0/IN:.2f}, bottom {(p.rect.height-r.y1)/IN:.2f} in)")
             if r.width > 1:
                 check(info["width"] / (r.width / IN) >= 299,
                       f"page {n}: image is only {info['width'] / (r.width / IN):.0f} DPI")
@@ -76,6 +87,8 @@ def main(book_file):
         tx1 = tx0 + trim_w * IN
         ty0 = BLEED * IN if bleed else 0
         ty1 = ty0 + trim_h * IN
+        if not bleed:
+            tx0, tx1 = 0, trim_w * IN
         bubbles = [dr["rect"] for dr in p.get_drawings()
                    if dr.get("fill") == (1.0, 1.0, 1.0) and dr.get("color") == (0.0, 0.0, 0.0)]
         for s in spans(p):
@@ -83,13 +96,13 @@ def main(book_file):
             m = min(r.x0 - tx0, tx1 - r.x1, r.y0 - ty0, ty1 - r.y1) / IN
             check(m >= margin, f"page {n}: text '{s['text'][:25]}' is {m:.3f} in from the trim "
                                f"(KDP needs {margin})")
-            if bleed and book.get("text_style", "bubble") == "bubble":
+            if fullpage and book.get("text_style", "bubble") == "bubble":
                 check(any(b.contains(r) for b in bubbles),
                       f"page {n}: text '{s['text'][:25]}' spills out of its bubble")
 
     # the words on the pages match the story
     norm = lambda t: re.sub(r"\s+", " ", t.replace(" ", " ")).strip()
-    if bleed:
+    if fullpage:
         expected = [None, None]  # title and name pages vary; the story pages must match
         for pg in active_pages(book):
             text = " ".join(b["text"] for b in pg["blocks"]) if pg.get("blocks") else pg["text"]

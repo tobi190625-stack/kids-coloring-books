@@ -576,26 +576,26 @@ def draw_block(c, parts, font, cx, top):
     c.restoreState()
 
 
-def full_page_art(c, art_path, trim_cx, page_w, page_h, warnings):
-    """Cover the whole page (bleed included), centered on the trimmed page. Returns placement.
+def full_page_art(c, art_path, rect, warnings, center_x=None):
+    """Fill `rect` = (x, y, w, h) with the art, center-cropped, embedded cropped to exactly it.
 
-    The art is cropped to exactly the page before it goes into the PDF. Scaled square art
-    is wider than the page, and KDP's checker reports any image reaching past the page
-    edge (even invisibly, on the spine side) as "image is outside the margins".
+    Returns the placement of the uncropped, scaled art (for the text-placement map). Cropping
+    before embedding matters: KDP's checker reports any image reaching past its allowed area.
     """
     from PIL import Image
     src = Image.open(art_path)
     iw, ih = src.size
-    scale = max(page_w / iw, page_h / ih)
+    rx, ry, rw, rh = rect
+    scale = max(rw / iw, rh / ih)
     w, h = iw * scale, ih * scale
-    x, y = trim_cx - w / 2, (page_h - h) / 2
+    cx = rx + rw / 2 if center_x is None else center_x
+    x, y = cx - w / 2, ry + (rh - h) / 2
     if iw / (w / inch) < 300:
         warnings.append(f"{Path(art_path).name}: only {iw / (w / inch):.0f} DPI at print size")
-    # the part of the source image that lands on the page (PDF y runs up, image y runs down)
-    left, right = round((0 - x) / scale), round((page_w - x) / scale)
-    top, bottom = round((y + h - page_h) / scale), round((y + h) / scale)
+    left, right = round((rx - x) / scale), round((rx + rw - x) / scale)
+    top, bottom = round((y + h - (ry + rh)) / scale), round((y + h - ry) / scale)
     crop = src.crop((max(0, left), max(0, top), min(iw, right), min(ih, bottom)))
-    c.drawImage(ImageReader(crop.convert("L")), 0, 0, page_w, page_h)
+    c.drawImage(ImageReader(crop.convert("L")), rx, ry, rw, rh)
     return x, y, w, h
 
 
@@ -613,7 +613,12 @@ def story_fit_size(texts, font, inner_width, max_lines=2, max_size=54, min_size=
 
 def build_fullbleed(book, book_dir, font, out, warnings):
     trim_w, trim_h = (float(v) * inch for v in book["trim"].split("x"))
-    page_w, page_h = trim_w + BLEED, trim_h + 2 * BLEED
+    bleed = book.get("bleed", True)
+    # No-bleed books (KDP's default): the picture must stay inside KDP's margins, which the
+    # Previewer measures at about 0.25 in outside and 0.375 in at the spine. We keep clear
+    # of both with room to spare, so the picture fills the page except for a thin white edge.
+    art_out, art_gutter = book.get("art_margin", 0.3) * inch, book.get("art_gutter", 0.5) * inch
+    page_w, page_h = (trim_w + BLEED, trim_h + 2 * BLEED) if bleed else (trim_w, trim_h)
     c = canvas.Canvas(str(out), pagesize=(page_w, page_h), initialFontName=font)
     c.setTitle(book["title"])
     c.setAuthor(book.get("author", ""))
@@ -623,9 +628,22 @@ def build_fullbleed(book, book_dir, font, out, warnings):
     layout, draw = (layout_bubble, draw_bubble) if bubble else (layout_block, draw_block)
     edge, spine_edge = (BUBBLE_SAFE, BUBBLE_SAFE_GUTTER) if bubble else (SAFE, SAFE_GUTTER)
 
+    def art_rect():
+        """Where the picture goes on the current page (odd pages: spine on the left)."""
+        if bleed:
+            return (0, 0, page_w, page_h)
+        right_hand = state["n"] % 2 == 0
+        x0 = art_gutter if right_hand else art_out
+        x1 = trim_w - (art_out if right_hand else art_gutter)
+        return (x0, art_out, x1 - x0, trim_h - 2 * art_out)
+
     def frame():
         """Trim center and the safe area for the current page (odd pages: spine on the left)."""
         right_hand = state["n"] % 2 == 0
+        if not bleed:
+            x, y, w, h = art_rect()
+            inset = 0.12 * inch  # the bubble stays a little inside the picture
+            return trim_w / 2, (x + inset, y + inset, x + w - inset, y + h - inset)
         trim_x0 = 0 if right_hand else BLEED
         x0 = trim_x0 + (spine_edge if right_hand else edge)
         x1 = trim_x0 + trim_w - (edge if right_hand else spine_edge)
@@ -635,7 +653,8 @@ def build_fullbleed(book, book_dir, font, out, warnings):
     def page(art, blocks):
         """blocks: [(variants, zone, offset)], placed in order; later ones avoid earlier ones."""
         trim_cx, safe = frame()
-        placement = full_page_art(c, book_dir / art, trim_cx, page_w, page_h, warnings)
+        placement = full_page_art(c, book_dir / art, art_rect(), warnings,
+                                  center_x=trim_cx if bleed else None)
         ink = InkMap(book_dir / art, placement)
         placed = []
         for variants, zone, offset in blocks:

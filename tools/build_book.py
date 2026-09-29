@@ -62,7 +62,10 @@ def final_page_count(book):
     return n + n % 2
 
 
-def register_font(font_path=None):
+FONT_FILES = {}
+
+
+def register_font(font_path=None, name="BookFont"):
     path = Path(font_path) if font_path else DEFAULT_FONT
     if not path.is_absolute():
         path = ROOT / path
@@ -70,8 +73,9 @@ def register_font(font_path=None):
         path = DEFAULT_FONT if DEFAULT_FONT.exists() else Path(FALLBACK_FONT)
         if font_path:
             print(f"! font {font_path} not found, using {path.name}")
-    pdfmetrics.registerFont(TTFont("BookFont", str(path)))
-    return "BookFont"
+    pdfmetrics.registerFont(TTFont(name, str(path)))
+    FONT_FILES[name] = path
+    return name
 
 
 # --- text -------------------------------------------------------------------
@@ -92,6 +96,7 @@ def wrap(text, font, size, max_width):
     return lines
 
 
+ARTICLES = {"a", "an", "the"}
 WEAK_ENDINGS = {"a", "an", "the", "and", "of", "to", "with", "it", "is",
                 "in", "on", "at", "by", "his", "her", "my", "their"}
 
@@ -111,11 +116,14 @@ def balanced_wrap(text, font, size, max_width, max_lines=3):
             if max(widths) > max_width:
                 continue
             ends = [line.split(" ")[-1] for line in lines[:-1]]
-            weak = sum(e.lower() in WEAK_ENDINGS for e in ends)  # no punctuation = mid-phrase
+            weak = sum((2 if e.lower() in ARTICLES else 1) for e in ends if e.lower() in WEAK_ENDINGS)
             mid_sentence = sum(len(re.findall(r"[.!?] +\S", line)) for line in lines)
-            lonely = sum(" " not in line and not line.endswith(("!", "?", ".")) for line in lines)
+            # a word alone on its line is fine only if it is a whole sentence ("Whee!", "Hello!")
+            lonely = sum(" " not in line and not (line.endswith(("!", "?", "."))
+                                                 and (k == 0 or lines[k - 1].endswith(("!", "?", "."))))
+                         for k, line in enumerate(lines))
             ragged = max(widths) - min(widths)
-            score = ragged + size * (4 * weak + 6 * mid_sentence + 3 * lonely + 3 * (n - fewest))
+            score = ragged + size * (4 * weak + 8 * mid_sentence + 3 * lonely + 3 * (n - fewest))
             if best_score is None or score < best_score:
                 best, best_score = lines, score
     return best or wrap(text, font, size, max_width)
@@ -290,6 +298,312 @@ def page_badge(c, cx, cy, number, font):
     c.restoreState()
 
 
+# --- full-bleed layout ------------------------------------------------------
+#
+# The drawing covers the whole page (KDP "bleed"), and the words sit right on
+# the picture in solid black. A white knockout hugging the letters clears the
+# line art behind them, so the text reads cleanly without a box or border.
+
+BLEED = 0.125 * inch
+SAFE = 0.45 * inch          # text stays this far inside the trim (KDP minimum 0.25in)
+SAFE_GUTTER = 0.6 * inch    # ...and this far from the spine (KDP minimum 0.375in)
+LEADING = 1.12
+HALO = 0.30                 # knockout around the letters, as a fraction of the type size
+FACE_WEIGHT = 1.0           # covering a face costs as much as covering solid black ink
+BODY_WEIGHT = 0.4           # a body under a face is worth keeping clear too, but less so
+
+
+def ink_extent(font):
+    """How far the letters' ink reaches above and below the baseline, per point of size."""
+    from PIL import ImageFont
+    f = ImageFont.truetype(str(FONT_FILES[font]), 200)
+    return -f.getbbox("bdfhklBDHT!", anchor="ls")[1] / 200, f.getbbox("gjpqy,", anchor="ls")[3] / 200
+
+
+class InkMap:
+    """What the words would hide: line-art density, plus a heavy price for faces.
+
+    In this art style every character has solid black eyes, so eyes (and noses) are the
+    blobs left after thin lines are eroded away. Each one marks a head-sized zone
+    (reaching up over the ears) that the text should stay off.
+    """
+
+    def __init__(self, art_path, placement, reduce=6):
+        from PIL import Image, ImageDraw, ImageFilter
+        im = Image.open(art_path).convert("L")
+        self.im = im.resize((max(1, im.width // reduce), max(1, im.height // reduce)), Image.BOX)
+        self.x, self.y, self.w, self.h = placement
+        px_per_in = 630 / (self.w / inch)
+        small = im.resize((630, 630), Image.BOX)
+        eroded = small.filter(ImageFilter.MaxFilter(7)).resize((126, 126), Image.BOX)
+        self.faces = Image.new("L", (126, 126), 0)   # heads, full price
+        self.bodies = Image.new("L", (126, 126), 0)  # the body below each head, lighter price
+        faces, bodies = ImageDraw.Draw(self.faces), ImageDraw.Draw(self.bodies)
+        unit = px_per_in / 5
+        r, lift = 1.45 * unit, 0.4 * unit
+        for y in range(126):
+            for x in range(126):
+                if eroded.getpixel((x, y)) < 110:
+                    faces.ellipse((x - r, y - lift - r, x + r, y - lift + r), fill=255)
+                    bodies.ellipse((x - 1.1 * unit, y + 0.9 * unit, x + 1.1 * unit, y + 3.3 * unit), fill=255)
+
+    def _box(self, rect, size):
+        x0, y0, x1, y1 = rect
+        width, height = size
+        px0 = max(0, int((x0 - self.x) / self.w * width))
+        px1 = min(width, int((x1 - self.x) / self.w * width))
+        py0 = max(0, int((self.y + self.h - y1) / self.h * height))
+        py1 = min(height, int((self.y + self.h - y0) / self.h * height))
+        return px0, py0, px1, py1
+
+    occupied = ()
+
+    def cost(self, rects):
+        from PIL import ImageStat
+        total = 0.0
+        for rect in rects:
+            for ox0, oy0, ox1, oy1 in self.occupied:  # never overlap another text block
+                if rect[0] < ox1 and ox0 < rect[2] and rect[1] < oy1 and oy0 < rect[3]:
+                    total += 1e9
+            px0, py0, px1, py1 = self._box(rect, self.im.size)
+            if px1 <= px0 or py1 <= py0:
+                continue
+            area = (px1 - px0) * (py1 - py0)
+            ink = (255 - ImageStat.Stat(self.im.crop((px0, py0, px1, py1))).mean[0]) / 255
+            fx0, fy0, fx1, fy1 = self._box(rect, self.faces.size)
+            face = body = 0.0
+            if fx1 > fx0 and fy1 > fy0:
+                face = ImageStat.Stat(self.faces.crop((fx0, fy0, fx1, fy1))).mean[0] / 255
+                body = ImageStat.Stat(self.bodies.crop((fx0, fy0, fx1, fy1))).mean[0] / 255
+            total += area * (ink + FACE_WEIGHT * face + BODY_WEIGHT * max(0.0, body - face))
+        return total
+
+
+def text_part(lines, size, halo=None):
+    return {"kind": "text", "lines": lines, "size": size, "halo": halo or max(6, size * HALO)}
+
+
+def layout_block(parts, font, cx, top):
+    """Stack text lines and name plates downward from `top`: drawable items + knockout rects.
+
+    A plate with "wrap": True becomes one clean white panel behind the whole block (words
+    and writing line together), so no stray bits of drawing show between them.
+    """
+    asc, desc = ink_extent(font)
+    wrapping = any(p["kind"] == "plate" and p.get("wrap") for p in parts)
+    items, rects, y = [], [], top - (0.24 * inch if wrapping else 0)
+    for i, part in enumerate(parts):
+        gap = 0.16 * inch if i < len(parts) - 1 else 0
+        if part["kind"] == "text":
+            size, halo = part["size"], part["halo"]
+            base = y
+            for j, line in enumerate(part["lines"]):
+                base = y - asc * size - j * size * LEADING
+                width = pdfmetrics.stringWidth(line, font, size)
+                items.append(("text", line, size, cx - width / 2, base, halo))
+                rects.append((cx - width / 2 - halo, base - desc * size - halo,
+                              cx + width / 2 + halo, base + asc * size + halo))
+            y = base - desc * size - gap
+        else:  # a white plate to write a name on
+            w, h = part["w"], part["h"]
+            plate_top = top if part.get("wrap") else y
+            items.append(("plate", cx - w / 2, y - h, w, h, plate_top))
+            rects.append((cx - w / 2, y - h, cx + w / 2, plate_top))
+            y -= h + gap
+    return items, rects, top - y
+
+
+def place_block(variants, font, safe, ink, zone="auto", offset=None):
+    """Pick the layout and spot that hide the least drawing (and no faces).
+
+    `variants` maps an anchor ("center", "left", "right") to the block's parts; each is tried
+    near the top and the bottom of the page. Returns (parts, cx, top).
+    """
+    x0, y0, x1, y1 = safe
+    step, travel = 0.05 * inch, 1.8 * inch
+    candidates = []
+    for anchor, parts in variants.items():
+        _, rects, height = layout_block(parts, font, 0, 0)
+        block_w = max(r[2] for r in rects) - min(r[0] for r in rects)
+        text_w = block_w - 2 * max(p.get("halo", 0) for p in parts)
+        cx = {"center": (x0 + x1) / 2, "left": x0 + text_w / 2, "right": x1 - text_w / 2}[anchor]
+        if offset is not None:  # manual override: inches down from the top / up from the bottom
+            top = y1 - offset * inch if zone != "bottom" else y0 + height + offset * inch
+            candidates.append((0, len(candidates), parts, cx, top))
+            continue
+        for where in ("top", "bottom"):
+            if zone not in ("auto", where):
+                continue
+            for k in range(int(travel / step) + 1):
+                top = y1 - k * step if where == "top" else y0 + height + k * step
+                if top > y1 + 0.01 or top - height < y0 - 0.01:
+                    break
+                shifted = [(a + cx, b + top, c_ + cx, d + top) for a, b, c_, d in rects]
+                cost = ink.cost(shifted) if ink else 0
+                cost += k * step / inch * 250            # hug the edge of the page
+                cost *= 1.0 if where == "top" else 1.12  # read from the top, all else equal
+                cost *= 1.0 if anchor == "center" else 1.25
+                candidates.append((cost, len(candidates), parts, cx, top))
+    _, _, parts, cx, top = min(candidates, key=lambda c_: (c_[0], c_[1]))
+    return parts, cx, top
+
+
+def draw_block(c, parts, font, cx, top):
+    items, _, _ = layout_block(parts, font, cx, top)
+    c.saveState()
+    c.setFont(font, 12)  # never let a text object fall back to unembedded Helvetica
+    # 1) knockouts: clear the drawing behind the words. Wrapped in its own q/Q because the
+    #    text render mode and stroke width are sticky graphics state in PDF.
+    c.saveState()
+    c.setLineJoin(1)
+    c.setLineCap(1)
+    c.setStrokeColor(white)
+    c.setFillColor(white)
+    for item in items:
+        if item[0] == "text":
+            _, line, size, x, base, halo = item
+            width = pdfmetrics.stringWidth(line, font, size)
+            c.setLineWidth(size * 0.7)  # bridge letters and word spaces into one smooth shape
+            c.line(x + size * 0.3, base + size * 0.33, x + width - size * 0.3, base + size * 0.33)
+            c.setLineWidth(2 * halo)
+            t = c.beginText()
+            t.setTextRenderMode(2)
+            t.setFont(font, size)
+            t.setTextOrigin(x, base)
+            t.textOut(line)
+            c.drawText(t)
+        else:
+            _, px, py, w, h, plate_top = item
+            c.roundRect(px, py, w, plate_top - py, min((plate_top - py) / 2, 0.45 * inch),
+                        stroke=0, fill=1)
+    c.restoreState()
+    # 2) the words themselves, solid black
+    c.setFillColor(black)
+    c.setStrokeColor(black)
+    for item in items:
+        if item[0] == "text":
+            _, line, size, x, base, _ = item
+            c.setFont(font, size)
+            c.drawString(x, base, line)
+        else:
+            _, px, py, w, h, _ = item
+            c.setLineWidth(2.4)
+            c.setLineCap(1)
+            c.setDash(1, 7)
+            c.line(px + 0.45 * inch, py + h * 0.3, px + w - 0.45 * inch, py + h * 0.3)
+            c.setDash()
+    c.restoreState()
+
+
+def full_page_art(c, art_path, trim_cx, page_w, page_h, warnings):
+    """Cover the whole page (bleed included), centered on the trimmed page. Returns placement."""
+    img = ImageReader(str(art_path))
+    iw, ih = img.getSize()
+    scale = max(page_w / iw, page_h / ih)
+    w, h = iw * scale, ih * scale
+    x, y = trim_cx - w / 2, (page_h - h) / 2
+    if iw / (w / inch) < 300:
+        warnings.append(f"{Path(art_path).name}: only {iw / (w / inch):.0f} DPI at print size")
+    c.drawImage(img, x, y, w, h, mask="auto")
+    return x, y, w, h
+
+
+def story_fit_size(texts, font, width, max_lines=2, max_size=54, min_size=28):
+    """One type size for the whole book: the largest where every sentence fits in max_lines."""
+    for size in range(max_size, min_size - 1, -1):
+        w = width - 2 * max(6, size * HALO)
+        if all(len(balanced_wrap(t, font, size, w, max_lines=max_lines)) <= max_lines for t in texts):
+            return size
+    return min_size
+
+
+def build_fullbleed(book, book_dir, font, out, warnings):
+    trim_w, trim_h = (float(v) * inch for v in book["trim"].split("x"))
+    page_w, page_h = trim_w + BLEED, trim_h + 2 * BLEED
+    c = canvas.Canvas(str(out), pagesize=(page_w, page_h), initialFontName=font)
+    c.setTitle(book["title"])
+    c.setAuthor(book.get("author", ""))
+    pages = active_pages(book)
+    state = {"n": 0}
+
+    def frame():
+        """Trim center and the safe text area for the current page (odd pages: spine on the left)."""
+        right_hand = state["n"] % 2 == 0
+        trim_x0 = 0 if right_hand else BLEED
+        x0 = trim_x0 + (SAFE_GUTTER if right_hand else SAFE)
+        x1 = trim_x0 + trim_w - (SAFE if right_hand else SAFE_GUTTER)
+        safe = (x0, BLEED + SAFE, x1, BLEED + trim_h - SAFE)
+        return trim_x0 + trim_w / 2, safe
+
+    def page(art, blocks):
+        """blocks: [(variants, zone, offset)], placed in order; later ones avoid earlier ones."""
+        trim_cx, safe = frame()
+        placement = full_page_art(c, book_dir / art, trim_cx, page_w, page_h, warnings)
+        ink = InkMap(book_dir / art, placement)
+        placed = []
+        for variants, zone, offset in blocks:
+            parts, cx, top = place_block(variants, font, safe, ink, zone, offset)
+            ink.occupied = tuple(ink.occupied) + tuple(layout_block(parts, font, cx, top)[1])
+            placed.append((parts, cx, top))
+        for parts, cx, top in placed:
+            draw_block(c, parts, font, cx, top)
+        c.showPage()
+        state["n"] += 1
+
+    _, safe = frame()
+    safe_w = safe[2] - safe[0]
+    size = story_fit_size([p["text"] for p in pages], font, safe_w)
+    halo = max(6, size * HALO)
+    text_w = safe_w - 2 * halo
+    side_w = safe_w * 0.62 - 2 * halo  # narrower block that can tuck into a corner
+
+    # Title page
+    title_size = clean_title_size(book["title"], font, safe_w - 40, 2.6 * inch, max_size=74)
+    parts = [text_part(balanced_wrap(book["title"], font, title_size, safe_w - 2 * title_size * HALO),
+                       title_size)]
+    tagline = book.get("title_page_subtitle", book.get("subtitle"))
+    if tagline:
+        parts.append(text_part(balanced_wrap(tagline, font, 24, safe_w * 0.8), 24))
+    if book.get("author"):
+        parts.append(text_part([book["author"]], 22))
+    page(book["title_art"], [({"center": parts}, "top", None)])
+
+    # This book belongs to
+    page(book["belongs_art"], [({"center": [text_part(["This book belongs to:"], 44),
+                                            {"kind": "plate", "w": safe_w * 0.92, "h": 1.05 * inch, "wrap": True}]},
+                                book.get("belongs_zone", "auto"), None)])
+
+    def story_variants(text, align):
+        centered = [text_part(balanced_wrap(text, font, size, text_w), size)]
+        forced = align in ("left", "right")
+        side_lines = balanced_wrap(text, font, size, side_w, max_lines=4 if forced else 3)
+        side_ok = (len(side_lines) <= 3
+                   and max(pdfmetrics.stringWidth(l, font, size) for l in side_lines) <= side_w
+                   and not any(re.search(r"[.!?] +\S", l) for l in side_lines)
+                   and not any(l.split(" ")[-1].lower() in WEAK_ENDINGS for l in side_lines[:-1])
+                   and not any(" " not in l and not l.endswith(("!", "?")) for l in side_lines))
+        side = [text_part(side_lines, size)]
+        if forced:
+            return {align: side}
+        if align == "center" or not side_ok:
+            return {"center": centered}
+        return {"center": centered, "left": side, "right": side}
+
+    for p in pages:
+        # A page can split its words into separate blocks (e.g. a sound effect near the ducks).
+        blocks = p.get("blocks") or [p]
+        page(p["art"], [(story_variants(b["text"], b.get("text_align")),
+                         b.get("text_pos", "auto"), b.get("text_offset")) for b in blocks])
+
+    page(book["end_art"], [({"center": [text_part([book.get("ending", "The End")], 110)]},
+                             book.get("end_zone", "auto"), None)])
+    while state["n"] < 24 or state["n"] % 2:
+        c.showPage()
+        state["n"] += 1
+    c.save()
+    return state["n"], size
+
+
 # --- book -------------------------------------------------------------------
 
 def story_type_size(texts, font, max_width, max_height, max_size=56, min_size=30, wrapper=None):
@@ -328,12 +642,20 @@ def build(book_file):
     out_dir = book_dir / "out"
     out_dir.mkdir(exist_ok=True)
     out = out_dir / "interior.pdf"
+    warnings = []
+    if book.get("layout") == "fullbleed":
+        count, size = build_fullbleed(book, book_dir, font, out, warnings)
+        print(f"✓ {out}  ({count} pages, {trim_w/inch:g}x{trim_h/inch:g} in + bleed, "
+              f"story text {size}pt)")
+        for wmsg in warnings:
+            print(f"! {wmsg}")
+        return out, count
+
     c = canvas.Canvas(str(out), pagesize=(trim_w, trim_h), initialFontName=font)
     c.setTitle(book["title"])
     c.setAuthor(book.get("author", ""))
 
     state = {"n": 0}
-    warnings = []
 
     def box():
         # Right-hand (odd) pages have the gutter on the left.

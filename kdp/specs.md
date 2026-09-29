@@ -3,10 +3,14 @@
 Verify against KDP's current help pages before each upload; KDP changes these occasionally.
 
 ## Interior
-- **Trim size:** 8.5 x 11 in (most popular for coloring books). 8.5 x 8.5 also works for toddlers.
-- **Bleed:** "No bleed" – drawings stay inside margins, so upload with *No bleed* selected.
-- **Margins:** outside/top/bottom ≥ 0.25 in, inside (gutter) ≥ 0.375 in for 24-150 pages.
-  The builder uses 0.5 in outside and 0.625 in inside.
+- **Trim size:** 8.5 x 11 in (framed layout) or 8.5 x 8.5 in (full-page layout, square art).
+- **Bleed:**
+  - Framed layout: *No bleed*; drawings stay inside the margins.
+  - Full-page layout: *Bleed (PDF only)*. Pages are trim + 0.125 in wide and + 0.25 in tall
+    (8.625 x 8.75 in for 8.5 x 8.5), and the drawings run off every outside edge.
+- **Margins:** no bleed: outside/top/bottom ≥ 0.25 in; with bleed: ≥ 0.375 in. Inside
+  (gutter) ≥ 0.375 in for 24-150 pages. The builder keeps text 0.45 in from the outside
+  edges and 0.6 in from the spine.
 - **Page count:** minimum 24, must be even. The builder pads with blank pages.
 - **Blank backs:** each drawing is followed by a blank page so markers don't bleed through.
   Set `"blank_backs": false` in `book.json` to print on both sides.
@@ -29,6 +33,7 @@ Verify against KDP's current help pages before each upload; KDP changes these oc
    (see `listing-template.md`). Tick **"Low-content book"** only if it has no story; our
    story books are regular books, so leave it unticked and take the free KDP ISBN.
 3. **AI content question:** answer honestly (text and/or images AI-generated).
-4. Content: upload `out/interior.pdf` (No bleed, 8.5x11, white paper, B&W) and `out/cover.pdf`.
+4. Content: upload `out/interior.pdf` and `out/cover.pdf`. Match the book's settings: trim
+   size (8.5x11 or 8.5x8.5), bleed (No bleed or Bleed), white paper, black & white interior.
 5. Launch Previewer → fix any flagged issues → order a **printed proof copy** before going live.
 6. Pricing: check the royalty calculator; $6.99–$9.99 is typical for 24–60 page kids books.

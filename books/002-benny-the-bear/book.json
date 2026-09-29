@@ -2,31 +2,37 @@
   "title": "Benny the Bear's Cozy Day",
   "subtitle": "A Bold & Easy Color & Read Story Book for Kids Ages 3-6",
   "author": "",
-  "trim": "8.5x11",
+  "trim": "8.5x8.5",
   "paper": "white",
   "font": "fonts/Grandstander-ExtraBold.ttf",
   "text_size": 54,
   "blank_backs": false,
   "pages": [
     {
-      "text": "Benny the bear wakes up. Good morning, sun!",
+      "text": "Benny the bear wakes up. Good morning, sun!",
       "art": "art/01.png",
       "scene": "waking up and stretching happily in his cozy bed with a patchwork blanket, a window shows a big smiling sun"
     },
     {
-      "text": "Benny brushes his teeth. Brush, brush, brush!",
+      "text": "Benny brushes his teeth. Brush, brush, brush!",
       "art": "art/02.png",
       "scene": "standing on a little stool at the bathroom sink brushing his teeth, toothpaste tube and cup on the sink"
     },
     {
-      "text": "Benny eats pancakes with honey. Yum, yum!",
+      "text": "Benny eats pancakes. Yum, yum!",
       "art": "art/03.png",
-      "scene": "sitting at a kitchen table eating a tall stack of pancakes with a honey pot next to the plate"
+      "scene": "sitting at a kitchen table eating a tall stack of pancakes with a honey pot next to the plate",
+      "text_align": "center",
+      "text_pos": "bottom",
+      "text_offset": 0
     },
     {
-      "text": "Benny puts on his boots. Time to go outside!",
+      "text": "Boots on! Time to go outside!",
       "art": "art/04.png",
-      "scene": "putting on rain boots and a raincoat at the open front door of a cozy little house"
+      "scene": "putting on rain boots and a raincoat at the open front door of a cozy little house",
+      "text_align": "right",
+      "text_pos": "top",
+      "text_offset": 0
     },
     {
       "text": "Benny meets Bella the bunny in the garden.",
@@ -41,7 +47,9 @@
     {
       "text": "They water the flowers together.",
       "art": "art/07.png",
-      "scene": "and Bella the bunny watering big simple flowers with little watering cans"
+      "scene": "and Bella the bunny watering big simple flowers with little watering cans",
+      "text_pos": "bottom",
+      "text_offset": 0
     },
     {
       "text": "Oh no, it starts to rain!",
@@ -77,9 +85,22 @@
       "skip": true
     },
     {
-      "text": "A family of ducks swims by. Quack, quack!",
+      "text": "Ducks swim by. Quack, quack!",
       "art": "art/14.png",
-      "scene": "and Bella the bunny watching a mother duck and three ducklings swimming on a pond"
+      "scene": "and Bella the bunny watching a mother duck and three ducklings swimming on a pond",
+      "blocks": [
+        {
+          "text": "Ducks swim by.",
+          "text_align": "center",
+          "text_pos": "top",
+          "text_offset": 0
+        },
+        {
+          "text": "Quack, quack!",
+          "text_align": "center",
+          "text_pos": "bottom"
+        }
+      ]
     },
     {
       "text": "Benny and Bella have a picnic under a tree.",
@@ -99,12 +120,14 @@
     {
       "text": "They pick berries in the forest.",
       "art": "art/18.png",
-      "scene": "and Bella the bunny picking big berries from bushes into a basket, simple trees behind them"
+      "scene": "and Bella the bunny picking big berries from bushes into a basket, simple trees behind them",
+      "text_pos": "top"
     },
     {
       "text": "Benny finds a big pinecone.",
       "art": "art/19.png",
-      "scene": "holding up a giant pinecone proudly in a forest, Bella the bunny clapping"
+      "scene": "holding up a giant pinecone proudly in a forest, Bella the bunny clapping",
+      "text_pos": "bottom"
     },
     {
       "text": "They build a little house out of sticks.",
@@ -119,7 +142,9 @@
     {
       "text": "Whee! Benny rolls down the grassy hill.",
       "art": "art/22.png",
-      "scene": "rolling happily down a gentle grassy hill with flowers, Bella the bunny laughing at the top"
+      "scene": "rolling happily down a gentle grassy hill with flowers, Bella the bunny laughing at the top",
+      "text_align": "left",
+      "text_pos": "top"
     },
     {
       "text": "They play hide and seek. Where is Bella?",
@@ -129,10 +154,11 @@
     {
       "text": "Found you! Bella hides behind a mushroom.",
       "art": "art/24.png",
-      "scene": "finding Bella the bunny hiding behind a giant spotted mushroom, both laughing"
+      "scene": "finding Bella the bunny hiding behind a giant spotted mushroom, both laughing",
+      "text_pos": "bottom"
     },
     {
-      "text": "Time to go home. Bye-bye, Bella!",
+      "text": "Time to go home. Bye-bye, Bella!",
       "art": "art/25.png",
       "scene": "waving goodbye to Bella the bunny at a garden gate at sunset"
     },
@@ -157,7 +183,7 @@
       "scene": "tucked in bed while Mama Bear sits beside him reading a storybook, a lamp on the nightstand"
     },
     {
-      "text": "Goodnight, Benny. Sweet dreams!",
+      "text": "Goodnight, Benny. Sweet dreams!",
       "art": "art/30.png",
       "scene": "asleep in his cozy bed hugging a teddy toy, eyes closed, window shows a smiling crescent moon and big stars"
     }
@@ -194,5 +220,10 @@
     "text_color": "#4A3526",
     "blurb": "Color and read along with Benny!\n\nIt's a brand new day, and Benny the bear can't wait to play. He eats pancakes with honey, plays in the rain with his best friend Bella the bunny, flies a kite high in the sky, and snuggles up for a cozy bedtime story.\n\nEvery page has one short sentence in BIG, easy letters and one big, bold picture that's just right for little hands.\n\n• Adorable coloring pages that tell one sweet story\n• Bold, thick lines that are easy to color\n• Big letters for early readers\n• Perfect for ages 3-6"
   },
-  "title_art": "art/05.png"
+  "title_art": "art/title.png",
+  "bleed": true,
+  "layout": "fullbleed",
+  "belongs_art": "art/belongs.png",
+  "end_art": "art/end.png",
+  "title_page_subtitle": "A Color & Read Story Book"
 }

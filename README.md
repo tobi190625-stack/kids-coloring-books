@@ -28,8 +28,14 @@ python3 tools/build_cover.py books/001-leo-the-lion/book.json   # -> out/cover.p
 Or just ask Claude: **"Make a new book about a dinosaur who is scared of the dark."**
 Claude writes the story, draws or prompts the art, builds both PDFs.
 
-Pages use **Grandstander ExtraBold** (`fonts/`, SIL OFL): each drawing sits in a rounded
-frame, and its sentence is set in colorable bubble letters inside a cloud that overlaps the frame.
+Text is set in **Grandstander ExtraBold** (`fonts/`, SIL OFL). Two page layouts:
+
+- **Full page** (`"layout": "fullbleed"`, used by Benny): every drawing covers the whole
+  page edge to edge, and the sentence sits right on the picture in solid black, with the
+  drawing cleared away just around the letters. The builder finds the spot that hides the
+  least drawing and never covers a face. Square 8.5x8.5 books with bleed.
+- **Framed** (default, used by Leo): drawing in a rounded frame, sentence in bubble letters
+  inside a cloud. For 8.5x11 books without bleed.
 
 ## Best Claude tools for this
 

@@ -7,7 +7,8 @@ Usage:
 book.json "cover" needs "front_image" and "back_image" (square or portrait art,
 e.g. from ChatGPT). The script:
   - upscales the art to 300+ DPI at print size,
-  - extends it to the tall 8.5x11 shape with a soft blurred fill (no cropping),
+  - fills each panel edge to edge when the art has the book's shape (square art on a
+    square book), or extends it to a taller shape like 8.5x11 without cropping,
   - optionally paints out a corner watermark box ("erase": [x0, y0, x1, y1] in source px),
   - adds the spine, the back blurb and a clear barcode area.
 Output: <book folder>/out/cover.pdf
@@ -47,11 +48,22 @@ def erase_box(img, box):
 
 
 def panel(art_path, width_px, height_px, top_px, erase=None):
-    """Art scaled to panel width, placed top_px from the top, over a blurred fill."""
+    """One cover panel from the art.
+
+    When the art is (nearly) the panel's shape, e.g. square art on an 8.5x8.5 book, it is
+    scaled to fill the panel edge to edge and center-cropped (only the bleed is lost).
+    When the panel is much taller, e.g. square art on 8.5x11, the art keeps its full width,
+    sits top_px from the top, and its own top and bottom edges are extended to fill.
+    """
     art = Image.open(art_path).convert("RGB")
     if erase:
         for box in (erase if isinstance(erase[0], list) else [erase]):
             erase_box(art, box)
+    if art.height * width_px / art.width >= 0.97 * height_px:
+        scale = max(width_px / art.width, height_px / art.height)
+        art = art.resize((round(art.width * scale), round(art.height * scale)), Image.LANCZOS)
+        x0, y0 = (art.width - width_px) // 2, (art.height - height_px) // 2
+        return art.crop((x0, y0, x0 + width_px, y0 + height_px))
     scale = width_px / art.width
     art = art.resize((width_px, round(art.height * scale)), Image.LANCZOS)
 
@@ -144,8 +156,12 @@ def build(book_file):
     out.parent.mkdir(exist_ok=True)
     jpg = book_dir / "out" / "cover-preview.jpg"
     sheet.save(jpg, quality=92, dpi=(DPI, DPI))
-    c = canvas.Canvas(str(out), pagesize=(full_w / DPI * inch, full_h / DPI * inch))
-    c.drawImage(str(jpg), 0, 0, full_w / DPI * inch, full_h / DPI * inch)
+    # Page size exactly per KDP's formula; the pixel sheet is off by a rounding hair, so
+    # it is drawn stretched to fit (a change of about 0.01%).
+    exact_w = (2 * (trim_w + BLEED) + spine) * inch
+    exact_h = (trim_h + 2 * BLEED) * inch
+    c = canvas.Canvas(str(out), pagesize=(exact_w, exact_h))
+    c.drawImage(str(jpg), 0, 0, exact_w, exact_h)
     c.save()
 
     interior = book_dir / "out" / "interior.pdf"
@@ -153,7 +169,7 @@ def build(book_file):
     if not interior.exists():
         note = " (interior not built yet: rebuild the cover if the page count changes)"
     print(f"✓ {out}")
-    print(f"  {full_w/DPI:.3f} x {full_h/DPI:.3f} in, spine {spine:.3f} in for {pages} pages{note}")
+    print(f"  {exact_w/inch:.4f} x {exact_h/inch:.4f} in, spine {spine:.4f} in for {pages} pages{note}")
 
 
 if __name__ == "__main__":

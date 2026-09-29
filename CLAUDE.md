@@ -23,8 +23,20 @@ This folder produces Amazon KDP paperback coloring/story books. Read `README.md`
    python3 tools/build_cover.py books/NNN-slug/book.json
    ```
    Render a few pages to PNG (pymupdf) and look at them before calling it done.
+   For AI (PNG) art, first run `python3 tools/clean_art.py books/NNN-slug` on `art/raw/`, and
+   use `tools/build_image_cover.py` when the cover comes as front/back images.
 6. Fill a listing in `kdp/listing-template.md` style as `books/NNN-slug/listing.md`
    and 3 ad hooks as `books/NNN-slug/ads.md`.
+
+## Full-page books (`"layout": "fullbleed"`, see `books/002-benny-the-bear/book.json`)
+- Square art → `"trim": "8.5x8.5"`; also set `title_art`, `belongs_art`, `end_art`.
+- The builder places each sentence automatically (least drawing covered, faces avoided).
+  Look at every page, then steer the ones that need it, per page:
+  `"text_pos": "top" | "bottom"`, `"text_align": "center" | "left" | "right"`,
+  `"text_offset": <inches from that edge>`, or split the words into separate spots with
+  `"blocks": [{"text": ..., "text_pos": ...}, ...]` (e.g. a sound effect near the ducks).
+- Keep phrases together with a no-break space (`\u00a0`), e.g. `Mama\u00a0Bear`.
+- If a sentence can't sit anywhere without covering the picture, shorten it and tell the user.
 
 ## Rules
 - Never change the KDP math in the tools (margins, spine per page, bleed) without

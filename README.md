@@ -28,8 +28,8 @@ python3 tools/build_cover.py books/001-leo-the-lion/book.json   # -> out/cover.p
 Or just ask Claude: **"Make a new book about a dinosaur who is scared of the dark."**
 Claude writes the story, draws or prompts the art, builds both PDFs.
 
-Optional: drop a rounded kid-style font at `fonts/kids.ttf` (free: *Fredoka*,
-*Baloo 2* or *Andika* from Google Fonts). Without it the builder uses DejaVu Sans Bold.
+Pages use **Grandstander ExtraBold** (`fonts/`, SIL OFL): each drawing sits in a rounded
+frame, and its sentence is set in colorable bubble letters inside a cloud that overlaps the frame.
 
 ## Best Claude tools for this
 

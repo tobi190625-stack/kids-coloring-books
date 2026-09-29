@@ -4,18 +4,42 @@
   "author": "Your Pen Name",
   "trim": "8.5x11",
   "paper": "white",
-  "font": "fonts/kids.ttf",
+  "font": "fonts/Grandstander-ExtraBold.ttf",
   "text_size": 54,
   "blank_backs": true,
   "pages": [
-    { "text": "Leo is a little lion. He lives in a big, sunny jungle.", "art": "art/01-leo.svg" },
-    { "text": "Leo wants to ROAR like his dad. But he can only squeak!", "art": "art/02-squeak.svg" },
-    { "text": "Leo meets Ella the elephant. \"Try again!\" she says.", "art": "art/03-elephant.svg" },
-    { "text": "Leo meets Tiko the monkey high up in a tree.", "art": "art/04-monkey.svg" },
-    { "text": "Pip the bird sings, \"Take a BIG breath!\"", "art": "art/05-bird.svg" },
-    { "text": "Leo takes a big breath... and ROARS!", "art": "art/06-roar.svg" },
-    { "text": "All his friends cheer. Hooray for Leo!", "art": "art/07-cheer.svg" },
-    { "text": "Goodnight, Leo. Sweet dreams under the stars.", "art": "art/08-goodnight.svg" }
+    {
+      "text": "Leo is a little lion. He lives in a big, sunny jungle.",
+      "art": "art/01-leo.svg"
+    },
+    {
+      "text": "Leo wants to ROAR like his dad. But he can only squeak!",
+      "art": "art/02-squeak.svg"
+    },
+    {
+      "text": "Leo meets Ella the elephant. \"Try again!\" she says.",
+      "art": "art/03-elephant.svg"
+    },
+    {
+      "text": "Leo meets Tiko the monkey high up in a tree.",
+      "art": "art/04-monkey.svg"
+    },
+    {
+      "text": "Pip the bird sings, \"Take a BIG breath!\"",
+      "art": "art/05-bird.svg"
+    },
+    {
+      "text": "Leo takes a big breath... and ROARS!",
+      "art": "art/06-roar.svg"
+    },
+    {
+      "text": "All his friends cheer. Hooray for Leo!",
+      "art": "art/07-cheer.svg"
+    },
+    {
+      "text": "Goodnight, Leo. Sweet dreams under the stars.",
+      "art": "art/08-goodnight.svg"
+    }
   ],
   "ending": "The End",
   "cover": {

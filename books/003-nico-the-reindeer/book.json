@@ -1,0 +1,178 @@
+{
+  "title": "Nico the Little Reindeer’s Snowy Day",
+  "subtitle": "A Bold & Easy Color & Read Story Book for Kids Ages 3-6",
+  "title_page_subtitle": "A Color & Read Story Book",
+  "author": "",
+  "trim": "8.5x8.5",
+  "bleed": false,
+  "paper": "white",
+  "font": "fonts/Grandstander-ExtraBold.ttf",
+  "layout": "fullbleed",
+  "text_style": "bubble",
+  "text_size": 41,
+  "blank_backs": false,
+  "title_art": "art/title.png",
+  "belongs_art": "art/belongs.png",
+  "end_art": "art/end.png",
+  "ending": "The End",
+  "pages": [
+    {
+      "text": "Nico the reindeer wakes up. Look, it snowed!",
+      "art": "art/01.png",
+      "scene": "sitting up in his cozy bed with a patchwork blanket, looking amazed out a window at big falling snowflakes"
+    },
+    {
+      "text": "Nico wraps his warm, red scarf around his neck.",
+      "art": "art/02.png",
+      "scene": "standing in his bedroom happily wrapping a big fluffy red scarf around his neck"
+    },
+    {
+      "text": "Mama makes hot cocoa with marshmallows.",
+      "art": "art/03.png",
+      "scene": "at a kitchen table with Mama Reindeer (a bigger reindeer wearing an apron) who is pouring hot cocoa into two mugs with marshmallows"
+    },
+    {
+      "text": "Nico pulls on his fuzzy snow boots.",
+      "art": "art/04.png",
+      "scene": "sitting on a little bench by the front door pulling on a big fuzzy boot, other boot beside him"
+    },
+    {
+      "text": "Whoosh! The door opens to a snowy world.",
+      "art": "art/05.png",
+      "scene": "standing at an open front door with wide eyes, looking out at a snowy yard with pine trees and falling snowflakes"
+    },
+    {
+      "text": "Nico makes his very first snow angel.",
+      "art": "art/06.png",
+      "scene": "lying on his back in deep snow making a snow angel, arms and legs spread wide, laughing"
+    },
+    {
+      "text": "Nico meets Tilly the penguin.",
+      "art": "art/07.png",
+      "scene": "waving hello to Tilly, a cute little penguin (round body, small wings, tiny beak, wearing a knitted hat), in a snowy yard"
+    },
+    {
+      "text": "Tilly has a bright red sled.",
+      "art": "art/08.png",
+      "scene": "and Tilly the penguin standing next to a simple wooden sled with a rope, at the top of a small snowy hill"
+    },
+    {
+      "text": "Whee! They zoom down the big hill.",
+      "art": "art/09.png",
+      "scene": "and Tilly the penguin riding together on a sled zooming down a snowy hill, snow spraying behind them"
+    },
+    {
+      "text": "Bump! They tumble into the soft snow.",
+      "art": "art/10.png",
+      "scene": "and Tilly the penguin tumbling off the sled into a big fluffy snowdrift, snow puffs flying, both laughing"
+    },
+    {
+      "text": "They roll a big, round snowball.",
+      "art": "art/11.png",
+      "scene": "and Tilly the penguin pushing a large snowball together across the snow, a trail behind it"
+    },
+    {
+      "text": "Now they build a snowman together.",
+      "art": "art/12.png",
+      "scene": "and Tilly the penguin stacking snowballs to build a round snowman with no face yet"
+    },
+    {
+      "text": "The snowman needs a nose. A carrot!",
+      "art": "art/13.png",
+      "scene": "holding up a big carrot and Tilly the penguin pointing at the snowman's face where the nose goes"
+    },
+    {
+      "text": "Tilly adds two shiny button eyes.",
+      "art": "art/14.png",
+      "scene": "and Tilly the penguin, standing on a little stool, putting two big round buttons on the snowman as eyes"
+    },
+    {
+      "text": "Nico gives the snowman his red scarf.",
+      "art": "art/15.png",
+      "scene": "gently wrapping his scarf around the finished smiling snowman, Tilly the penguin clapping"
+    },
+    {
+      "text": "Snowflakes twinkle in the sky.",
+      "art": "art/16.png",
+      "scene": "and Tilly the penguin looking up at big twinkling snowflakes and a few stars, snowy pine trees around"
+    },
+    {
+      "text": "Nico catches a snowflake on his tongue.",
+      "art": "art/17.png",
+      "scene": "with tongue stuck out catching a big snowflake, eyes closed, big smile, Tilly the penguin giggling"
+    },
+    {
+      "text": "Look! A little deer peeks from the trees.",
+      "art": "art/18.png",
+      "scene": "and Tilly the penguin pointing at a shy little fawn named Willow peeking out from behind a snowy pine tree"
+    },
+    {
+      "text": "Willow shares a juicy red apple.",
+      "art": "art/19.png",
+      "scene": "and Willow the fawn holding out a big red apple, Tilly the penguin looking hungry and happy"
+    },
+    {
+      "text": "They slide across the frozen pond.",
+      "art": "art/20.png",
+      "scene": "and Tilly the penguin sliding on a frozen pond, Willow the fawn watching from the edge, reeds and snow"
+    },
+    {
+      "text": "Slip, slide! Nico spins round and round.",
+      "art": "art/21.png",
+      "scene": "spinning on the ice with arms out, dizzy and laughing, snow swirl lines around him"
+    },
+    {
+      "text": "They build a cozy snow fort.",
+      "art": "art/22.png",
+      "scene": "and Tilly the penguin and Willow the fawn stacking snow blocks into a small fort with a tiny flag on top"
+    },
+    {
+      "text": "They hang seeds for hungry birds.",
+      "scene": "and Tilly the penguin and Willow the fawn hanging a pine cone covered in seeds from a snowy branch, three small round birds gathering to eat",
+      "art": "art/23.png"
+    },
+    {
+      "text": "Ready, aim, splat! Right in the middle!",
+      "art": "art/24.png",
+      "scene": "throwing a soft snowball at a round target drawn on a tree stump, Tilly the penguin cheering"
+    },
+    {
+      "text": "Brrr! Nico’s little hooves feel cold.",
+      "art": "art/25.png",
+      "scene": "shivering with hunched shoulders, hugging himself, a small snow cloud puff from his breath, Tilly the penguin wrapping a blanket around him"
+    },
+    {
+      "text": "Mama waves from the cozy front door.",
+      "art": "art/26.png",
+      "scene": "running toward home while Mama Reindeer waves from a warm glowing doorway of a little cottage, smoke curling from the chimney"
+    },
+    {
+      "text": "Nico and Mama sip cocoa by the fire.",
+      "art": "art/27.png",
+      "scene": "and Mama Reindeer sitting on a soft rug by a crackling fireplace, holding mugs of cocoa"
+    },
+    {
+      "text": "Mama tucks Nico into his warm bed.",
+      "art": "art/28.png",
+      "scene": "tucked into bed by Mama Reindeer who is pulling the blanket up to his chin, a teddy bear on the pillow"
+    },
+    {
+      "text": "Goodnight, Nico. Sweet dreams!",
+      "art": "art/29.png",
+      "scene": "fast asleep in bed hugging a teddy bear, eyes closed, window showing a smiling crescent moon and big stars over snowy trees"
+    }
+  ],
+  "special": {
+    "title": "Nico the little reindeer and Tilly the penguin playing happily in a snowy meadow with a snowman, snowy hills and pine trees; keep the top third of the picture open sky with only a few simple clouds and snowflakes",
+    "belongs": "Nico the little reindeer sitting up in his cozy bed waving, patchwork blanket, bed footboard in front; keep the bottom third of the picture calm (just the blanket and bed) with nothing small or busy",
+    "end": "Nico the little reindeer and Tilly the penguin waving goodbye next to their snowman on a snowy hill, waving at the viewer; keep the top third of the picture open sky with only a few simple clouds and snowflakes"
+  },
+  "cover": {
+    "front_image": "cover/front.png",
+    "back_image": "cover/back.png",
+    "front_erase": [],
+    "back_erase": [],
+    "text_color": "#3B4A63",
+    "blurb": "Color and read along with Nico!\n\nIt’s a snowy morning, and Nico the little reindeer can’t wait to play outside. He makes a snow angel, meets his new friend Tilly the penguin, zooms down a hill on a sled, builds a snowman, and cozies up with Mama for cocoa by the fire.\n\nEvery page has one short sentence in BIG, easy letters and one big, bold picture that’s just right for little hands.\n\n• Adorable full-page coloring pictures that tell one sweet story\n• Bold, thick lines that are easy to color\n• Big letters for early readers\n• A “This book belongs to” page\n• Perfect for ages 3-6"
+  }
+}

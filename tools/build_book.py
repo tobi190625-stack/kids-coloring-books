@@ -439,7 +439,10 @@ def layout_bubble(parts, font, cx, top):
     """
     cap = cap_height(font)
     items, widths = [], []
-    y = top - BUBBLE_PAD_Y
+    # padding grows with big type (title, The End) so large letters never crowd the edge
+    big = max((p["size"] for p in parts if p["kind"] == "text"), default=0)
+    pad_x, pad_y = max(BUBBLE_PAD_X, 0.3 * big), max(BUBBLE_PAD_Y, 0.22 * big)
+    y = top - pad_y
     for i, part in enumerate(parts):
         if part["kind"] == "text":
             size = part["size"]
@@ -457,8 +460,8 @@ def layout_bubble(parts, font, cx, top):
             y -= h
         if i < len(parts) - 1:
             y -= PART_GAP
-    half = max(widths) / 2 + BUBBLE_PAD_X
-    rect = (cx - half, y - BUBBLE_PAD_Y, cx + half, top)
+    half = max(widths) / 2 + pad_x
+    rect = (cx - half, y - pad_y, cx + half, top)
     return [("bubble", rect)] + items, [rect], top - rect[1]
 
 

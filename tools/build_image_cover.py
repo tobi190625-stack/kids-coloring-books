@@ -23,7 +23,7 @@ from reportlab.lib.units import inch
 from reportlab.pdfgen import canvas
 
 sys.path.insert(0, str(Path(__file__).parent))
-from build_book import FALLBACK_FONT, ROOT, final_page_count  # noqa: E402
+from build_book import FALLBACK_FONT, ROOT, final_page_count, register_font  # noqa: E402
 
 DPI = 300
 BLEED = 0.125
@@ -160,7 +160,10 @@ def build(book_file):
     # it is drawn stretched to fit (a change of about 0.01%).
     exact_w = (2 * (trim_w + BLEED) + spine) * inch
     exact_h = (trim_h + 2 * BLEED) * inch
-    c = canvas.Canvas(str(out), pagesize=(exact_w, exact_h))
+    # The cover is one flat image; start the page in an embeddable font, or the PDF library
+    # declares its default Helvetica, which KDP can flag as a font that isn't embedded.
+    c = canvas.Canvas(str(out), pagesize=(exact_w, exact_h),
+                      initialFontName=register_font(book.get("font")))
     c.drawImage(str(jpg), 0, 0, exact_w, exact_h)
     c.save()
 

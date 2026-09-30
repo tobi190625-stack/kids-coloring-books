@@ -107,54 +107,63 @@
       "scene": "and Tilly the penguin pointing at a shy little fawn named Willow peeking out from behind a snowy pine tree"
     },
     {
-      "text": "Willow shares a juicy red apple.",
+      "text": "Nico shares his juicy apple with Willow.",
       "art": "art/19.png",
-      "scene": "and Willow the fawn holding out a big red apple, Tilly the penguin looking hungry and happy"
+      "scene": "holding out a big red apple to Willow the fawn, Tilly the penguin looking hungry and happy"
     },
     {
       "text": "They slide across the frozen pond.",
       "art": "art/20.png",
-      "scene": "and Tilly the penguin sliding on a frozen pond, Willow the fawn watching from the edge, reeds and snow"
+      "scene": "and Tilly the penguin sliding on a frozen pond, Willow the fawn watching from the edge, reeds and snow",
+      "skip": true
     },
     {
       "text": "Slip, slide! Nico spins round and round.",
       "art": "art/21.png",
-      "scene": "spinning on the ice with arms out, dizzy and laughing, snow swirl lines around him"
+      "scene": "spinning on the ice with arms out, dizzy and laughing, snow swirl lines around him",
+      "skip": true
     },
     {
       "text": "They build a cozy snow fort.",
       "art": "art/22.png",
-      "scene": "and Tilly the penguin and Willow the fawn stacking snow blocks into a small fort with a tiny flag on top"
+      "scene": "and Tilly the penguin and Willow the fawn stacking snow blocks into a small fort with a tiny flag on top",
+      "skip": true
     },
     {
       "text": "They hang seeds for hungry birds.",
       "scene": "and Tilly the penguin and Willow the fawn hanging a pine cone covered in seeds from a snowy branch, three small round birds gathering to eat",
-      "art": "art/23.png"
+      "art": "art/23.png",
+      "skip": true
     },
     {
       "text": "Ready, aim, splat! Right in the middle!",
       "art": "art/24.png",
-      "scene": "throwing a soft snowball at a round target drawn on a tree stump, Tilly the penguin cheering"
+      "scene": "throwing a soft snowball at a round target drawn on a tree stump, Tilly the penguin cheering",
+      "skip": true
     },
     {
       "text": "Brrr! Nico’s little hooves feel cold.",
       "art": "art/25.png",
-      "scene": "shivering with hunched shoulders, hugging himself, a small snow cloud puff from his breath, Tilly the penguin wrapping a blanket around him"
+      "scene": "shivering with hunched shoulders, hugging himself, a small snow cloud puff from his breath, Tilly the penguin wrapping a blanket around him",
+      "skip": true
     },
     {
       "text": "Mama waves from the cozy front door.",
       "art": "art/26.png",
-      "scene": "running toward home while Mama Reindeer waves from a warm glowing doorway of a little cottage, smoke curling from the chimney"
+      "scene": "running toward home while Mama Reindeer waves from a warm glowing doorway of a little cottage, smoke curling from the chimney",
+      "skip": true
     },
     {
       "text": "Nico and Mama sip cocoa by the fire.",
       "art": "art/27.png",
-      "scene": "and Mama Reindeer sitting on a soft rug by a crackling fireplace, holding mugs of cocoa"
+      "scene": "and Mama Reindeer sitting on a soft rug by a crackling fireplace, holding mugs of cocoa",
+      "skip": true
     },
     {
       "text": "Mama tucks Nico into his warm bed.",
       "art": "art/28.png",
-      "scene": "tucked into bed by Mama Reindeer who is pulling the blanket up to his chin, a teddy bear on the pillow"
+      "scene": "tucked into bed by Mama Reindeer who is pulling the blanket up to his chin, a teddy bear on the pillow",
+      "skip": true
     },
     {
       "text": "Goodnight, Nico. Sweet dreams!",

@@ -1,0 +1,178 @@
+{
+  "title": "Dex the Little Dinosaur’s Big Day",
+  "subtitle": "A Bold & Easy Color & Read Story Book for Kids Ages 3-6",
+  "title_page_subtitle": "A Color & Read Story Book",
+  "author": "",
+  "trim": "8.5x11",
+  "bleed": false,
+  "paper": "white",
+  "font": "fonts/Grandstander-ExtraBold.ttf",
+  "layout": "fullbleed",
+  "text_style": "bubble",
+  "text_size": 41,
+  "blank_backs": false,
+  "title_art": "art/title.png",
+  "belongs_art": "art/belongs.png",
+  "end_art": "art/end.png",
+  "ending": "The End",
+  "special": {
+    "title": "Dex the little dinosaur, Pip the baby pterodactyl and Rory the baby T-rex standing together happily in a jungle clearing with ferns, palm trees and a small volcano far away; keep the top third of the picture open sky with only a few simple clouds",
+    "belongs": "Dex the little dinosaur sitting up in his cozy nest of leaves waving; keep the bottom third of the picture calm (just leaves and the nest edge) with nothing small or busy",
+    "end": "Dex, Pip and Rory waving goodbye together in a sunny jungle clearing, waving at the viewer; keep the top third of the picture open sky with only a few simple clouds"
+  },
+  "pages": [
+    {
+      "text": "Dex the dinosaur wakes up. Good morning, sun!",
+      "art": "art/01.png",
+      "scene": "sitting up in a big round nest of twigs and leaves, stretching and yawning, a big smiling sun rising behind giant ferns"
+    },
+    {
+      "text": "Dex stretches his little legs. Stomp, stomp!",
+      "art": "art/02.png",
+      "scene": "standing next to his nest stretching one leg, stomping on the ground with little dust puffs, ferns around"
+    },
+    {
+      "text": "Mama brings yummy green leaves.",
+      "art": "art/03.png",
+      "scene": "with Mama Triceratops (a bigger version of Dex with a flower behind her frill) who is carrying a big pile of green leaves in her mouth, by the nest"
+    },
+    {
+      "text": "Crunch, crunch, crunch! Dex munches his breakfast.",
+      "art": "art/04.png",
+      "scene": "sitting happily munching a big leaf, cheeks full, leaf crumbs flying, more leaves piled beside him"
+    },
+    {
+      "text": "Mama gives Dex a big, warm hug.",
+      "art": "art/05.png",
+      "scene": "being hugged by Mama Triceratops, both smiling with eyes closed, hearts floating above them"
+    },
+    {
+      "text": "Dex walks into the big green jungle.",
+      "art": "art/06.png",
+      "scene": "walking down a path into a jungle with giant ferns, big leaves, palm trees and vines, looking excited"
+    },
+    {
+      "text": "Look! A little pterodactyl flies down.",
+      "art": "art/07.png",
+      "scene": "looking up in surprise at Pip, a little baby pterodactyl (round head with a small crest, tiny beak, small wings), gliding down from the sky between trees"
+    },
+    {
+      "text": "This is Pip. Pip says hello!",
+      "art": "art/08.png",
+      "scene": "and Pip the baby pterodactyl standing face to face on a mossy log, Pip waving one wing hello, both smiling"
+    },
+    {
+      "text": "Dex and Pip race to the pond.",
+      "art": "art/09.png",
+      "scene": "running along a path while Pip flies low beside him, both looking back and laughing, a pond visible ahead"
+    },
+    {
+      "text": "Splash! They jump into the water.",
+      "art": "art/10.png",
+      "scene": "and Pip jumping into a jungle pond, big water splashes, lily pads and reeds"
+    },
+    {
+      "text": "Dex blows big, shiny bubbles.",
+      "art": "art/11.png",
+      "scene": "sitting in shallow pond water blowing big round bubbles, Pip laughing and popping a bubble with his wing, lily pads around"
+    },
+    {
+      "text": "Wow! They find a huge spotty egg.",
+      "art": "art/12.png",
+      "scene": "and Pip standing on a sandy shore looking amazed at a huge spotted egg in a little nest of leaves"
+    },
+    {
+      "text": "The egg goes wobble, wobble, wobble.",
+      "art": "art/13.png",
+      "scene": "and Pip watching wide-eyed as the big spotted egg rocks and wobbles with little motion lines around it"
+    },
+    {
+      "text": "Crack! A baby dino says hello.",
+      "art": "art/14.png",
+      "scene": "and Pip watching as the egg cracks open and Rory, a tiny baby T-rex (big round head, tiny arms, small round tail, friendly smile), peeks out of the shell pieces"
+    },
+    {
+      "text": "This is Rory. Rory is a little shy.",
+      "art": "art/15.png",
+      "scene": "and Pip next to Rory the baby T-rex who is shyly hiding half behind an eggshell piece, blushing, tiny arms held together"
+    },
+    {
+      "text": "Dex shares his leaf with Rory.",
+      "art": "art/16.png",
+      "scene": "holding out a big green leaf to Rory the baby T-rex, Pip watching happily"
+    },
+    {
+      "text": "They play hide and seek in the ferns.",
+      "art": "art/17.png",
+      "scene": "playing hide and seek among giant ferns with Pip and Rory, Rory peeking out from behind a fern, Dex covering his eyes counting"
+    },
+    {
+      "text": "Pip flies up to the tallest tree.",
+      "art": "art/18.png",
+      "scene": "looking up and waving, with Rory beside him, while Pip flies up near the top of a very tall tree, a bird nest in the branches"
+    },
+    {
+      "text": "Dex and Rory climb a rocky hill.",
+      "art": "art/19.png",
+      "scene": "and Rory the baby T-rex climbing up a small rocky hill together, helping each other, Pip flying above"
+    },
+    {
+      "text": "Look! A big, round volcano.",
+      "art": "art/20.png",
+      "scene": "and Rory and Pip standing on top of the hill looking at a big round friendly volcano far away with a small cloud of smoke, jungle below"
+    },
+    {
+      "text": "Puff, puff! The volcano goes rumble.",
+      "art": "art/21.png",
+      "scene": "and Rory and Pip giggling and covering their ears as the volcano in the distance puffs little round smoke clouds, rumble lines around it"
+    },
+    {
+      "text": "They find a shiny, sparkly rock.",
+      "art": "art/22.png",
+      "scene": "and Rory and Pip bending over a big sparkling gem-like rock with star shapes around it, all amazed"
+    },
+    {
+      "text": "They stack rocks into a tall tower.",
+      "art": "art/23.png",
+      "scene": "and Rory and Pip stacking round rocks into a tall wobbly tower, Pip placing the top rock while flying"
+    },
+    {
+      "text": "Whee! They slide down the grassy hill.",
+      "art": "art/24.png",
+      "scene": "and Rory sliding down a grassy hill together on their bellies, arms up, laughing, Pip flying alongside"
+    },
+    {
+      "text": "Drip, drop! Rain clouds come.",
+      "art": "art/25.png",
+      "scene": "and Rory and Pip looking up at big fluffy rain clouds with the first raindrops falling"
+    },
+    {
+      "text": "Splash! They dance in the rain.",
+      "art": "art/26.png",
+      "scene": "and Rory and Pip dancing and jumping in puddles in the rain, big raindrops and splashes, big leaves as umbrellas"
+    },
+    {
+      "text": "A big, bright rainbow appears.",
+      "art": "art/27.png",
+      "scene": "and Rory and Pip sitting side by side looking up at a big rainbow over the jungle, sun peeking out"
+    },
+    {
+      "text": "Mama calls, \"Time to go home!\"",
+      "art": "art/28.png",
+      "scene": "waving goodbye to Rory and Pip while Mama Triceratops waves from the path and calls him, evening sun low over the jungle"
+    },
+    {
+      "text": "Goodnight, Dex. Sweet dreams!",
+      "art": "art/29.png",
+      "scene": "fast asleep curled up in his nest hugging a soft leaf pillow, eyes closed, a smiling crescent moon and big stars in the sky, sleepy Zzz"
+    }
+  ],
+  "cover": {
+    "front_image": "cover/front.png",
+    "back_image": "cover/back.png",
+    "front_erase": [],
+    "back_erase": [],
+    "text_color": "#3B4A63",
+    "blurb": "Color and read along with Dex!\n\nIt’s a sunny morning, and Dex the little dinosaur can’t wait to explore the jungle. He meets Pip the pterodactyl, splashes in the pond, helps a giant egg hatch, spots a rumbling volcano, and dances in the rain before a cozy bedtime hug from Mama.\n\nEvery page has one short sentence in BIG, easy letters and one bold, thick-lined picture that’s easy to color. Perfect for ages 3-6."
+  }
+}

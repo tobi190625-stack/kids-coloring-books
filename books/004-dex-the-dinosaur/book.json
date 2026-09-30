@@ -188,5 +188,37 @@
     "back_erase": [],
     "text_color": "#3B4A63",
     "blurb": "Color and read along with Dex!\n\nIt’s a sunny morning, and Dex the little dinosaur can’t wait to explore the jungle. He meets Pip the pterodactyl, splashes in the pond, helps a giant egg hatch, spots a rumbling volcano, and dances in the rain before a cozy bedtime hug from Mama.\n\nEvery page has one short sentence in BIG, easy letters and one bold, thick-lined picture that’s easy to color. Perfect for ages 3-6."
+  },
+  "marketing": {
+    "slug": "dex",
+    "layout": "portrait",
+    "title": "Dex the Little Dinosaur’s Big Day",
+    "pin1_head": [
+      "A story kids",
+      "COLOR and READ"
+    ],
+    "pin3_head": [
+      "A birthday gift kids",
+      "actually finish"
+    ],
+    "pin3_pill": "Birthdays • Party favors • Gifts",
+    "pin2_pages": [
+      "art/01.png",
+      "art/10.png",
+      "art/14.png",
+      "art/20.png",
+      "art/26.png",
+      "art/27.png"
+    ],
+    "pin3_pages": [
+      "art/08.png",
+      "art/29.png"
+    ],
+    "colors": {
+      "pin1": "#FFF0B8",
+      "pin2": "#D4ECFF",
+      "pin3": "#FFD9B0",
+      "ad": "#FFF0B8"
+    }
   }
 }

@@ -64,6 +64,69 @@ def art(book_dir, name):
     return img.resize((800, 800), Image.LANCZOS)
 
 
+def fit(img, box):
+    """Scale img to fit inside box (w, h) keeping its shape; returns the image."""
+    s = min(box[0] / img.width, box[1] / img.height)
+    return img.convert("RGB").resize((round(img.width * s), round(img.height * s)), Image.LANCZOS)
+
+
+def card_in_box(canvas, img, box_xy, box_wh, radius=36):
+    """Paste img as a rounded card centered in a box, keeping its shape."""
+    im = fit(img, box_wh)
+    xy = (box_xy[0] + (box_wh[0] - im.width) // 2, box_xy[1] + (box_wh[1] - im.height) // 2)
+    paste_card(canvas, im, xy, im.size, radius)
+
+
+def page_art(book_dir, name):
+    return Image.open(book_dir / name).convert("L").resize((700, 1050), Image.LANCZOS)
+
+
+def main_portrait(book_dir, book, out):
+    """Same four images for a tall (portrait) book: tall cover and tall pages."""
+    m = book["marketing"]
+    cover = Image.open(book_dir / "cover" / "front.png").convert("RGB")
+    title = m["title"]
+
+    c = Image.new("RGBA", (1000, 1500), m["colors"]["pin1"])
+    d = ImageDraw.Draw(c)
+    centered(d, m["pin1_head"][0], 60, 112)
+    centered(d, m["pin1_head"][1], 165, 112)
+    card_in_box(c, cover, (90, 330), (820, 870), 40)
+    pill(d, "Find it on Amazon", 1230)
+    centered(d, title, 1380, 50, max_w=880)
+    c.convert("RGB").save(out / "pin1-cover.png")
+
+    c = Image.new("RGBA", (1000, 1500), m["colors"]["pin2"])
+    d = ImageDraw.Draw(c)
+    centered(d, "Color the story.", 60, 112)
+    centered(d, "Learn to read.", 165, 112)
+    for i, name in enumerate(m["pin2_pages"][:6]):
+        card_in_box(c, page_art(book_dir, name), (40 + (i % 3) * 315, 330 + (i // 3) * 455), (290, 435), 28)
+    pill(d, "Big words. Big pictures.", 1250)
+    centered(d, "Ages 3-6  \u2022  On Amazon", 1390, 50)
+    c.convert("RGB").save(out / "pin2-pages.png")
+
+    c = Image.new("RGBA", (1000, 1500), m["colors"]["pin3"])
+    d = ImageDraw.Draw(c)
+    centered(d, m["pin3_head"][0], 60, 104, max_w=900)
+    centered(d, m["pin3_head"][1], 165, 104, max_w=900)
+    card_in_box(c, cover, (50, 340), (580, 860), 36)
+    card_in_box(c, page_art(book_dir, m["pin3_pages"][0]), (670, 340), (290, 425), 28)
+    card_in_box(c, page_art(book_dir, m["pin3_pages"][1]), (670, 775), (290, 425), 28)
+    pill(d, m["pin3_pill"], 1230)
+    centered(d, title, 1380, 50, max_w=880)
+    c.convert("RGB").save(out / "pin3-gift.png")
+
+    c = Image.new("RGBA", (1080, 1080), m["colors"]["ad"])
+    d = ImageDraw.Draw(c)
+    centered(d, "Screen-free fun", 30, 84, width=1080)
+    card_in_box(c, page_art(book_dir, m["pin3_pages"][0]), (50, 330), (250, 380), 28)
+    card_in_box(c, page_art(book_dir, m["pin3_pages"][1]), (780, 330), (250, 380), 28)
+    card_in_box(c, cover, (290, 140), (500, 740), 32)
+    pill(d, "Color it. Read it. Love it.", 915, width=1080, size=52)
+    c.convert("RGB").save(out / "ad-square.png")
+
+
 def main(book_dir):
     book_dir = Path(book_dir).resolve()
     book = json.loads((book_dir / "book.json").read_text())
@@ -72,6 +135,10 @@ def main(book_dir):
     out.mkdir(parents=True, exist_ok=True)
     cover = Image.open(book_dir / "cover" / "front.png").convert("RGB")
     title = m["title"]
+    if m.get("layout") == "portrait":
+        main_portrait(book_dir, book, out)
+        print("\u2713", out)
+        return
 
     # pin 1: the cover
     c = Image.new("RGBA", (1000, 1500), m["colors"]["pin1"])
@@ -97,8 +164,8 @@ def main(book_dir):
     # pin 3: gift
     c = Image.new("RGBA", (1000, 1500), m["colors"]["pin3"])
     d = ImageDraw.Draw(c)
-    centered(d, m["pin3_head"][0], 60, 104)
-    centered(d, m["pin3_head"][1], 165, 104)
+    centered(d, m["pin3_head"][0], 60, 104, max_w=900)
+    centered(d, m["pin3_head"][1], 165, 104, max_w=900)
     paste_card(c, cover, (50, 400), (700, 700))
     paste_card(c, art(book_dir, m["pin3_pages"][0]), (570, 330), (400, 400), 36)
     paste_card(c, art(book_dir, m["pin3_pages"][1]), (570, 760), (400, 400), 36)

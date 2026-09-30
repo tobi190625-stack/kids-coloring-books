@@ -114,8 +114,7 @@
     {
       "text": "They slide across the frozen pond.",
       "art": "art/20.png",
-      "scene": "and Tilly the penguin sliding on a frozen pond, Willow the fawn watching from the edge, reeds and snow",
-      "skip": true
+      "scene": "and Tilly the penguin sliding on a frozen pond, Willow the fawn watching from the edge, reeds and snow"
     },
     {
       "text": "Slip, slide! Nico spins round and round.",
@@ -126,20 +125,17 @@
     {
       "text": "They build a cozy snow fort.",
       "art": "art/22.png",
-      "scene": "and Tilly the penguin and Willow the fawn stacking snow blocks into a small fort with a tiny flag on top",
-      "skip": true
+      "scene": "and Tilly the penguin and Willow the fawn stacking snow blocks into a small fort with a tiny flag on top"
     },
     {
       "text": "They hang seeds for hungry birds.",
       "scene": "and Tilly the penguin and Willow the fawn hanging a pine cone covered in seeds from a snowy branch, three small round birds gathering to eat",
-      "art": "art/23.png",
-      "skip": true
+      "art": "art/23.png"
     },
     {
       "text": "Ready, aim, splat! Right in the middle!",
       "art": "art/24.png",
-      "scene": "throwing a soft snowball at a round target drawn on a tree stump, Tilly the penguin cheering",
-      "skip": true
+      "scene": "throwing a soft snowball at a round target drawn on a tree stump, Tilly the penguin cheering"
     },
     {
       "text": "Brrr! Nico’s little hooves feel cold.",
@@ -150,8 +146,7 @@
     {
       "text": "Mama waves from the cozy front door.",
       "art": "art/26.png",
-      "scene": "running toward home while Mama Reindeer waves from a warm glowing doorway of a little cottage, smoke curling from the chimney",
-      "skip": true
+      "scene": "running toward home while Mama Reindeer waves from a warm glowing doorway of a little cottage, smoke curling from the chimney"
     },
     {
       "text": "Nico and Mama sip cocoa by the fire.",

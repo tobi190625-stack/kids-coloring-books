@@ -54,7 +54,21 @@
     {
       "text": "Look! A little pterodactyl flies down.",
       "art": "art/07.png",
-      "scene": "looking up in surprise at Pip, a little baby pterodactyl (round head with a small crest, tiny beak, small wings), gliding down from the sky between trees"
+      "scene": "looking up in surprise at Pip, a little baby pterodactyl (round head with a small crest, tiny beak, small wings), gliding down from the sky between trees",
+      "blocks": [
+        {
+          "text": "Look!",
+          "text_align": "left",
+          "text_pos": "top",
+          "text_offset": 0
+        },
+        {
+          "text": "A little pterodactyl flies down.",
+          "text_align": "center",
+          "text_pos": "bottom",
+          "text_offset": 0
+        }
+      ]
     },
     {
       "text": "This is Pip. Pip says hello!",

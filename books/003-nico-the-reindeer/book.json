@@ -174,5 +174,34 @@
     "back_erase": [],
     "text_color": "#3B4A63",
     "blurb": "Color and read along with Nico!\n\nIt’s a snowy morning, and Nico the little reindeer can’t wait to play outside. He makes a snow angel, meets his new friend Tilly the penguin, zooms down a hill on a sled, builds a snowman, and cozies up with Mama for cocoa by the fire.\n\nEvery page has one short sentence in BIG, easy letters and one bold, thick-lined picture that’s easy to color. Perfect for ages 3-6."
+  },
+  "marketing": {
+    "slug": "nico",
+    "title": "Nico the Little Reindeer’s Snowy Day",
+    "pin1_head": [
+      "A story kids",
+      "COLOR and READ"
+    ],
+    "pin3_head": [
+      "The gift that isn’t",
+      "more plastic"
+    ],
+    "pin3_pill": "Christmas • Birthdays • Stockings",
+    "pin2_pages": [
+      "art/06.png",
+      "art/09.png",
+      "art/15.png",
+      "art/27.png"
+    ],
+    "pin3_pages": [
+      "art/17.png",
+      "art/29.png"
+    ],
+    "colors": {
+      "pin1": "#FFE1E1",
+      "pin2": "#C9EBDD",
+      "pin3": "#FFD97A",
+      "ad": "#FFE1E1"
+    }
   }
 }

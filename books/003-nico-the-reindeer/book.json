@@ -119,8 +119,7 @@
     {
       "text": "Slip, slide! Nico spins round and round.",
       "art": "art/21.png",
-      "scene": "spinning on the ice with arms out, dizzy and laughing, snow swirl lines around him",
-      "skip": true
+      "scene": "spinning on the ice with arms out, dizzy and laughing, snow swirl lines around him"
     },
     {
       "text": "They build a cozy snow fort.",
@@ -140,8 +139,7 @@
     {
       "text": "Brrr! Nico’s little hooves feel cold.",
       "art": "art/25.png",
-      "scene": "shivering with hunched shoulders, hugging himself, a small snow cloud puff from his breath, Tilly the penguin wrapping a blanket around him",
-      "skip": true
+      "scene": "shivering with hunched shoulders, hugging himself, a small snow cloud puff from his breath, Tilly the penguin wrapping a blanket around him"
     },
     {
       "text": "Mama waves from the cozy front door.",
@@ -151,14 +149,12 @@
     {
       "text": "Nico and Mama sip cocoa by the fire.",
       "art": "art/27.png",
-      "scene": "and Mama Reindeer sitting on a soft rug by a crackling fireplace, holding mugs of cocoa",
-      "skip": true
+      "scene": "and Mama Reindeer sitting on a soft rug by a crackling fireplace, holding mugs of cocoa"
     },
     {
       "text": "Mama tucks Nico into his warm bed.",
       "art": "art/28.png",
-      "scene": "tucked into bed by Mama Reindeer who is pulling the blanket up to his chin, a teddy bear on the pillow",
-      "skip": true
+      "scene": "tucked into bed by Mama Reindeer who is pulling the blanket up to his chin, a teddy bear on the pillow"
     },
     {
       "text": "Goodnight, Nico. Sweet dreams!",

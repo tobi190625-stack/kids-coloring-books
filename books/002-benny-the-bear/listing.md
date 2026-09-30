@@ -1,17 +1,17 @@
 # Benny the Bear's Cozy Day – KDP listing (final)
 
-Matches the final files in `out/`: 30-page interior with 27 story pages, 8.5 x 8.5 in.
+Matches the final files in `kdp-8.5x8.5/out/`: 30-page interior with 27 story pages, 8.5 x 8.5 in.
 
 ## Files
 | KDP field | File |
 |---|---|
-| Manuscript | `out/interior.pdf` |
-| Book cover ("Upload a cover you already have") | `out/cover.pdf` |
+| Manuscript | `kdp-8.5x8.5/out/interior.pdf` (in the zip: Benny-INSIDE-manuscript.pdf) |
+| Book cover ("Upload a cover you already have") | `kdp-8.5x8.5/out/cover.pdf` (in the zip: Benny-COVER.pdf) |
 
 ## Print settings
 - Ink and paper: **Black & white interior, white paper**
 - Trim size: **8.5 x 8.5 in**
-- Bleed: **Bleed (PDF only)**
+- Bleed: **No bleed** (the default; the pictures stop inside KDP's margins)
 - Cover finish: **Glossy**
 - Reading direction: left to right
 - ISBN: free KDP ISBN

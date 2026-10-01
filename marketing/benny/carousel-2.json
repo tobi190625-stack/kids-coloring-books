@@ -1,0 +1,32 @@
+{
+ "slug": "benny",
+ "title": "Benny the Bear’s Cozy Day",
+ "cover": "books/002-benny-the-bear/out/front-cover-no-watermark.png",
+ "art_dir": "books/002-benny-the-bear/art",
+ "bg": "#FFF0B8",
+ "headline": [
+  "Peek inside",
+  "Benny’s cozy day"
+ ],
+ "pages": [
+  "11.png",
+  "17.png",
+  "26.png"
+ ],
+ "texts": {
+  "11.png": "Benny and Bella meet Ollie the owl.",
+  "17.png": "A butterfly lands on Benny’s nose. Hello!",
+  "26.png": "Benny helps Mama Bear bake cookies."
+ },
+ "benefits": [
+  "Kids color the story AND read it",
+  "Big, easy letters on every page",
+  "Screen-free time that feels cozy",
+  "Thick lines for little hands",
+  "Ages 3-6, preschool and kindergarten"
+ ],
+ "ages": "Ages 3-6",
+ "out": "carousel-2",
+ "inside_title": "Why parents love it",
+ "cta_title": "Grab your crayons!"
+}

@@ -4,7 +4,7 @@
 Usage: python3 tools/make_video.py books/004-dex-the-dinosaur 22 "Watch Dex come to life"
 The page is rendered from out/interior.pdf, its white areas get filled with crayon colors one by
 one, then the cover appears with the title. No sound: add a sound in the app.
-Writes marketing/<slug>/videos/color-page-<N>.mp4
+Writes marketing/<slug>/videos/color-page-<N>.mp4 (add --yt for the YouTube end card: yt-color-page-<N>.mp4)
 """
 import json
 import random
@@ -36,35 +36,30 @@ def find_cover(book_dir):
     return Image.open(next(c for c in covers if c.exists())).convert("RGB")
 
 
-def end_card(book_dir, bg="#FFF6DA"):
+def end_card(book_dir, bg="#FFF6DA", yt=False):
     """Cover + 'Find it on Amazon', all inside the safe zone (x 60-940, y 120-1520)."""
     end = Image.new("RGBA", (W, H), bg)
     e = ImageDraw.Draw(end)
     centered(e, "Color it. Read it.", 150, 90, width=W)
     card_in_box(end, find_cover(book_dir), (160, 300), (760, 860), 40)
-    pill(e, "Find it on Amazon", 1215, width=W, size=64)
-    centered(e, "Link in bio", 1360, 54, width=W)
+    if yt:  # YouTube: say clearly where the link is
+        pill(e, "Link in bio", 1200, width=W, size=78)
+        centered(e, "Find it on Amazon  \u2022  link also in the description", 1345, 40, width=W, max_w=880)
+    else:
+        pill(e, "Find it on Amazon", 1215, width=W, size=64)
+        centered(e, "Link in bio", 1360, 54, width=W)
     return end
 
 
-def main(book_dir, page_no, hook):
-    book_dir = Path(book_dir).resolve()
-    book = json.loads((book_dir / "book.json").read_text())
-    slug = book.get("marketing", {}).get("slug") or book_dir.name.split("-")[1]
-    if book_dir.name.startswith("kdp-"):
-        slug = book_dir.parent.name.split("-")[1]
-    title = book["title"]
-    out_dir = ROOT / "marketing" / slug / "videos"
-    out_dir.mkdir(parents=True, exist_ok=True)
-
+def prepare_coloring(book_dir, page_no, pw):
+    """Render a page pw px wide and find its closed white areas.
+    Returns (page image array, area labels, ordered area ids, {area id: rgb})."""
     page = fitz.open(book_dir / "out" / "interior.pdf")[page_no - 1]
     bubbles = [d["rect"] for d in page.get_drawings()
                if d.get("fill") == (1.0, 1.0, 1.0) and d.get("color") == (0.0, 0.0, 0.0)]
-    pw = 1000
     zoom = pw / page.rect.width
     pix = page.get_pixmap(matrix=fitz.Matrix(zoom, zoom))
     img = np.frombuffer(pix.samples, np.uint8).reshape(pix.height, pix.width, pix.n)[..., :3]
-    ph = pix.height
     white = img.mean(axis=2) > 200
     # close small gaps in the lines so a character is not one area with the sky
     core = ndimage.binary_erosion(white, iterations=3)
@@ -87,6 +82,30 @@ def main(book_dir, page_no, hook):
     cy = ndimage.center_of_mass(np.ones_like(labels), labels, regions)
     regions = [r for _, r in sorted(zip([c[0] + rng.uniform(-120, 120) for c in cy], regions))]
 
+    return img, labels, regions, color
+
+
+def colored(img, labels, regions, color):
+    out = img.copy()
+    for i in regions:
+        out[labels == i] = color[i]
+    return out
+
+
+def main(book_dir, page_no, hook, yt=False):
+    book_dir = Path(book_dir).resolve()
+    book = json.loads((book_dir / "book.json").read_text())
+    slug = book.get("marketing", {}).get("slug") or book_dir.name.split("-")[1]
+    if book_dir.name.startswith("kdp-"):
+        slug = book_dir.parent.name.split("-")[1]
+    title = book["title"]
+    out_dir = ROOT / "marketing" / slug / "videos"
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    pw = 1000
+    img, labels, regions, color = prepare_coloring(book_dir, page_no, pw)
+    ph = img.shape[0]
+
     # frame layout: hook on top, page card in the middle, title below
     base = Image.new("RGB", (W, H), "#FFF6DA")
     d = ImageDraw.Draw(base)
@@ -97,7 +116,7 @@ def main(book_dir, page_no, hook):
     centered(d, title, py + ph + 45, 46, width=W, max_w=1000)
     canvas = img.copy()
 
-    writer = imageio_ffmpeg.write_frames(str(out_dir / f"color-page-{page_no}.mp4"), (W, H), fps=FPS,
+    writer = imageio_ffmpeg.write_frames(str(out_dir / f"{'yt-' if yt else ''}color-page-{page_no}.mp4"), (W, H), fps=FPS,
                                          codec="libx264", quality=8, macro_block_size=8,
                                          output_params=["-pix_fmt", "yuv420p"])
     writer.send(None)
@@ -121,7 +140,7 @@ def main(book_dir, page_no, hook):
         frame(canvas)
 
     # end card: cover + call to action (kept above the app buttons at the bottom)
-    end = np.asarray(end_card(book_dir).convert("RGB"))
+    end = np.asarray(end_card(book_dir, yt=yt).convert("RGB"))
     lastf = base.copy(); lastf.paste(Image.fromarray(canvas), (px, py)); last = np.asarray(lastf).astype(float)
     for t in range(12):  # quick crossfade
         a = (t + 1) / 12
@@ -129,10 +148,11 @@ def main(book_dir, page_no, hook):
     for _ in range(int(3 * FPS)):
         writer.send(end.tobytes())
     writer.close()
-    print("✓", out_dir / f"color-page-{page_no}.mp4", f"({len(regions)} areas colored)")
+    print("✓", out_dir / f"{'yt-' if yt else ''}color-page-{page_no}.mp4", f"({len(regions)} areas colored)")
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 4:
+    args = [a for a in sys.argv[1:] if a != "--yt"]
+    if len(args) != 3:
         sys.exit(__doc__)
-    main(sys.argv[1], int(sys.argv[2]), sys.argv[3])
+    main(args[0], int(args[1]), args[2], yt="--yt" in sys.argv)

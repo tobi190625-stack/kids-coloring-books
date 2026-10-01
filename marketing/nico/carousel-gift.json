@@ -1,0 +1,31 @@
+{
+ "slug": "nico",
+ "title": "Nico the Little Reindeer’s Snowy Day",
+ "cover": "books/003-nico-the-reindeer/cover/front.png",
+ "art_dir": "books/003-nico-the-reindeer/art",
+ "bg": "#FFE1E1",
+ "headline": [
+  "Stocking stuffer",
+  "that isn’t candy"
+ ],
+ "pages": [
+  "09.png",
+  "19.png",
+  "29.png"
+ ],
+ "texts": {
+  "09.png": "Whee! They zoom down the big hill.",
+  "19.png": "Nico shares his juicy apple with Willow.",
+  "29.png": "Goodnight, Nico. Sweet dreams!"
+ },
+ "benefits": [
+  "29 winter pages to color",
+  "A story to read together",
+  "A “This book belongs to” page",
+  "Fits right in a stocking"
+ ],
+ "ages": "Ages 3-6",
+ "out": "carousel-gift",
+ "inside_title": "Christmas gift idea",
+ "cta_title": "Order before Christmas"
+}

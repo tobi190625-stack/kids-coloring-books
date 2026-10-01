@@ -42,7 +42,7 @@ def page_img(path):
 def main(cfg_file):
     cfg_file = Path(cfg_file).resolve()
     cfg = json.loads(cfg_file.read_text())
-    out = cfg_file.parent / "carousel"
+    out = cfg_file.parent / cfg.get("out", "carousel")
     out.mkdir(exist_ok=True)
     cover = Image.open(ROOT / cfg["cover"]).convert("RGB")
     bg, title = cfg["bg"], cfg["title"]
@@ -74,7 +74,7 @@ def main(cfg_file):
 
     # 5: what's inside
     c, d = canvas()
-    centered(d, "What’s inside", 70, 120, width=W)
+    centered(d, cfg.get("inside_title", "What’s inside"), 70, 120, width=W, max_w=980)
     y = 300
     for line in cfg["benefits"]:
         d.ellipse([90, y, 90 + 90, y + 90], fill=NAVY)
@@ -89,7 +89,7 @@ def main(cfg_file):
 
     # 6: call to action
     c, d = canvas()
-    centered(d, "Ready to color?", 60, 116, width=W)
+    centered(d, cfg.get("cta_title", "Ready to color?"), 60, 116, width=W, max_w=980)
     card_in_box(c, cover, (190, 260), (700, 680), 40)
     pill(d, "Find it on Amazon", 985, width=W, size=64)
     centered(d, "Link in bio  •  " + cfg["ages"], 1200, 48, width=W)

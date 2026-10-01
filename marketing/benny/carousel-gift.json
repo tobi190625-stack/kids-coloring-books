@@ -1,0 +1,31 @@
+{
+ "slug": "benny",
+ "title": "Benny the Bear’s Cozy Day",
+ "cover": "books/002-benny-the-bear/out/front-cover-no-watermark.png",
+ "art_dir": "books/002-benny-the-bear/art",
+ "bg": "#FFD9E4",
+ "headline": [
+  "Birthday gift idea",
+  "for kids 3-6"
+ ],
+ "pages": [
+  "16.png",
+  "22.png",
+  "30.png"
+ ],
+ "texts": {
+  "16.png": "Benny shares his honey sandwich with Bella.",
+  "22.png": "Whee! Benny rolls down the grassy hill.",
+  "30.png": "Goodnight, Benny. Sweet dreams!"
+ },
+ "benefits": [
+  "27 pages to color",
+  "A story to read together",
+  "A “This book belongs to” page",
+  "Great for Easter baskets too"
+ ],
+ "ages": "Ages 3-6",
+ "out": "carousel-gift",
+ "inside_title": "A gift they’ll use",
+ "cta_title": "Gift it today"
+}

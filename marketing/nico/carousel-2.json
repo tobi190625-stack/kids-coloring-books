@@ -1,0 +1,32 @@
+{
+ "slug": "nico",
+ "title": "Nico the Little Reindeer’s Snowy Day",
+ "cover": "books/003-nico-the-reindeer/cover/front.png",
+ "art_dir": "books/003-nico-the-reindeer/art",
+ "bg": "#D4ECFF",
+ "headline": [
+  "Peek inside",
+  "Nico’s snowy day"
+ ],
+ "pages": [
+  "04.png",
+  "12.png",
+  "26.png"
+ ],
+ "texts": {
+  "04.png": "Nico pulls on his fuzzy snow boots.",
+  "12.png": "Now they build a snowman together.",
+  "26.png": "Mama waves from the cozy front door."
+ },
+ "benefits": [
+  "Kids color the story AND read it",
+  "Big, easy letters on every page",
+  "A cozy winter screen-free activity",
+  "Thick lines for little hands",
+  "Ages 3-6, preschool and kindergarten"
+ ],
+ "ages": "Ages 3-6",
+ "out": "carousel-2",
+ "inside_title": "Why parents love it",
+ "cta_title": "Grab your crayons!"
+}

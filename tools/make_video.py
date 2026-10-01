@@ -30,6 +30,23 @@ def hexrgb(h):
     return tuple(int(h[i:i + 2], 16) for i in (1, 3, 5))
 
 
+def find_cover(book_dir):
+    covers = [book_dir / "out" / "front-cover-no-watermark.png", book_dir / "cover" / "front.png",
+              book_dir.parent / "out" / "front-cover-no-watermark.png", book_dir.parent / "cover" / "front.png"]
+    return Image.open(next(c for c in covers if c.exists())).convert("RGB")
+
+
+def end_card(book_dir, bg="#FFF6DA"):
+    """Cover + 'Find it on Amazon', all inside the safe zone (x 60-940, y 120-1520)."""
+    end = Image.new("RGBA", (W, H), bg)
+    e = ImageDraw.Draw(end)
+    centered(e, "Color it. Read it.", 150, 90, width=W)
+    card_in_box(end, find_cover(book_dir), (160, 300), (760, 860), 40)
+    pill(e, "Find it on Amazon", 1215, width=W, size=64)
+    centered(e, "Link in bio", 1360, 54, width=W)
+    return end
+
+
 def main(book_dir, page_no, hook):
     book_dir = Path(book_dir).resolve()
     book = json.loads((book_dir / "book.json").read_text())
@@ -103,17 +120,8 @@ def main(book_dir, page_no, hook):
     for _ in range(int(1.5 * FPS)):
         frame(canvas)
 
-    # end card: cover + call to action
-    covers = [book_dir / "out" / "front-cover-no-watermark.png", book_dir / "cover" / "front.png",
-              book_dir.parent / "out" / "front-cover-no-watermark.png", book_dir.parent / "cover" / "front.png"]
-    cover = Image.open(next(c for c in covers if c.exists())).convert("RGB")
-    end = Image.new("RGBA", (W, H), "#FFF6DA")
-    e = ImageDraw.Draw(end)
-    centered(e, "Color it. Read it.", 150, 90, width=W)
-    card_in_box(end, cover, (110, 330), (860, 1150), 40)
-    pill(e, "Find it on Amazon", 1560, width=W, size=64)
-    centered(e, "Link in bio", 1730, 50, width=W)
-    end = np.asarray(end.convert("RGB"))
+    # end card: cover + call to action (kept above the app buttons at the bottom)
+    end = np.asarray(end_card(book_dir).convert("RGB"))
     lastf = base.copy(); lastf.paste(Image.fromarray(canvas), (px, py)); last = np.asarray(lastf).astype(float)
     for t in range(12):  # quick crossfade
         a = (t + 1) / 12

@@ -92,6 +92,80 @@ def colored(img, labels, regions, color):
     return out
 
 
+def painted_video(book_dir, page_no, hook, yt, title, out_dir):
+    """Realistic hand-picked colors (marketing/paint/<slug>-p<N>.json), filled object by object
+    with a crayon sweeping across, on a soft background."""
+    import paint
+    groups = paint.load_map(book_dir, page_no)
+    img, labels, _, _ = paint.regions(book_dir, page_no, paint.PW)
+    pw, ph = img.shape[1], img.shape[0]
+    slug = paint.slug_of(book_dir)
+    theme = {"benny": ("#FFF6E0", "#FFE3B8", "#E9A35E"), "nico": ("#EEF7FF", "#D3E9FB", "#7FB6E6")}
+    c_top, c_bot, accent = (hexrgb(x) for x in theme.get(slug, theme["benny"]))
+    base = Image.new("RGBA", (W, H))
+    bd = ImageDraw.Draw(base)
+    for y in range(H):
+        t = y / H
+        bd.line([(0, y), (W, y)], fill=tuple(round(c_top[i] + (c_bot[i] - c_top[i]) * t) for i in range(3)))
+    # soft decorative circles
+    deco = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    dd = ImageDraw.Draw(deco)
+    for cx, cy, r in [(90, 300, 120), (1010, 420, 90), (60, 1580, 140), (1000, 1700, 160), (980, 120, 60)]:
+        dd.ellipse([cx - r, cy - r, cx + r, cy + r], fill=accent + (40,))
+    base.alpha_composite(deco)
+    bd = ImageDraw.Draw(base)
+    f = font(84)
+    tw = bd.textlength(hook, font=f)
+    while tw > 960:
+        f = font(f.size - 4)
+        tw = bd.textlength(hook, font=f)
+    bd.text(((W - tw) / 2, 148), hook, font=f, fill=NAVY)
+    sub = "Color & Read Story Book  \u2022  Ages 3-6"
+    sf = font(40)
+    sw = bd.textlength(sub, font=sf) + 60
+    bd.rounded_rectangle([(W - sw) / 2, 268, (W + sw) / 2, 330], 31, fill="white")
+    bd.text(((W - sw) / 2 + 30, 276), sub, font=sf, fill=NAVY)
+    px, py = (W - pw) // 2, 390
+    centered(bd, title, py + ph + 55, 48, width=W, max_w=960)
+    name = f"{'yt-' if yt else ''}color-page-{page_no}.mp4"
+    writer = imageio_ffmpeg.write_frames(str(out_dir / name), (W, H), fps=FPS, codec="libx264", quality=8,
+                                         macro_block_size=8, output_params=["-pix_fmt", "yuv420p"])
+    writer.send(None)
+    from make_marketing import paste_card
+    tips = {}
+
+    def compose(arr, cr=None, tip=None):
+        f = base.copy()
+        paste_card(f, Image.fromarray(arr), (px, py), (pw, ph), 30)
+        if cr is not None:
+            key = id(cr)
+            if key not in tips:
+                tips[key] = paint.crayon_tip(cr)
+            tx, ty = tips[key]
+            f.alpha_composite(cr, (max(0, px + tip[0] - tx), max(0, py + tip[1] - ty)))
+        return f.convert("RGB")
+
+    blank = compose(img)
+    for _ in range(int(1.2 * FPS)):
+        writer.send(np.asarray(blank).tobytes())
+    last = blank
+    for arr, cr, tip in paint.animate(img, labels, groups, 10.5, FPS):
+        last = compose(arr, cr, tip)
+        writer.send(np.asarray(last).tobytes())
+    for _ in range(int(1.6 * FPS)):
+        writer.send(np.asarray(last).tobytes())
+    endbg = "#{:02X}{:02X}{:02X}".format(*c_top)
+    end = np.asarray(end_card(book_dir, endbg, yt=yt).convert("RGB")).astype(float)
+    la = np.asarray(last).astype(float)
+    for k in range(14):
+        a = (k + 1) / 14
+        writer.send((la * (1 - a) + end * a).astype(np.uint8).tobytes())
+    for _ in range(int(3 * FPS)):
+        writer.send(end.astype(np.uint8).tobytes())
+    writer.close()
+    print("\u2713", out_dir / name, "(painted)")
+
+
 def main(book_dir, page_no, hook, yt=False):
     book_dir = Path(book_dir).resolve()
     book = json.loads((book_dir / "book.json").read_text())
@@ -102,6 +176,10 @@ def main(book_dir, page_no, hook, yt=False):
     out_dir = ROOT / "marketing" / slug / "videos"
     out_dir.mkdir(parents=True, exist_ok=True)
 
+    import paint
+    if paint.load_map(book_dir, page_no):
+        painted_video(book_dir, page_no, hook, yt, title, out_dir)
+        return
     pw = 1000
     img, labels, regions, color = prepare_coloring(book_dir, page_no, pw)
     ph = img.shape[0]

@@ -1,0 +1,29 @@
+{
+ "slug": "benny",
+ "title": "Benny the Bear’s Cozy Day",
+ "cover": "books/002-benny-the-bear/out/front-cover-no-watermark.png",
+ "art_dir": "books/002-benny-the-bear/art",
+ "bg": "#CDEBF8",
+ "headline": [
+  "A cozy story kids",
+  "COLOR and READ"
+ ],
+ "pages": [
+  "03.png",
+  "21.png",
+  "29.png"
+ ],
+ "texts": {
+  "03.png": "Benny eats pancakes. Yum, yum!",
+  "21.png": "They fly a kite high up in the sky.",
+  "29.png": "Mama Bear reads Benny a bedtime story."
+ },
+ "benefits": [
+  "27 full-page pictures to color",
+  "One short sentence on every page",
+  "Big, easy letters for early readers",
+  "Thick lines, easy to color",
+  "Perfect for ages 3-6"
+ ],
+ "ages": "Ages 3-6"
+}

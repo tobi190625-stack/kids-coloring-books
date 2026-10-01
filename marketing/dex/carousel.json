@@ -1,0 +1,29 @@
+{
+ "slug": "dex",
+ "title": "Dex the Little Dinosaur’s Big Day",
+ "cover": "books/004-dex-the-dinosaur/cover/front.png",
+ "art_dir": "books/004-dex-the-dinosaur/art",
+ "bg": "#FFF0B8",
+ "headline": [
+  "A dino story kids",
+  "COLOR and READ"
+ ],
+ "pages": [
+  "14.png",
+  "20.png",
+  "26.png"
+ ],
+ "texts": {
+  "14.png": "Crack! A baby dino says hello.",
+  "20.png": "Look! A big, round volcano.",
+  "26.png": "Splash! They dance in the rain."
+ },
+ "benefits": [
+  "29 full-page pictures to color",
+  "One short sentence on every page",
+  "Big, easy letters for early readers",
+  "Thick lines, easy to color",
+  "Perfect for ages 3-6"
+ ],
+ "ages": "Ages 3-6"
+}

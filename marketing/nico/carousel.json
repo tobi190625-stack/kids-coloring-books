@@ -1,0 +1,29 @@
+{
+ "slug": "nico",
+ "title": "Nico the Little Reindeer’s Snowy Day",
+ "cover": "books/003-nico-the-reindeer/cover/front.png",
+ "art_dir": "books/003-nico-the-reindeer/art",
+ "bg": "#FFE1E1",
+ "headline": [
+  "A snowy story kids",
+  "COLOR and READ"
+ ],
+ "pages": [
+  "06.png",
+  "09.png",
+  "15.png"
+ ],
+ "texts": {
+  "06.png": "Nico makes his very first snow angel.",
+  "09.png": "Whee! They zoom down the big hill.",
+  "15.png": "Nico gives the snowman his red scarf."
+ },
+ "benefits": [
+  "29 full-page pictures to color",
+  "One short sentence on every page",
+  "Big, easy letters for early readers",
+  "Thick lines, easy to color",
+  "Perfect for ages 3-6"
+ ],
+ "ages": "Ages 3-6"
+}

@@ -1,7 +1,7 @@
 # Marketing plan: Nico the Little Reindeer's Snowy Day
 
 Goal: send traffic to the Amazon listing. Amazon does the selling, printing and shipping.
-Link everywhere: the Amazon product page (get it from KDP Bookshelf once the book is live).
+Link everywhere: https://www.amazon.com/dp/B0HLVTTK7T (live). For one link that works in every country, make a free Booklinker link from it.
 Timing: this is a Christmas book. Start posting the day it goes live (October) and push hardest
 until mid-December. Books ordered after about Dec 15 may not arrive in time, so post "last chance" pins then.
 

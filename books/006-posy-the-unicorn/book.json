@@ -1,0 +1,178 @@
+{
+  "title": "Posy the Little Unicorn’s Rainbow Birthday",
+  "subtitle": "A Bold & Easy Color & Read Story Book for Kids Ages 3-6",
+  "title_page_subtitle": "A Color & Read Story Book",
+  "author": "",
+  "trim": "8.5x8.5",
+  "bleed": false,
+  "paper": "white",
+  "font": "fonts/Grandstander-ExtraBold.ttf",
+  "layout": "fullbleed",
+  "text_style": "bubble",
+  "text_size": 41,
+  "blank_backs": false,
+  "title_art": "art/title.png",
+  "belongs_art": "art/belongs.png",
+  "end_art": "art/end.png",
+  "ending": "The End",
+  "pages": [
+    {
+      "text": "Posy the unicorn wakes up. It is her birthday!",
+      "art": "art/01.png",
+      "scene": "waking up in her cozy bed with a big smile, stretching, a heart blanket and a birthday banner shape (no letters) on the wall"
+    },
+    {
+      "text": "Oh no! The rainbow has no colors.",
+      "art": "art/02.png",
+      "scene": "looking out of her window in surprise at a rainbow in the sky that looks plain and empty, a few clouds"
+    },
+    {
+      "text": "Posy feels sad. A birthday needs a rainbow.",
+      "art": "art/03.png",
+      "scene": "sitting on the grass looking a little sad, one small tear, the plain rainbow far behind her"
+    },
+    {
+      "text": "Mochi the kitten brings a cupcake.",
+      "art": "art/04.png",
+      "scene": "and Mochi the kitten walking up holding a big cupcake with one candle, Mochi smiling"
+    },
+    {
+      "text": "Bibi the butterfly has a magic paintbrush.",
+      "art": "art/05.png",
+      "scene": "and Mochi looking amazed at Bibi the butterfly holding up a small magic paintbrush with sparkles around it"
+    },
+    {
+      "text": "“Let’s find the colors!” says Bibi.",
+      "art": "art/06.png",
+      "scene": ", Mochi and Bibi cheering together, ready for an adventure, Bibi pointing forward with the paintbrush"
+    },
+    {
+      "text": "They skip to the strawberry patch.",
+      "art": "art/07.png",
+      "scene": "and Mochi skipping happily along a path toward a strawberry patch, Bibi flying above"
+    },
+    {
+      "text": "Red strawberries! Swish! Red for the rainbow!",
+      "art": "art/08.png",
+      "scene": "holding a big strawberry while Bibi touches it with the magic paintbrush, sparkles swirling up"
+    },
+    {
+      "text": "Fox has a garden full of pumpkins.",
+      "art": "art/09.png",
+      "scene": "and Mochi meeting a friendly little fox standing among big round pumpkins"
+    },
+    {
+      "text": "Orange pumpkins! Swish! Orange for the rainbow!",
+      "art": "art/10.png",
+      "scene": "and the fox smiling while Bibi touches a big pumpkin with the magic paintbrush, sparkles swirling"
+    },
+    {
+      "text": "The bees buzz around the sunflowers.",
+      "art": "art/11.png",
+      "scene": "and Mochi looking up at tall sunflowers with two round, friendly bees buzzing around them"
+    },
+    {
+      "text": "Yellow sunflowers! Swish! Yellow for the rainbow!",
+      "art": "art/12.png",
+      "scene": "watching Bibi touch a big sunflower with the magic paintbrush, sparkles swirling, a bee waving"
+    },
+    {
+      "text": "Oops! Mochi trips on a little rock.",
+      "art": "art/13.png",
+      "scene": "turning around as Mochi the kitten trips on a small rock with a surprised face"
+    },
+    {
+      "text": "Posy helps Mochi up. Friends help friends.",
+      "art": "art/14.png",
+      "scene": "gently helping Mochi the kitten stand up, both smiling, little hearts around them"
+    },
+    {
+      "text": "Frog sits on a lily pad in the pond.",
+      "art": "art/15.png",
+      "scene": "and Mochi at the edge of a pond looking at a happy frog sitting on a big lily pad"
+    },
+    {
+      "text": "Green lily pads! Swish! Green for the rainbow!",
+      "art": "art/16.png",
+      "scene": "watching Bibi touch a big lily pad with the magic paintbrush, sparkles swirling, the frog jumping happily"
+    },
+    {
+      "text": "A mermaid waves from the sparkly lake.",
+      "art": "art/17.png",
+      "scene": "and Mochi on the shore waving to a friendly mermaid girl (short curly hair, star clip) waving from a sparkly lake"
+    },
+    {
+      "text": "Blue water! Swish! Blue for the rainbow!",
+      "art": "art/18.png",
+      "scene": "watching Bibi touch the lake water with the magic paintbrush, a big splash and sparkles, the mermaid smiling"
+    },
+    {
+      "text": "A fairy bakes yummy grape cookies.",
+      "art": "art/19.png",
+      "scene": "and Mochi visiting a tiny fairy girl (leaf wings, flower hat) at a little mushroom bakery with grapes and cookies"
+    },
+    {
+      "text": "Purple grapes! Swish! Purple for the rainbow!",
+      "art": "art/20.png",
+      "scene": "watching Bibi touch a bunch of grapes with the magic paintbrush, sparkles swirling, the fairy clapping"
+    },
+    {
+      "text": "Bibi’s brush is full of colors now.",
+      "art": "art/21.png",
+      "scene": ", Mochi and Bibi looking at the glowing magic paintbrush with big sparkles and stars around it"
+    },
+    {
+      "text": "They climb the tall rainbow hill.",
+      "art": "art/22.png",
+      "scene": "and Mochi climbing up a tall grassy hill toward the plain rainbow, Bibi flying ahead"
+    },
+    {
+      "text": "Bibi paints the rainbow. Swish, swish, swish!",
+      "art": "art/23.png",
+      "scene": "and Mochi watching Bibi the butterfly paint stripes onto the big rainbow with the magic paintbrush, sparkles everywhere"
+    },
+    {
+      "text": "The rainbow is back! Hooray!",
+      "art": "art/24.png",
+      "scene": "and Mochi jumping for joy under the big finished rainbow, stars and sparkles in the sky"
+    },
+    {
+      "text": "All the friends come to the tea party.",
+      "art": "art/25.png",
+      "scene": ", Mochi and Bibi at a little tea party table in the meadow with the fox, the frog, the fairy and a bee, teacups and treats"
+    },
+    {
+      "text": "Posy wears her sparkly crown.",
+      "art": "art/26.png",
+      "scene": "wearing a sparkly crown and smiling proudly, her friends clapping around her, little stars in the air"
+    },
+    {
+      "text": "Here comes a big birthday cake!",
+      "art": "art/27.png",
+      "scene": "looking amazed as Mochi and the fairy carry in a big round birthday cake with candles"
+    },
+    {
+      "text": "Happy birthday, Posy! Make a wish!",
+      "art": "art/28.png",
+      "scene": "blowing out the candles on the birthday cake with her eyes closed, friends cheering, the rainbow behind"
+    },
+    {
+      "text": "Goodnight, Posy. Sweet dreams!",
+      "art": "art/29.png",
+      "scene": "fast asleep in her cozy bed hugging Mochi the kitten, a crescent moon, stars and the rainbow outside the window"
+    }
+  ],
+  "special": {
+    "title": "Posy the little unicorn, Mochi the kitten and Bibi the butterfly standing together happily in a flower meadow under a big rainbow (outlines only), little clouds and stars; keep the top third of the picture open sky with only the rainbow and a few simple clouds",
+    "belongs": "Posy the little unicorn waving from her cozy bed with a heart blanket and a bow on the bedpost; keep the bottom third of the picture calm (just the blanket) with nothing small or busy",
+    "end": "Posy, Mochi and Bibi waving goodbye under a big rainbow in the flower meadow, smiling at the viewer; keep the top third of the picture open sky with only the rainbow and a few simple clouds"
+  },
+  "cover": {
+    "front_image": "cover/front.png",
+    "back_image": "cover/back.png",
+    "front_erase": [],
+    "back_erase": [],
+    "text_color": "#3B4A63",
+    "blurb": "Color and read along with Posy!\n\nIt’s Posy’s birthday, but the rainbow has lost its colors! With Mochi the kitten and Bibi the butterfly, Posy collects red, orange, yellow, green, blue and purple from new friends to bring the rainbow back for a magical tea party.\n\nEvery page has one short sentence in BIG, easy letters and one bold, thick-lined picture that’s easy to color. Perfect for ages 3-6."
+  }
+}

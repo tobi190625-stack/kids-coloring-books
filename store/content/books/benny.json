@@ -1,0 +1,46 @@
+{
+  "id": "benny",
+  "slug": "benny-the-bear",
+  "order": 2,
+  "status": "live",
+  "title": "Benny the Bear’s Cozy Day",
+  "subtitle": "A Bold & Easy Color & Read Story Book for Kids Ages 3-6",
+  "hook": "Screen-free fun kids actually finish.",
+  "badge": "Cozy everyday story",
+  "summary": "Pancakes, a kite, hide and seek and a bedtime story.",
+  "story": "It’s a brand new day, and Benny can’t wait to play. He eats pancakes, meets his best friend Bella the bunny, listens to a story from Ollie the owl, has a picnic, flies a kite high in the sky, and snuggles up for a cozy bedtime story with Mama Bear.",
+  "highlights": [
+    "27 full-page pictures that tell one sweet story",
+    "Bold, thick lines that are easy to color",
+    "One short sentence in big, clear letters on every page",
+    "A “This book belongs to” page for gifting",
+    "Square 8.5 x 8.5 inch pages"
+  ],
+  "gift_for": ["Birthdays", "Easter baskets", "Stocking stuffers", "Rainy days at home"],
+  "asin": "B0HLVSLXK7",
+  "price": "",
+  "ages": "3-6",
+  "pictures": 27,
+  "pages": 30,
+  "trim": "8.5 x 8.5 in",
+  "format": "Paperback",
+  "color": "#8A5A34",
+  "tint": "#FFF0C9",
+  "cover": "img/books/benny/cover.webp",
+  "cover_alt": "Cover of Benny the Bear’s Cozy Day: Benny and Bella the bunny have a picnic with a honey pot",
+  "back": "img/books/benny/back.webp",
+  "inside": [
+    { "image": "img/books/benny/inside-5.webp", "text": "Benny eats pancakes. Yum, yum!" },
+    { "image": "img/books/benny/inside-14.webp", "text": "Benny and Bella have a picnic under a tree." },
+    { "image": "img/books/benny/inside-20.webp", "text": "They fly a kite high up in the sky." },
+    { "image": "img/books/benny/inside-26.webp", "text": "Bath time! Benny loves big bubbles." }
+  ],
+  "colored": [
+    { "image": "img/books/benny/color-20.webp", "text": "They fly a kite high up in the sky." },
+    { "image": "img/books/benny/color-22.webp", "text": "They play hide and seek. Where is Bella?" },
+    { "image": "img/books/benny/color-29.webp", "text": "Goodnight, Benny. Sweet dreams!" }
+  ],
+  "pin": "img/books/benny/pin.jpg",
+  "og_image": "img/books/benny/og.jpg",
+  "reviews": []
+}

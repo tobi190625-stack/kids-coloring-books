@@ -1,0 +1,46 @@
+{
+  "id": "nico",
+  "slug": "nico-the-little-reindeer",
+  "order": 1,
+  "status": "live",
+  "title": "Nico the Little Reindeer’s Snowy Day",
+  "subtitle": "A Bold & Easy Color & Read Story Book for Kids Ages 3-6",
+  "hook": "The stocking stuffer that isn’t candy.",
+  "badge": "Christmas favorite",
+  "summary": "Snow angels, sledding and a snowman with Tilly the penguin.",
+  "story": "It’s a snowy morning, and Nico can’t wait to play outside. He makes a snow angel, meets his new friend Tilly the penguin, zooms down a hill on a red sled, builds a snowman, slides across the frozen pond, and cozies up with Mama for hot cocoa by the fire.",
+  "highlights": [
+    "29 full-page winter pictures that tell one sweet story",
+    "Bold, thick lines that are easy to color",
+    "One short sentence in big, clear letters on every page",
+    "A “This book belongs to” page for gifting",
+    "Square 8.5 x 8.5 inch pages"
+  ],
+  "gift_for": ["Christmas", "Stocking stuffers", "Birthdays", "Snowy days at home"],
+  "asin": "B0HLVTTK7T",
+  "price": "",
+  "ages": "3-6",
+  "pictures": 29,
+  "pages": 32,
+  "trim": "8.5 x 8.5 in",
+  "format": "Paperback",
+  "color": "#C8343A",
+  "tint": "#FFE1E1",
+  "cover": "img/books/nico/cover.webp",
+  "cover_alt": "Cover of Nico the Little Reindeer’s Snowy Day: Nico and Tilly the penguin ride a sled past a snowman",
+  "back": "img/books/nico/back.webp",
+  "inside": [
+    { "image": "img/books/nico/inside-11.webp", "text": "Whee! They zoom down the big hill." },
+    { "image": "img/books/nico/inside-14.webp", "text": "Now they build a snowman together." },
+    { "image": "img/books/nico/inside-19.webp", "text": "Nico catches a snowflake on his tongue." },
+    { "image": "img/books/nico/inside-29.webp", "text": "Nico and Mama sip cocoa by the fire." }
+  ],
+  "colored": [
+    { "image": "img/books/nico/color-13.webp", "text": "They roll a big, round snowball." },
+    { "image": "img/books/nico/color-17.webp", "text": "Nico gives the snowman his red scarf." },
+    { "image": "img/books/nico/color-31.webp", "text": "Goodnight, Nico. Sweet dreams!" }
+  ],
+  "pin": "img/books/nico/pin.jpg",
+  "og_image": "img/books/nico/og.jpg",
+  "reviews": []
+}

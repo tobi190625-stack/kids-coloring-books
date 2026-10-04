@@ -1,0 +1,39 @@
+{
+  "_note": "Which pictures tools/make_store_assets.py puts in the store. Paths are from the repo root. Page numbers are interior PDF pages (1 = title page). 'colored' pages need a marketing/paint/<id>-p<N>.json map.",
+  "books": {
+    "nico": {
+      "interior": "books/003-nico-the-reindeer/out/interior.pdf",
+      "paint_dir": "books/003-nico-the-reindeer",
+      "cover": "books/003-nico-the-reindeer/cover/front.png",
+      "back": "books/003-nico-the-reindeer/cover/back.png",
+      "pin": "marketing/nico/images/pin1-cover.png",
+      "inside": [11, 14, 19, 29],
+      "colored": [13, 17, 31],
+      "tint": "#FFE1E1"
+    },
+    "benny": {
+      "interior": "books/002-benny-the-bear/kdp-8.5x8.5/out/interior.pdf",
+      "paint_dir": "books/002-benny-the-bear/kdp-8.5x8.5",
+      "cover": "books/002-benny-the-bear/out/front-cover-no-watermark.png",
+      "back": "books/002-benny-the-bear/out/back-cover-no-watermark.png",
+      "pin": "marketing/benny/images/pin1-cover.png",
+      "inside": [5, 14, 20, 26],
+      "colored": [20, 22, 29],
+      "tint": "#FFF0C9"
+    },
+    "dex": {
+      "interior": "books/004-dex-the-dinosaur/out/interior.pdf",
+      "paint_dir": "books/004-dex-the-dinosaur",
+      "cover": "books/004-dex-the-dinosaur/cover/front.png",
+      "back": "books/004-dex-the-dinosaur/cover/back.png",
+      "pin": "marketing/dex/images/pin1-cover.png",
+      "inside": [12, 16, 22, 28],
+      "colored": [],
+      "tint": "#DDF2D2"
+    }
+  },
+  "free_pdf": {
+    "file": "downloads/little-crayon-tales-free-coloring-pages.pdf",
+    "pages": [["nico", 14], ["benny", 20], ["dex", 16]]
+  }
+}

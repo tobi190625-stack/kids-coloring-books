@@ -1,0 +1,42 @@
+{
+  "id": "dex",
+  "slug": "dex-the-little-dinosaur",
+  "order": 3,
+  "status": "soon",
+  "title": "Dex the Little Dinosaur’s Big Day",
+  "subtitle": "A Bold & Easy Color & Read Story Book for Kids Ages 3-6",
+  "hook": "A birthday gift kids actually finish.",
+  "badge": "Dinosaur adventure",
+  "summary": "A pterodactyl friend, a hatching egg and a rumbling volcano.",
+  "story": "It’s a sunny morning, and Dex can’t wait to explore the jungle. He meets his new friend Pip the pterodactyl, splashes in the pond, helps a giant spotty egg hatch, spots a rumbling volcano, and dances in the rain before a cozy bedtime hug from Mama.",
+  "highlights": [
+    "29 full-page dinosaur pictures that tell one sweet story",
+    "Bold, thick lines that are easy to color",
+    "One short sentence in big, clear letters on every page",
+    "A “This book belongs to” page for gifting",
+    "Extra-large 8.5 x 11 inch pages with room for big crayons"
+  ],
+  "gift_for": ["Birthdays", "Party favors", "Christmas stockings", "Dinosaur fans"],
+  "asin": "",
+  "price": "",
+  "ages": "3-6",
+  "pictures": 29,
+  "pages": 32,
+  "trim": "8.5 x 11 in",
+  "format": "Paperback",
+  "color": "#3E8E41",
+  "tint": "#DDF2D2",
+  "cover": "img/books/dex/cover.webp",
+  "cover_alt": "Cover of Dex the Little Dinosaur’s Big Day: Dex waves in the jungle with Pip the pterodactyl and a volcano behind",
+  "back": "img/books/dex/back.webp",
+  "inside": [
+    { "image": "img/books/dex/inside-12.webp", "text": "Splash! They jump into the water." },
+    { "image": "img/books/dex/inside-16.webp", "text": "Crack! A baby dino says hello." },
+    { "image": "img/books/dex/inside-22.webp", "text": "Look! A big, round volcano." },
+    { "image": "img/books/dex/inside-28.webp", "text": "Splash! They dance in the rain." }
+  ],
+  "colored": [],
+  "pin": "img/books/dex/pin.jpg",
+  "og_image": "img/books/dex/og.jpg",
+  "reviews": []
+}

@@ -1,146 +1,259 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-root="">
 <head>
 <meta charset="utf-8">
+<script>document.documentElement.classList.add('js')</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Little Crayon Tales · Color & Read Story Books for Kids 3-6</title>
-<meta name="description" content="Story books kids color AND read. One big picture and one short sentence in big, easy letters on every page. Ages 3-6. Available on Amazon.">
-<meta property="og:title" content="Little Crayon Tales · Color & Read Story Books">
-<meta property="og:description" content="Story books kids color AND read. Ages 3-6. Find them on Amazon.">
-<meta property="og:image" content="img/og.jpg">
+<title>Little Crayon Tales: Story books kids color and read (ages 3-6)</title>
+<meta name="description" content="Story books kids color AND read. One big picture and one short sentence in big, easy letters on every page. For ages 3-6, sold on Amazon.">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Little Crayon Tales">
+<meta property="og:title" content="Little Crayon Tales: Story books kids color and read (ages 3-6)">
+<meta property="og:description" content="Story books kids color AND read. One big picture and one short sentence in big, easy letters on every page. For ages 3-6, sold on Amazon.">
+<meta property="og:image" content="img/brand/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="img/logo.webp">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Grandstander:wght@700;800&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
-<style>
-:root{
-  --ink:#2F3B52; --soft:#5B6780; --paper:#FFF8EC; --cream:#FFFDF8;
-  --sun:#FFD95A; --berry:#E5484D; --sky:#CDEBFA; --leaf:#6CBF4B; --card:#ffffff;
-  --shadow:0 10px 30px rgba(47,59,82,.12); --radius:26px;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:Nunito,system-ui,sans-serif;color:var(--ink);background:var(--paper);
-  background-image:radial-gradient(circle at 10% 0%,#FFE7C2 0,transparent 40%),radial-gradient(circle at 95% 20%,#D9EEFF 0,transparent 35%),radial-gradient(circle at 50% 100%,#FFE1E1 0,transparent 45%);
-  min-height:100vh;-webkit-font-smoothing:antialiased}
-.wrap{max-width:560px;margin:0 auto;padding:28px 16px 48px}
-h1,h2,h3,.display{font-family:Grandstander,Nunito,sans-serif;font-weight:800;letter-spacing:-.01em}
-header{text-align:center;padding:12px 0 8px}
-.logo{width:116px;height:116px;border-radius:50%;box-shadow:0 0 0 6px #fff,var(--shadow);animation:pop .6s cubic-bezier(.2,1.4,.4,1) both}
-header h1{font-size:2.1rem;margin-top:16px;line-height:1.1}
-.tag{color:var(--soft);font-weight:700;margin-top:6px}
-.chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:14px}
-.chip{background:#fff;border-radius:999px;padding:6px 12px;font-weight:800;font-size:.85rem;box-shadow:0 3px 10px rgba(47,59,82,.08)}
-.social{display:flex;gap:12px;justify-content:center;margin-top:16px}
-.social a{width:44px;height:44px;border-radius:50%;background:#fff;display:grid;place-items:center;box-shadow:0 4px 12px rgba(47,59,82,.1);transition:transform .15s}
-.social a:hover{transform:translateY(-3px)}
-.social svg{width:22px;height:22px;fill:var(--ink)}
-.book{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);margin-top:26px;overflow:hidden;animation:rise .6s ease both}
-.book:nth-of-type(2){animation-delay:.1s}
-.book .top{display:grid;grid-template-columns:150px 1fr;gap:16px;padding:18px;align-items:center}
-.book img.cover{width:150px;height:150px;object-fit:cover;border-radius:18px;box-shadow:0 6px 16px rgba(47,59,82,.18)}
-.badge{display:inline-block;font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;padding:4px 10px;border-radius:999px;background:var(--sun)}
-.badge.xmas{background:#FFD3D4;color:#9B1C21}
-.book h2{font-size:1.35rem;line-height:1.15;margin:8px 0 6px}
-.book p{color:var(--soft);font-size:.95rem;line-height:1.45}
-.pages{display:flex;gap:10px;overflow-x:auto;padding:0 18px 4px;scroll-snap-type:x mandatory;scrollbar-width:none}
-.pages::-webkit-scrollbar{display:none}
-.pages img{flex:0 0 46%;width:46%;aspect-ratio:1;object-fit:cover;border-radius:14px;scroll-snap-align:start;border:3px solid #fff;box-shadow:0 3px 10px rgba(47,59,82,.12)}
-.peek{font-size:.8rem;font-weight:800;color:var(--soft);padding:12px 18px 6px}
-.buy{display:flex;align-items:center;justify-content:center;gap:10px;margin:14px 18px 18px;padding:16px;border-radius:18px;
-  background:var(--ink);color:#fff;font-weight:800;font-size:1.05rem;text-decoration:none;transition:transform .15s,box-shadow .15s;box-shadow:0 6px 0 #1c2536}
-.buy:hover{transform:translateY(-2px)}
-.buy:active{transform:translateY(4px);box-shadow:0 2px 0 #1c2536}
-.buy.nico{background:#C8343A;box-shadow:0 6px 0 #8d1f24}
-.buy.benny{background:#8A5A34;box-shadow:0 6px 0 #5e3b20}
-.buy svg{width:20px;height:20px;fill:#fff}
-.why{margin-top:30px;background:#fff;border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
-.why h3{font-size:1.3rem;margin-bottom:12px}
-.why li{list-style:none;display:flex;gap:10px;align-items:flex-start;padding:7px 0;font-weight:700}
-.why li span{flex:0 0 28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--sky);font-size:.9rem}
-.soon{margin-top:22px;text-align:center;color:var(--soft);font-weight:700}
-.soon b{color:var(--ink)}
-footer{text-align:center;color:var(--soft);font-size:.8rem;margin-top:28px;line-height:1.6}
-@keyframes pop{from{transform:scale(.6);opacity:0}to{transform:none;opacity:1}}
-@keyframes rise{from{transform:translateY(18px);opacity:0}to{transform:none;opacity:1}}
-@media (max-width:420px){.book .top{grid-template-columns:110px 1fr}.book img.cover{width:110px;height:110px}.book h2{font-size:1.15rem}header h1{font-size:1.8rem}}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-</style>
+<meta name="theme-color" content="#FFF8EC" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#161D2B" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="img/brand/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="img/brand/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preload" href="fonts/grandstander.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/nunito.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/styles.ef1a39f482.css">
+<script src="assets/app.028ddfabad.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"/#org","name":"Little Crayon Tales","url":"/","logo":"/img/brand/icon-512.png","description":"Story books kids color AND read. One big picture and one short sentence in big, easy letters on every page. For ages 3-6, sold on Amazon.","sameAs":["https://www.tiktok.com/@littlecrayontales","https://www.instagram.com/littlecrayontales","https://www.youtube.com/@littlecrayontales","https://www.pinterest.com/littlecrayontales"]},{"@type":"WebSite","@id":"/#site","name":"Little Crayon Tales","url":"/","publisher":{"@id":"/#org"}}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What ages are the books for?","acceptedAnswer":{"@type":"Answer","text":"Ages 3 to 6, from preschool to kindergarten. Little ones color the big pictures, and early readers can read the one short sentence on each page with you."}},{"@type":"Question","name":"What is on each page?","acceptedAnswer":{"@type":"Answer","text":"One full-page picture with bold, thick lines and one short sentence in big, easy letters. Page by page, the pictures tell one sweet story, so a coloring book becomes a first reading book."}},{"@type":"Question","name":"Crayons or markers?","acceptedAnswer":{"@type":"Answer","text":"Crayons and colored pencils work best. The pictures are printed on both sides of the paper, so markers can bleed through."}},{"@type":"Question","name":"How do I order?","acceptedAnswer":{"@type":"Answer","text":"Tap Buy on Amazon. Amazon prints, ships and handles returns. Buying more than one book? Add them to your bag and check out on Amazon in one go."}},{"@type":"Question","name":"Can I order from outside the US?","acceptedAnswer":{"@type":"Answer","text":"Yes. Amazon sells our paperbacks in the US, the UK, Canada, Australia, Japan and much of Europe. This site opens your local Amazon store, and you can switch stores at the bottom of any page."}},{"@type":"Question","name":"Is there a free sample?","acceptedAnswer":{"@type":"Answer","text":"Yes! Get three free printable pages, one from each book, on our free coloring pages page."}}]}</script>
+<script type="application/json" id="store-data">{"defaultStore":"com","detect":true,"bagCheckout":true,"tags":{},"stores":["com","co.uk","ca","com.au","de","fr","es","it","nl","pl","se","co.jp"],"icons":{"plus":"\u003csvg class=\"icon\" aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 256 256\" fill=\"currentColor\">\u003cpath d=\"M228,128a12,12,0,0,1-12,12H140v76a12,12,0,0,1-24,0V140H40a12,12,0,0,1,0-24h76V40a12,12,0,0,1,24,0v76h76A12,12,0,0,1,228,128Z\"/>\u003c/svg>","minus":"\u003csvg class=\"icon\" aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 256 256\" fill=\"currentColor\">\u003cpath d=\"M228,128a12,12,0,0,1-12,12H40a12,12,0,0,1,0-24H216A12,12,0,0,1,228,128Z\"/>\u003c/svg>","amazon":"\u003csvg class=\"icon\" aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 256 256\" fill=\"currentColor\">\u003cpath d=\"M252,168v32a12,12,0,0,1-24,0v-3.09C215.56,208.41,180.25,236,128,236c-64.6,0-103.3-42.18-104.92-44A12,12,0,1,1,40.92,176c.3.33,33.48,36,87.08,36,42.65,0,72.34-22.58,82.87-32H208a12,12,0,0,1,0-24h32A12,12,0,0,1,252,168ZM156,86.08V84A32,32,0,0,0,97.17,66.55a12,12,0,0,1-20.11-13.1A56,56,0,0,1,180,84v92a12,12,0,0,1-23.85,1.81A56,56,0,1,1,156,86.08ZM156,132a32,32,0,1,0-32,32A32,32,0,0,0,156,132Z\"/>\u003c/svg>","bag":"\u003csvg class=\"icon\" aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 256 256\" fill=\"currentColor\">\u003cpath d=\"M239,66.75a20.12,20.12,0,0,0-15-6.75H179.83A52,52,0,0,0,76.17,60H32.08A20,20,0,0,0,12.14,82.35l14.25,120A20.06,20.06,0,0,0,46.33,220H209.67a20.06,20.06,0,0,0,19.94-17.65l14.25-120A20,20,0,0,0,239,66.75ZM128,36a28,28,0,0,1,27.71,24H100.29A28,28,0,0,1,128,36Zm78.19,160H49.81L36.5,84h183Z\"/>\u003c/svg>"},"books":{"nico":{"title":"Nico the Little Reindeer’s Snowy Day","asin":"B0HLVTTK7T","url":"books/nico-the-little-reindeer/","cover":"img/books/nico/cover-480.webp"},"benny":{"title":"Benny the Bear’s Cozy Day","asin":"B0HLVSLXK7","url":"books/benny-the-bear/","cover":"img/books/benny/cover-480.webp"}}}</script>
 </head>
-<body>
-<div class="wrap">
-  <header>
-    <img class="logo" src="img/logo.webp" alt="Little Crayon Tales" width="116" height="116">
-    <h1>Little Crayon Tales</h1>
-    <p class="tag">Story books kids color AND read 🖍️📚</p>
-    <div class="chips"><span class="chip">Ages 3-6</span><span class="chip">Big letters</span><span class="chip">Screen-free fun</span></div>
-    <nav class="social" aria-label="Social">
-      <a href="https://www.tiktok.com/@littlecrayontales" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 2h-3.3v13.2a2.9 2.9 0 1 1-2.1-2.8V9a6.3 6.3 0 1 0 5.4 6.2V8.6a7.9 7.9 0 0 0 4.4 1.4V6.7a4.4 4.4 0 0 1-4.4-4.7z"/></svg></a>
-      <a href="https://www.instagram.com/littlecrayontales" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 7.3A4.7 4.7 0 1 0 12 16.7 4.7 4.7 0 0 0 12 7.3zm0 7.7a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm6-7.9a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0zM21.9 8c-.1-1.6-.4-3-1.6-4.2S17.6 2.2 16 2.1C14.4 2 9.6 2 8 2.1 6.4 2.2 5 2.5 3.8 3.7S2.2 6.4 2.1 8C2 9.6 2 14.4 2.1 16c.1 1.6.4 3 1.6 4.2s2.6 1.6 4.2 1.7c1.6.1 6.4.1 8 0 1.6-.1 3-.4 4.2-1.7s1.6-2.6 1.7-4.2c.1-1.6.1-6.4.1-8zm-2.1 9.8a3.3 3.3 0 0 1-1.9 1.9c-1.3.5-4.4.4-5.9.4s-4.6.1-5.9-.4a3.3 3.3 0 0 1-1.9-1.9c-.5-1.3-.4-4.4-.4-5.9s-.1-4.6.4-5.9a3.3 3.3 0 0 1 1.9-1.9c1.3-.5 4.4-.4 5.9-.4s4.6-.1 5.9.4a3.3 3.3 0 0 1 1.9 1.9c.5 1.3.4 4.4.4 5.9s.1 4.6-.4 5.9z"/></svg></a>
-      <a href="https://www.youtube.com/@littlecrayontales" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.7 15V9l5.8 3-5.8 3z"/></svg></a>
-      <a href="https://www.pinterest.com/littlecrayontales" aria-label="Pinterest"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-3.6 19.3c-.1-.8-.2-2 0-2.9l1.3-5.4s-.3-.7-.3-1.6c0-1.5.9-2.7 2-2.7.9 0 1.4.7 1.4 1.5 0 .9-.6 2.3-.9 3.6-.3 1.1.5 2 1.6 2 1.9 0 3.4-2 3.4-5 0-2.6-1.9-4.4-4.5-4.4-3.1 0-4.9 2.3-4.9 4.7 0 .9.4 1.9.8 2.5l.1.4-.3 1.2c0 .2-.2.3-.4.2-1.4-.7-2.2-2.7-2.2-4.3 0-3.5 2.5-6.8 7.4-6.8 3.9 0 6.9 2.8 6.9 6.5 0 3.9-2.4 7-5.8 7-1.1 0-2.2-.6-2.6-1.3l-.7 2.7c-.3 1-1 2.2-1.4 2.9A10 10 0 1 0 12 2z"/></svg></a>
+<body class="page-home">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container header-row">
+    <a class="brand" href="./">
+      <img src="img/brand/logo-96.webp" width="44" height="44" alt="">
+      <span class="brand-name">Little Crayon Tales</span>
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="books/">Books</a>
+      <a href="free-coloring-pages/">Free pages</a>
+      <a href="about/" class="nav-about">About</a>
     </nav>
-  </header>
-
-  <main>
-    <article class="book">
-      <div class="top">
-        <img class="cover" src="img/nico-cover.webp" alt="Nico the Little Reindeer's Snowy Day book cover" width="150" height="150">
-        <div>
-          <span class="badge xmas">🎄 Christmas favorite</span>
-          <h2>Nico the Little Reindeer's Snowy Day</h2>
-          <p>Snow angels, sledding and a snowman. The stocking stuffer that isn't candy!</p>
-        </div>
+    <button class="bag-button js-only" type="button" data-open-bag aria-haspopup="dialog" aria-controls="bag">
+      <svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M239,66.75a20.12,20.12,0,0,0-15-6.75H179.83A52,52,0,0,0,76.17,60H32.08A20,20,0,0,0,12.14,82.35l14.25,120A20.06,20.06,0,0,0,46.33,220H209.67a20.06,20.06,0,0,0,19.94-17.65l14.25-120A20,20,0,0,0,239,66.75ZM128,36a28,28,0,0,1,27.71,24H100.29A28,28,0,0,1,128,36Zm78.19,160H49.81L36.5,84h183Z"/></svg><span class="visually-hidden">Your bag</span><span class="bag-count" data-bag-count hidden>0</span>
+    </button>
+  </div>
+</header>
+<main id="main">
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <h1>Story books kids <span class="crayon">color</span> and <span class="crayon">read</span></h1>
+      <p class="lead">One big picture and one short sentence in big, easy letters on every page. For ages 3 to 6.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary btn-lg" href="#books">Shop the books</a>
+        <a class="btn btn-secondary btn-lg" href="free-coloring-pages/"><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M228,144v64a12,12,0,0,1-12,12H40a12,12,0,0,1-12-12V144a12,12,0,0,1,24,0v52H204V144a12,12,0,0,1,24,0Zm-108.49,8.49a12,12,0,0,0,17,0l40-40a12,12,0,0,0-17-17L140,115V32a12,12,0,0,0-24,0v83L96.49,95.51a12,12,0,0,0-17,17Z"/></svg> Get the free pages</a>
       </div>
-      <p class="peek">Peek inside →</p>
-      <div class="pages">
-        <img src="img/nico-p13.webp" alt="They roll a big, round snowball" loading="lazy">
-        <img src="img/nico-p17.webp" alt="Nico gives the snowman his red scarf" loading="lazy">
-        <img src="img/nico-p31.webp" alt="Goodnight, Nico" loading="lazy">
+    </div>
+    <div class="hero-art">
+      <a class="hero-book hero-book-1" href="books/benny-the-bear/" style="--tint: #FFF0C9">
+        <img alt="Benny the Bear’s Cozy Day" src="img/books/benny/cover.webp" srcset="img/books/benny/cover-480.webp 480w, img/books/benny/cover-720.webp 720w, img/books/benny/cover.webp 960w" sizes="(min-width: 960px) 300px, 45vw" width="960" height="960" loading="lazy" decoding="async"></a><a class="hero-book hero-book-2" href="books/nico-the-little-reindeer/" style="--tint: #FFE1E1">
+        <img alt="Nico the Little Reindeer’s Snowy Day" src="img/books/nico/cover.webp" srcset="img/books/nico/cover-480.webp 480w, img/books/nico/cover-720.webp 720w, img/books/nico/cover.webp 960w" sizes="(min-width: 960px) 300px, 45vw" width="960" height="960" fetchpriority="high"></a><a class="hero-book hero-book-3" href="books/dex-the-little-dinosaur/" style="--tint: #DDF2D2">
+        <img alt="Dex the Little Dinosaur’s Big Day" src="img/books/dex/cover.webp" srcset="img/books/dex/cover-480.webp 480w, img/books/dex/cover-720.webp 720w, img/books/dex/cover.webp 960w" sizes="(min-width: 960px) 300px, 45vw" width="960" height="1440" loading="lazy" decoding="async"></a>
+    </div>
+  </div>
+</section>
+<section class="section" id="books" aria-labelledby="books-title">
+  <div class="container">
+    <h2 id="books-title">Meet the books</h2>
+    <p class="section-lead">Every book is one sweet story with a friendly animal, from good morning to goodnight.</p>
+    <div class="book-grid">
+<article class="book-card" style="--tint: #FFE1E1">
+  <a class="book-card-media" href="books/nico-the-little-reindeer/" tabindex="-1" aria-hidden="true">
+    <img alt="" src="img/books/nico/cover.webp" srcset="img/books/nico/cover-480.webp 480w, img/books/nico/cover-720.webp 720w, img/books/nico/cover.webp 960w" sizes="(min-width: 1100px) 340px, (min-width: 700px) 45vw, 92vw" width="960" height="960" loading="lazy" decoding="async">
+  </a>
+  <div class="book-card-body">
+    <p class="badge">Christmas favorite</p>
+    <h3 class="book-card-title"><a href="books/nico-the-little-reindeer/">Nico the Little Reindeer’s Snowy Day</a></h3>
+    <p class="book-card-text">Snow angels, sledding and a snowman with Tilly the penguin.</p>
+    <p class="meta">Ages 3-6 · 29 pictures to color</p>
+    <div class="card-actions">
+      <a class="btn btn-primary btn-sm" data-asin="B0HLVTTK7T" href="https://www.amazon.com/dp/B0HLVTTK7T" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M252,168v32a12,12,0,0,1-24,0v-3.09C215.56,208.41,180.25,236,128,236c-64.6,0-103.3-42.18-104.92-44A12,12,0,1,1,40.92,176c.3.33,33.48,36,87.08,36,42.65,0,72.34-22.58,82.87-32H208a12,12,0,0,1,0-24h32A12,12,0,0,1,252,168ZM156,86.08V84A32,32,0,0,0,97.17,66.55a12,12,0,0,1-20.11-13.1A56,56,0,0,1,180,84v92a12,12,0,0,1-23.85,1.81A56,56,0,1,1,156,86.08ZM156,132a32,32,0,1,0-32,32A32,32,0,0,0,156,132Z"/></svg> Buy on Amazon</a><button class="btn btn-secondary js-only btn-sm" type="button" data-add="nico"><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M228,128a12,12,0,0,1-12,12H140v76a12,12,0,0,1-24,0V140H40a12,12,0,0,1,0-24h76V40a12,12,0,0,1,24,0v76h76A12,12,0,0,1,228,128Z"/></svg> Add to bag</button>
+    </div>
+  </div>
+</article>
+<article class="book-card" style="--tint: #FFF0C9">
+  <a class="book-card-media" href="books/benny-the-bear/" tabindex="-1" aria-hidden="true">
+    <img alt="" src="img/books/benny/cover.webp" srcset="img/books/benny/cover-480.webp 480w, img/books/benny/cover-720.webp 720w, img/books/benny/cover.webp 960w" sizes="(min-width: 1100px) 340px, (min-width: 700px) 45vw, 92vw" width="960" height="960" loading="lazy" decoding="async">
+  </a>
+  <div class="book-card-body">
+    <p class="badge">Cozy everyday story</p>
+    <h3 class="book-card-title"><a href="books/benny-the-bear/">Benny the Bear’s Cozy Day</a></h3>
+    <p class="book-card-text">Pancakes, a kite, hide and seek and a bedtime story.</p>
+    <p class="meta">Ages 3-6 · 27 pictures to color</p>
+    <div class="card-actions">
+      <a class="btn btn-primary btn-sm" data-asin="B0HLVSLXK7" href="https://www.amazon.com/dp/B0HLVSLXK7" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M252,168v32a12,12,0,0,1-24,0v-3.09C215.56,208.41,180.25,236,128,236c-64.6,0-103.3-42.18-104.92-44A12,12,0,1,1,40.92,176c.3.33,33.48,36,87.08,36,42.65,0,72.34-22.58,82.87-32H208a12,12,0,0,1,0-24h32A12,12,0,0,1,252,168ZM156,86.08V84A32,32,0,0,0,97.17,66.55a12,12,0,0,1-20.11-13.1A56,56,0,0,1,180,84v92a12,12,0,0,1-23.85,1.81A56,56,0,1,1,156,86.08ZM156,132a32,32,0,1,0-32,32A32,32,0,0,0,156,132Z"/></svg> Buy on Amazon</a><button class="btn btn-secondary js-only btn-sm" type="button" data-add="benny"><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M228,128a12,12,0,0,1-12,12H140v76a12,12,0,0,1-24,0V140H40a12,12,0,0,1,0-24h76V40a12,12,0,0,1,24,0v76h76A12,12,0,0,1,228,128Z"/></svg> Add to bag</button>
+    </div>
+  </div>
+</article>
+<article class="book-card" style="--tint: #DDF2D2">
+  <a class="book-card-media" href="books/dex-the-little-dinosaur/" tabindex="-1" aria-hidden="true">
+    <img alt="" src="img/books/dex/cover.webp" srcset="img/books/dex/cover-480.webp 480w, img/books/dex/cover-720.webp 720w, img/books/dex/cover.webp 960w" sizes="(min-width: 1100px) 340px, (min-width: 700px) 45vw, 92vw" width="960" height="1440" loading="lazy" decoding="async">
+  </a>
+  <div class="book-card-body">
+    <p class="badge badge-soon">Coming soon</p>
+    <h3 class="book-card-title"><a href="books/dex-the-little-dinosaur/">Dex the Little Dinosaur’s Big Day</a></h3>
+    <p class="book-card-text">A pterodactyl friend, a hatching egg and a rumbling volcano.</p>
+    <p class="meta">Ages 3-6 · 29 pictures to color</p>
+    <div class="card-actions">
+      <a class="btn btn-secondary btn-sm" href="books/dex-the-little-dinosaur/#notify"><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M225.81,74.65A11.86,11.86,0,0,1,220.3,76a12,12,0,0,1-10.67-6.47,90.1,90.1,0,0,0-32-35.38,12,12,0,1,1,12.8-20.29,115.25,115.25,0,0,1,40.54,44.62A12,12,0,0,1,225.81,74.65ZM46.37,69.53a90.1,90.1,0,0,1,32-35.38A12,12,0,1,0,65.6,13.86,115.25,115.25,0,0,0,25.06,58.48a12,12,0,0,0,5.13,16.17A11.86,11.86,0,0,0,35.7,76,12,12,0,0,0,46.37,69.53Zm173.51,98.35A20,20,0,0,1,204,200H171.81a44,44,0,0,1-87.62,0H52a20,20,0,0,1-15.91-32.12c7.17-9.33,15.73-26.62,15.88-55.94A76,76,0,0,1,204,112C204.15,141.26,212.71,158.55,219.88,167.88ZM147.6,200H108.4a20,20,0,0,0,39.2,0Zm48.74-24c-8.16-13-16.19-33.57-16.34-63.94A52,52,0,1,0,76,112c-.15,30.42-8.18,51-16.34,64Z"/></svg> Get notified</a>
+    </div>
+  </div>
+</article></div>
+    <p class="more-coming"><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M199,125.31l-49.88-18.39L130.69,57a19.92,19.92,0,0,0-37.38,0L74.92,106.92,25,125.31a19.92,19.92,0,0,0,0,37.38l49.88,18.39L93.31,231a19.92,19.92,0,0,0,37.38,0l18.39-49.88L199,162.69a19.92,19.92,0,0,0,0-37.38Zm-63.38,35.16a12,12,0,0,0-7.11,7.11L112,212.28l-16.47-44.7a12,12,0,0,0-7.11-7.11L43.72,144l44.7-16.47a12,12,0,0,0,7.11-7.11L112,75.72l16.47,44.7a12,12,0,0,0,7.11,7.11L180.28,144ZM140,40a12,12,0,0,1,12-12h12V16a12,12,0,0,1,24,0V28h12a12,12,0,0,1,0,24H188V64a12,12,0,0,1-24,0V52H152A12,12,0,0,1,140,40ZM252,88a12,12,0,0,1-12,12h-4v4a12,12,0,0,1-24,0v-4h-4a12,12,0,0,1,0-24h4V72a12,12,0,0,1,24,0v4h4A12,12,0,0,1,252,88Z"/></svg> More friends on the way: Rocco the Little Monster Truck and Posy the Little Unicorn. <a href="books/#notify">Get notified</a></p>
+  </div>
+</section>
+<section class="section section-tint" aria-labelledby="how-title">
+  <div class="container split">
+    <figure class="compare" data-compare style="--pos: 50%">
+      <div class="compare-frame">
+        <img alt="A page from Benny the Bear’s Cozy Day before coloring" src="img/books/benny/inside-20.webp" srcset="img/books/benny/inside-20-480.webp 480w, img/books/benny/inside-20-720.webp 720w, img/books/benny/inside-20.webp 960w" sizes="(min-width: 960px) 520px, 92vw" width="960" height="960" class="compare-before" loading="lazy" decoding="async">
+        <img alt="" src="img/books/benny/color-20.webp" srcset="img/books/benny/color-20-480.webp 480w, img/books/benny/color-20-720.webp 720w, img/books/benny/color-20.webp 960w" sizes="(min-width: 960px) 520px, 92vw" width="960" height="960" class="compare-after" loading="lazy" decoding="async">
+        <span class="compare-handle" aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M203.57,51A107.9,107.9,0,0,0,20,128c0,44.72,27.6,82.25,72,97.94A36,36,0,0,0,140,192a12,12,0,0,1,12-12h46.21a35.79,35.79,0,0,0,35.1-28A108.6,108.6,0,0,0,236,127.09,107.23,107.23,0,0,0,203.57,51Zm6.34,95.67a11.91,11.91,0,0,1-11.7,9.3H152a36,36,0,0,0-36,36,12,12,0,0,1-16,11.3c-16.65-5.88-30.65-15.76-40.48-28.56A76,76,0,0,1,44,128a84,84,0,0,1,83.13-84H128a84.35,84.35,0,0,1,84,83.29A84.72,84.72,0,0,1,209.91,146.71ZM144,76a16,16,0,1,1-16-16A16,16,0,0,1,144,76Zm-44,24A16,16,0,1,1,84,84,16,16,0,0,1,100,100Zm0,56a16,16,0,1,1-16-16A16,16,0,0,1,100,156Zm88-56a16,16,0,1,1-16-16A16,16,0,0,1,188,100Z"/></svg></span>
+        <input class="compare-range js-only" type="range" min="0" max="100" value="50" aria-label="Color the page: drag to show more color">
       </div>
-      <a class="buy nico" href="https://www.amazon.com/dp/B0HLVTTK7T" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24"><path d="M7 4V2h10v2h4v2h-2l-1.5 13a2 2 0 0 1-2 2H8.5a2 2 0 0 1-2-2L5 6H3V4h4zm2 4v9h2V8H9zm4 0v9h2V8h-2z" opacity=".0"/><path d="M7 18a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm10 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zM1 2v2h2l3.6 7.6-1.4 2.4c-.6 1.3.4 3 1.8 3h12v-2H7.4l1.1-2h7.5c.8 0 1.4-.4 1.7-1l3.6-6.5A1 1 0 0 0 20.4 4H5.2l-.9-2H1z"/></svg>
-        Get Nico on Amazon
-      </a>
-    </article>
-
-    <article class="book">
-      <div class="top">
-        <img class="cover" src="img/benny-cover.webp" alt="Benny the Bear's Cozy Day book cover" width="150" height="150">
-        <div>
-          <span class="badge">🐻 Cozy everyday story</span>
-          <h2>Benny the Bear's Cozy Day</h2>
-          <p>Pancakes, a kite, hide and seek and a bedtime story. A sweet birthday gift!</p>
-        </div>
-      </div>
-      <p class="peek">Peek inside →</p>
-      <div class="pages">
-        <img src="img/benny-p20.webp" alt="They fly a kite high up in the sky" loading="lazy">
-        <img src="img/benny-p22.webp" alt="They play hide and seek" loading="lazy">
-        <img src="img/benny-p29.webp" alt="Goodnight, Benny" loading="lazy">
-      </div>
-      <a class="buy benny" href="https://www.amazon.com/dp/B0HLVSLXK7" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24"><path d="M7 18a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm10 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zM1 2v2h2l3.6 7.6-1.4 2.4c-.6 1.3.4 3 1.8 3h12v-2H7.4l1.1-2h7.5c.8 0 1.4-.4 1.7-1l3.6-6.5A1 1 0 0 0 20.4 4H5.2l-.9-2H1z"/></svg>
-        Get Benny on Amazon
-      </a>
-    </article>
-
-    <section class="why">
-      <h3>Why parents love our books</h3>
-      <ul>
-        <li><span>🖍️</span>One big, bold picture to color on every page</li>
-        <li><span>📖</span>One short sentence in BIG, easy letters</li>
-        <li><span>💛</span>Kids color the story AND learn to read it</li>
-        <li><span>🎁</span>A "This book belongs to" page, perfect for gifts</li>
+      <figcaption>Drag the crayon to color Benny’s kite page</figcaption>
+    </figure>
+    <div class="split-copy">
+      <h2 id="how-title">Color the story, then read it</h2>
+      <ul class="points" role="list">
+        <li><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M203.57,51A107.9,107.9,0,0,0,20,128c0,44.72,27.6,82.25,72,97.94A36,36,0,0,0,140,192a12,12,0,0,1,12-12h46.21a35.79,35.79,0,0,0,35.1-28A108.6,108.6,0,0,0,236,127.09,107.23,107.23,0,0,0,203.57,51Zm6.34,95.67a11.91,11.91,0,0,1-11.7,9.3H152a36,36,0,0,0-36,36,12,12,0,0,1-16,11.3c-16.65-5.88-30.65-15.76-40.48-28.56A76,76,0,0,1,44,128a84,84,0,0,1,83.13-84H128a84.35,84.35,0,0,1,84,83.29A84.72,84.72,0,0,1,209.91,146.71ZM144,76a16,16,0,1,1-16-16A16,16,0,0,1,144,76Zm-44,24A16,16,0,1,1,84,84,16,16,0,0,1,100,100Zm0,56a16,16,0,1,1-16-16A16,16,0,0,1,100,156Zm88-56a16,16,0,1,1-16-16A16,16,0,0,1,188,100Z"/></svg><div><h3>One big picture</h3><p>Bold, thick lines and big shapes that are easy for little hands.</p></div></li>
+        <li><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M232,44H160a43.86,43.86,0,0,0-32,13.85A43.86,43.86,0,0,0,96,44H24A12,12,0,0,0,12,56V200a12,12,0,0,0,12,12H96a20,20,0,0,1,20,20,12,12,0,0,0,24,0,20,20,0,0,1,20-20h72a12,12,0,0,0,12-12V56A12,12,0,0,0,232,44ZM96,188H36V68H96a20,20,0,0,1,20,20V192.81A43.79,43.79,0,0,0,96,188Zm124,0H160a43.71,43.71,0,0,0-20,4.83V88a20,20,0,0,1,20-20h60ZM164,96h32a12,12,0,0,1,0,24H164a12,12,0,0,1,0-24Zm44,52a12,12,0,0,1-12,12H164a12,12,0,0,1,0-24h32A12,12,0,0,1,208,148Z"/></svg><div><h3>One short sentence</h3><p>Big, clear letters, so early readers can read each page with you.</p></div></li>
+        <li><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M216,68H190.06A33.82,33.82,0,0,0,196,49.69,36.62,36.62,0,0,0,158.31,12,33.44,33.44,0,0,0,134,23.25a54.65,54.65,0,0,0-6,8.3,54.65,54.65,0,0,0-6-8.3A33.44,33.44,0,0,0,97.69,12,36.62,36.62,0,0,0,60,49.69,33.82,33.82,0,0,0,65.94,68H40A20,20,0,0,0,20,88v32a20,20,0,0,0,16,19.6V200a20,20,0,0,0,20,20H200a20,20,0,0,0,20-20V139.6A20,20,0,0,0,236,120V88A20,20,0,0,0,216,68Zm-4,48H140V92h72ZM152,39.17A9.59,9.59,0,0,1,159,36h.35A12.62,12.62,0,0,1,172,49,9.59,9.59,0,0,1,168.83,56c-6.9,6.12-18.25,9.26-27.63,10.76C142.7,57.42,145.84,46.07,152,39.17ZM87.7,39.7A12.8,12.8,0,0,1,96.61,36H97A9.59,9.59,0,0,1,104,39.17c6.12,6.9,9.26,18.24,10.75,27.61C105.45,65.27,94,62.13,87.17,56A9.59,9.59,0,0,1,84,49,12.72,12.72,0,0,1,87.7,39.7ZM44,92h72v24H44Zm16,48h56v56H60Zm80,56V140h56v56Z"/></svg><div><h3>One sweet story</h3><p>From good morning to goodnight, with a “This book belongs to” page.</p></div></li>
       </ul>
-    </section>
-
-    <p class="soon">Coming soon: <b>Rocco the Little Monster Truck</b> & <b>Posy the Little Unicorn</b> ✨</p>
-  </main>
-
-  <footer>© Little Crayon Tales · Pictures shown are real pages from our books, colored in.<br>Thank you for supporting a small independent publisher 💛</footer>
-</div>
+    </div>
+  </div>
+</section>
+<section class="section peek" aria-labelledby="peek-title">
+  <div class="container">
+    <h2 id="peek-title">Peek inside</h2>
+    <p class="section-lead">Real pages from our books, in black and white and colored in.</p>
+  </div>
+  <div class="peek-track" tabindex="0" role="region" aria-label="Pages from our books">
+    <ul role="list">
+      <li><a class="peek-item" href="books/nico-the-little-reindeer/">
+        <img alt="Coloring page from Nico the Little Reindeer’s Snowy Day: Whee! They zoom down the big hill." src="img/books/nico/inside-11-480.webp" width="480" height="480" loading="lazy" decoding="async">
+        <span class="peek-caption">From Nico</span></a></li><li><a class="peek-item" href="books/benny-the-bear/">
+        <img alt="Coloring page from Benny the Bear’s Cozy Day: Benny eats pancakes. Yum, yum!" src="img/books/benny/inside-5-480.webp" width="480" height="480" loading="lazy" decoding="async">
+        <span class="peek-caption">From Benny</span></a></li><li><a class="peek-item" href="books/dex-the-little-dinosaur/">
+        <img alt="Coloring page from Dex the Little Dinosaur’s Big Day: Splash! They jump into the water." src="img/books/dex/inside-12-480.webp" width="480" height="621" loading="lazy" decoding="async">
+        <span class="peek-caption">From Dex</span></a></li><li><a class="peek-item" href="books/nico-the-little-reindeer/">
+        <img alt="Coloring page from Nico the Little Reindeer’s Snowy Day: Now they build a snowman together." src="img/books/nico/inside-14-480.webp" width="480" height="480" loading="lazy" decoding="async">
+        <span class="peek-caption">From Nico</span></a></li><li><a class="peek-item" href="books/benny-the-bear/">
+        <img alt="Coloring page from Benny the Bear’s Cozy Day: Benny and Bella have a picnic under a tree." src="img/books/benny/inside-14-480.webp" width="480" height="480" loading="lazy" decoding="async">
+        <span class="peek-caption">From Benny</span></a></li><li><a class="peek-item" href="books/dex-the-little-dinosaur/">
+        <img alt="Coloring page from Dex the Little Dinosaur’s Big Day: Crack! A baby dino says hello." src="img/books/dex/inside-16-480.webp" width="480" height="621" loading="lazy" decoding="async">
+        <span class="peek-caption">From Dex</span></a></li><li><a class="peek-item" href="books/nico-the-little-reindeer/">
+        <img alt="Coloring page from Nico the Little Reindeer’s Snowy Day: Nico catches a snowflake on his tongue." src="img/books/nico/inside-19-480.webp" width="480" height="480" loading="lazy" decoding="async">
+        <span class="peek-caption">From Nico</span></a></li><li><a class="peek-item" href="books/benny-the-bear/">
+        <img alt="Coloring page from Benny the Bear’s Cozy Day: They fly a kite high up in the sky." src="img/books/benny/inside-20-480.webp" width="480" height="480" loading="lazy" decoding="async">
+        <span class="peek-caption">From Benny</span></a></li><li><a class="peek-item" href="books/dex-the-little-dinosaur/">
+        <img alt="Coloring page from Dex the Little Dinosaur’s Big Day: Look! A big, round volcano." src="img/books/dex/inside-22-480.webp" width="480" height="621" loading="lazy" decoding="async">
+        <span class="peek-caption">From Dex</span></a></li><li><a class="peek-item" href="books/nico-the-little-reindeer/">
+        <img alt="Coloring page from Nico the Little Reindeer’s Snowy Day: Nico and Mama sip cocoa by the fire." src="img/books/nico/inside-29-480.webp" width="480" height="480" loading="lazy" decoding="async">
+        <span class="peek-caption">From Nico</span></a></li><li><a class="peek-item" href="books/benny-the-bear/">
+        <img alt="Coloring page from Benny the Bear’s Cozy Day: Bath time! Benny loves big bubbles." src="img/books/benny/inside-26-480.webp" width="480" height="480" loading="lazy" decoding="async">
+        <span class="peek-caption">From Benny</span></a></li><li><a class="peek-item" href="books/dex-the-little-dinosaur/">
+        <img alt="Coloring page from Dex the Little Dinosaur’s Big Day: Splash! They dance in the rain." src="img/books/dex/inside-28-480.webp" width="480" height="621" loading="lazy" decoding="async">
+        <span class="peek-caption">From Dex</span></a></li>
+    </ul>
+  </div>
+</section>
+<section class="section section-free" id="free" aria-label="Free coloring pages">
+  <div class="container">
+<div class="free-grid">
+  <div class="free-art" aria-hidden="true">
+    <span class="free-sheet free-sheet-1"><img alt="" src="img/books/nico/inside-14-480.webp" width="480" height="480" loading="lazy" decoding="async"></span><span class="free-sheet free-sheet-2"><img alt="" src="img/books/benny/inside-20-480.webp" width="480" height="480" loading="lazy" decoding="async"></span><span class="free-sheet free-sheet-3"><img alt="" src="img/books/dex/inside-16-480.webp" width="480" height="621" loading="lazy" decoding="async"></span>
+  </div>
+  <div class="free-copy">
+    <h2>Free coloring pages</h2>
+    <p class="lead">Three real pages, one from each of our books. Print them at home as often as you like.</p>
+<form class="email-form" name="free-pages" method="POST" action="thank-you/" data-netlify="true" netlify-honeypot="company" data-form>
+  <input type="hidden" name="form-name" value="free-pages">
+  <p class="hp" aria-hidden="true"><label>Company <input name="company" tabindex="-1" autocomplete="off"></label></p>
+  <div class="field">
+    <label for="email-1">Your email</label>
+    <div class="field-row">
+      <input id="email-1" name="email" type="email" autocomplete="email" required placeholder="you@example.com" aria-describedby="email-1-error">
+      <button class="btn btn-primary" type="submit">Get the free pages</button>
+    </div>
+    <p class="field-error" id="email-1-error" hidden></p>
+  </div>
+  <p class="fine">We only email about new books and freebies. Unsubscribe anytime. <a href="privacy/">Privacy</a></p>
+</form>
+  </div>
+</div></div>
+</section>
+<section class="section" aria-labelledby="faq-title">
+  <div class="container narrow">
+    <h2 id="faq-title">Questions parents ask</h2>
+    <div class="faq-list">
+    <details><summary>What ages are the books for?</summary><p>Ages 3 to 6, from preschool to kindergarten. Little ones color the big pictures, and early readers can read the one short sentence on each page with you.</p></details><details><summary>What is on each page?</summary><p>One full-page picture with bold, thick lines and one short sentence in big, easy letters. Page by page, the pictures tell one sweet story, so a coloring book becomes a first reading book.</p></details><details><summary>Crayons or markers?</summary><p>Crayons and colored pencils work best. The pictures are printed on both sides of the paper, so markers can bleed through.</p></details><details><summary>How do I order?</summary><p>Tap Buy on Amazon. Amazon prints, ships and handles returns. Buying more than one book? Add them to your bag and check out on Amazon in one go.</p></details><details><summary>Can I order from outside the US?</summary><p>Yes. Amazon sells our paperbacks in the US, the UK, Canada, Australia, Japan and much of Europe. This site opens your local Amazon store, and you can switch stores at the bottom of any page.</p></details><details><summary>Is there a free sample?</summary><p>Yes! Get three free printable pages, one from each book, on our <a href="free-coloring-pages/">free coloring pages</a> page.</p></details>
+  </div>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="./">
+        <img src="img/brand/logo-192.webp" width="56" height="56" alt="" loading="lazy">
+        <span class="brand-name">Little Crayon Tales</span>
+      </a>
+      <p>Story books kids color and read, for ages 3 to 6.</p>
+      <ul class="social" role="list">
+        <li><a href="https://www.tiktok.com/@littlecrayontales" target="_blank" rel="noopener" aria-label="Little Crayon Tales on TikTok"><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M224,68a44.05,44.05,0,0,1-44-44,12,12,0,0,0-12-12H128a12,12,0,0,0-12,12V156a16,16,0,1,1-22.85-14.47A12,12,0,0,0,100,130.69V88A12,12,0,0,0,85.9,76.19a79.35,79.35,0,0,0-47.08,27.74A81.84,81.84,0,0,0,20,156a80,80,0,0,0,160,0V122.67A107.47,107.47,0,0,0,224,132a12,12,0,0,0,12-12V80A12,12,0,0,0,224,68Zm-12,39.15a83.05,83.05,0,0,1-37-14.91A12,12,0,0,0,156,102v54a56,56,0,0,1-112,0,57.86,57.86,0,0,1,32-51.56V124a40,40,0,1,0,64,32V36h17.06A68.21,68.21,0,0,0,212,90.94Z"/></svg></a></li><li><a href="https://www.instagram.com/littlecrayontales" target="_blank" rel="noopener" aria-label="Little Crayon Tales on Instagram"><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,72a24,24,0,1,1,24-24A24,24,0,0,1,128,152ZM176,20H80A60.07,60.07,0,0,0,20,80v96a60.07,60.07,0,0,0,60,60h96a60.07,60.07,0,0,0,60-60V80A60.07,60.07,0,0,0,176,20Zm36,156a36,36,0,0,1-36,36H80a36,36,0,0,1-36-36V80A36,36,0,0,1,80,44h96a36,36,0,0,1,36,36ZM196,76a16,16,0,1,1-16-16A16,16,0,0,1,196,76Z"/></svg></a></li><li><a href="https://www.youtube.com/@littlecrayontales" target="_blank" rel="noopener" aria-label="Little Crayon Tales on YouTube"><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M170.49,117.91l-56-36A12,12,0,0,0,96,92v72a12,12,0,0,0,18.49,10.09l56-36a12,12,0,0,0,0-20.18ZM120,142V114l21.81,14Zm118.21-73.5a28.05,28.05,0,0,0-16.93-19.14C186.4,35.91,131.29,36,128,36s-58.4-.09-93.28,13.38A28.05,28.05,0,0,0,17.79,68.52C15.15,78.72,12,97.32,12,128s3.15,49.28,5.79,59.48a28.05,28.05,0,0,0,16.93,19.14C68.21,219.55,120.36,220,127.37,220h1.26c7,0,59.16-.45,92.65-13.38a28.05,28.05,0,0,0,16.93-19.14c2.64-10.2,5.79-28.8,5.79-59.48S240.85,78.72,238.21,68.52ZM215,181.46a4,4,0,0,1-2.34,2.77C182.78,195.76,132.27,196,128.32,196h-.39c-.53,0-53.64.17-84.56-11.77A4,4,0,0,1,41,181.46c-1.88-7.24-5-23.82-5-53.46s3.15-46.22,5-53.46a4,4,0,0,1,2.34-2.77C74.29,59.83,127.39,60,127.92,60h.15c.54,0,53.64-.17,84.56,11.77A4,4,0,0,1,215,74.54c1.88,7.24,5,23.82,5,53.46S216.85,174.22,215,181.46Z"/></svg></a></li><li><a href="https://www.pinterest.com/littlecrayontales" target="_blank" rel="noopener" aria-label="Little Crayon Tales on Pinterest"><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M228,112c0,23.6-8.29,45.23-23.35,60.88C190.52,187.57,171.33,196,152,196c-15.45,0-26.78-4.18-34.89-9.31l-9.43,40.06a12,12,0,1,1-23.36-5.5l32-136a12,12,0,1,1,23.36,5.5l-16.45,69.93C126.72,164.86,135.16,172,152,172c25.56,0,52-22.45,52-60A68,68,0,1,0,77.09,146a12,12,0,0,1-20.77,12A92,92,0,1,1,228,112Z"/></svg></a></li>
+      </ul>
+    </div>
+    <nav class="footer-nav" aria-labelledby="footer-books">
+      <h2 class="footer-title" id="footer-books">Books</h2>
+      <ul role="list"><li><a href="books/nico-the-little-reindeer/">Nico the Little Reindeer’s Snowy Day</a></li><li><a href="books/benny-the-bear/">Benny the Bear’s Cozy Day</a></li><li><a href="books/dex-the-little-dinosaur/">Dex the Little Dinosaur’s Big Day</a></li></ul>
+    </nav>
+    <nav class="footer-nav" aria-labelledby="footer-more">
+      <h2 class="footer-title" id="footer-more">More</h2>
+      <ul role="list">
+        <li><a href="free-coloring-pages/">Free coloring pages</a></li>
+        <li><a href="about/">About and questions</a></li>
+        <li><a href="privacy/">Privacy</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="container">
+    <div class="footer-fine">
+      <div class="footer-store js-only">
+        <label for="store-select">Your Amazon store</label>
+        <select id="store-select" data-store-select><option value="com" selected>Amazon.com (US)</option><option value="co.uk">Amazon.co.uk (UK)</option><option value="ca">Amazon.ca (Canada)</option><option value="com.au">Amazon.com.au (Australia)</option><option value="de">Amazon.de (Germany)</option><option value="fr">Amazon.fr (France)</option><option value="es">Amazon.es (Spain)</option><option value="it">Amazon.it (Italy)</option><option value="nl">Amazon.nl (Netherlands)</option><option value="pl">Amazon.pl (Poland)</option><option value="se">Amazon.se (Sweden)</option><option value="co.jp">Amazon.co.jp (Japan)</option></select>
+      </div>
+      <div>
+        <p>© 2026 Little Crayon Tales. The pictures are real pages from our books.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+<dialog class="bag" id="bag" aria-labelledby="bag-title" data-bag>
+  <div class="bag-head">
+    <h2 id="bag-title">Your bag</h2>
+    <button class="icon-button" type="button" data-close-bag aria-label="Close bag"><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M208.49,191.51a12,12,0,0,1-17,17L128,145,64.49,208.49a12,12,0,0,1-17-17L111,128,47.51,64.49a12,12,0,0,1,17-17L128,111l63.51-63.52a12,12,0,0,1,17,17L145,128Z"/></svg></button>
+  </div>
+  <div class="bag-items" data-bag-items aria-live="polite"></div>
+  <div class="bag-foot" data-bag-foot>
+    <label class="store-row" for="bag-store"><span>Amazon store</span>
+      <select id="bag-store" data-store-select><option value="com" selected>Amazon.com (US)</option><option value="co.uk">Amazon.co.uk (UK)</option><option value="ca">Amazon.ca (Canada)</option><option value="com.au">Amazon.com.au (Australia)</option><option value="de">Amazon.de (Germany)</option><option value="fr">Amazon.fr (France)</option><option value="es">Amazon.es (Spain)</option><option value="it">Amazon.it (Italy)</option><option value="nl">Amazon.nl (Netherlands)</option><option value="pl">Amazon.pl (Poland)</option><option value="se">Amazon.se (Sweden)</option><option value="co.jp">Amazon.co.jp (Japan)</option></select>
+    </label>
+    <a class="btn btn-primary btn-block" href="books/" target="_blank" rel="noopener" data-checkout><svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M252,168v32a12,12,0,0,1-24,0v-3.09C215.56,208.41,180.25,236,128,236c-64.6,0-103.3-42.18-104.92-44A12,12,0,1,1,40.92,176c.3.33,33.48,36,87.08,36,42.65,0,72.34-22.58,82.87-32H208a12,12,0,0,1,0-24h32A12,12,0,0,1,252,168ZM156,86.08V84A32,32,0,0,0,97.17,66.55a12,12,0,0,1-20.11-13.1A56,56,0,0,1,180,84v92a12,12,0,0,1-23.85,1.81A56,56,0,1,1,156,86.08ZM156,132a32,32,0,1,0-32,32A32,32,0,0,0,156,132Z"/></svg> Check out on Amazon</a>
+    <p class="fine">Amazon asks you to confirm, then shows the price and delivery before you pay.</p>
+  </div>
+</dialog>
 </body>
 </html>

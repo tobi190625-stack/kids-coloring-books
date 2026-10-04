@@ -1,0 +1,67 @@
+{
+  "name": "Little Crayon Tales",
+  "tagline": "Story books kids color and read",
+  "description": "Story books kids color AND read. One big picture and one short sentence in big, easy letters on every page. For ages 3-6, sold on Amazon.",
+  "url": "",
+  "announcement": "",
+  "hero_title": "Story books kids color and read",
+  "hero_text": "One big picture and one short sentence in big, easy letters on every page. For ages 3 to 6.",
+  "more_coming": ["Rocco the Little Monster Truck", "Posy the Little Unicorn"],
+  "compare": {
+    "book": "benny",
+    "before": "img/books/benny/inside-20.webp",
+    "after": "img/books/benny/color-20.webp",
+    "caption": "Drag the crayon to color Benny’s kite page"
+  },
+  "social": {
+    "tiktok": "https://www.tiktok.com/@littlecrayontales",
+    "instagram": "https://www.instagram.com/littlecrayontales",
+    "youtube": "https://www.youtube.com/@littlecrayontales",
+    "pinterest": "https://www.pinterest.com/littlecrayontales",
+    "facebook": ""
+  },
+  "amazon": {
+    "default_store": "com",
+    "detect_store": true,
+    "bag_checkout": true,
+    "author_page": "",
+    "tags": { "com": "", "co_uk": "", "ca": "", "com_au": "", "de": "", "fr": "", "es": "", "it": "" }
+  },
+  "free_pages": {
+    "title": "Free coloring pages",
+    "text": "Three real pages, one from each of our books. Print them at home as often as you like.",
+    "file": "downloads/little-crayon-tales-free-coloring-pages.pdf",
+    "preview": [
+      "img/books/nico/inside-14-480.webp",
+      "img/books/benny/inside-20-480.webp",
+      "img/books/dex/inside-16-480.webp"
+    ]
+  },
+  "faq": [
+    {
+      "q": "What ages are the books for?",
+      "a": "Ages 3 to 6, from preschool to kindergarten. Little ones color the big pictures, and early readers can read the one short sentence on each page with you."
+    },
+    {
+      "q": "What is on each page?",
+      "a": "One full-page picture with bold, thick lines and one short sentence in big, easy letters. Page by page, the pictures tell one sweet story, so a coloring book becomes a first reading book."
+    },
+    {
+      "q": "Crayons or markers?",
+      "a": "Crayons and colored pencils work best. The pictures are printed on both sides of the paper, so markers can bleed through."
+    },
+    {
+      "q": "How do I order?",
+      "a": "Tap Buy on Amazon. Amazon prints, ships and handles returns. Buying more than one book? Add them to your bag and check out on Amazon in one go."
+    },
+    {
+      "q": "Can I order from outside the US?",
+      "a": "Yes. Amazon sells our paperbacks in the US, the UK, Canada, Australia, Japan and much of Europe. This site opens your local Amazon store, and you can switch stores at the bottom of any page."
+    },
+    {
+      "q": "Is there a free sample?",
+      "a": "Yes! Get three free printable pages, one from each book, on our [free coloring pages](free-coloring-pages/) page."
+    }
+  ],
+  "legal_notice": ""
+}

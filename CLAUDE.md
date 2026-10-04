@@ -29,6 +29,7 @@ This folder produces Amazon KDP paperback coloring/story books. Read `README.md`
    use `tools/build_image_cover.py` when the cover comes as front/back images.
 6. Fill a listing in `kdp/listing-template.md` style as `books/NNN-slug/listing.md`
    and 3 ad hooks as `books/NNN-slug/ads.md`.
+7. Add it to the online store (see below) as `"status": "soon"` until it has an Amazon ASIN.
 
 ## Full-page books (`"layout": "fullbleed"`, see `books/002-benny-the-bear/book.json`)
 - Square art → `"trim": "8.5x8.5"`; also set `title_art`, `belongs_art`, `end_art`.
@@ -45,6 +46,16 @@ This folder produces Amazon KDP paperback coloring/story books. Read `README.md`
 - Keep phrases together with a no-break space (`\u00a0`), e.g. `Mama\u00a0Bear`,
   `little\u00a0house`, so lines break at natural phrases for early readers.
 - If a sentence can't sit anywhere without covering the picture, shorten it and tell the user.
+
+## Online store (`store/` builds `site/`, see `store/README.md`)
+- Never edit `site/` by hand: it is generated and wiped by `node store/build.mjs`.
+- Content lives in `store/content/` (`settings.json`, `books/<id>.json`); the `/admin/` panel
+  (Decap CMS, `store/public/admin/config.yml`) edits the same files, so keep the field list in
+  `config.yml` in sync when you add a key.
+- New book: add it to `store/assets.json`, run `python3 tools/make_store_assets.py <id>`, write
+  `store/content/books/<id>.json` (copy `nico.json`), run `node store/build.mjs`, look at the pages.
+- A book goes on sale when it has `"status": "live"` and its `"asin"` (code after `/dp/`).
+- No fake reviews, ratings, sales numbers or prices. No em dashes in site copy.
 
 ## Rules
 - Never change the KDP math in the tools (margins, spine per page, bleed) without

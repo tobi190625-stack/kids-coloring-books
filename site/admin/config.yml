@@ -1,0 +1,200 @@
+# Store admin (Decap CMS) at /admin/. Every save is a commit to GitHub and Netlify rebuilds the site.
+# One-time setup is in store/README.md (Netlify Identity: invite only, plus Git Gateway).
+backend:
+  name: git-gateway
+  branch: main
+  commit_messages:
+    create: 'Store admin: add {{collection}} "{{slug}}"'
+    update: 'Store admin: update {{collection}} "{{slug}}"'
+    delete: 'Store admin: delete {{collection}} "{{slug}}"'
+    uploadMedia: 'Store admin: upload "{{path}}"'
+    deleteMedia: 'Store admin: delete "{{path}}"'
+
+site_url: /
+display_url: /
+logo_url: /img/brand/logo-192.webp
+media_folder: store/public/img/uploads
+public_folder: img/uploads
+
+collections:
+  - name: books
+    label: Books
+    label_singular: Book
+    description: Each book gets its own page in the store. Pictures work best as WebP or JPG under 300 KB.
+    folder: store/content/books
+    extension: json
+    format: json
+    create: true
+    delete: false
+    slug: "{{fields.id}}"
+    identifier_field: title
+    summary: "{{title}}  ({{status}})"
+    sortable_fields: [order, title]
+    editor:
+      preview: false
+    fields:
+      - label: Status
+        name: status
+        widget: select
+        default: soon
+        options:
+          - { label: "On sale (needs the Amazon ASIN)", value: live }
+          - { label: "Coming soon (shows a notify-me form)", value: soon }
+          - { label: "Hidden", value: hidden }
+      - { label: Title, name: title, widget: string }
+      - label: Short id
+        name: id
+        widget: string
+        hint: "Small letters only, e.g. rocco. Also the short link: yoursite.com/rocco"
+        pattern: ["^[a-z0-9-]+$", "Use only small letters, numbers and dashes"]
+      - label: Web address
+        name: slug
+        widget: string
+        hint: "e.g. rocco-the-little-monster-truck (the page is /books/<this>/)"
+        pattern: ["^[a-z0-9-]+$", "Use only small letters, numbers and dashes"]
+      - { label: "Position on the page (1 = first)", name: order, widget: number, value_type: int, default: 9 }
+      - { label: Subtitle, name: subtitle, widget: string, required: false }
+      - { label: "Hook (one short line)", name: hook, widget: string, hint: "e.g. The stocking stuffer that isn’t candy." }
+      - { label: Badge, name: badge, widget: string, hint: "e.g. Christmas favorite" }
+      - { label: "Summary (one line on the book cards)", name: summary, widget: string }
+      - { label: "The story (a short paragraph)", name: story, widget: text }
+      - label: "What’s inside"
+        name: highlights
+        widget: list
+        field: { label: Line, name: line, widget: string }
+      - label: A sweet gift for
+        name: gift_for
+        widget: list
+        required: false
+        field: { label: Occasion, name: occasion, widget: string }
+      - label: Amazon ASIN
+        name: asin
+        widget: string
+        required: false
+        hint: "The code after /dp/ in the book’s Amazon link, e.g. B0HLVTTK7T. Same in every Amazon country."
+      - { label: "Price to show (optional, US dollars, e.g. 8.99)", name: price, widget: string, required: false }
+      - { label: Ages, name: ages, widget: string, default: "3-6" }
+      - { label: Pictures to color, name: pictures, widget: number, value_type: int }
+      - { label: Pages, name: pages, widget: number, value_type: int }
+      - { label: Trim size, name: trim, widget: string, default: "8.5 x 8.5 in" }
+      - { label: Format, name: format, widget: string, default: Paperback }
+      - { label: Book color, name: color, widget: color, required: false }
+      - { label: "Background tint (soft pastel)", name: tint, widget: color, default: "#FFF0C9" }
+      - { label: Cover, name: cover, widget: image }
+      - { label: "Cover description (read aloud by screen readers)", name: cover_alt, widget: string }
+      - { label: Back cover, name: back, widget: image, required: false }
+      - label: Inside pages (black and white)
+        name: inside
+        widget: list
+        required: false
+        summary: "{{fields.text}}"
+        fields:
+          - { label: Picture, name: image, widget: image }
+          - { label: Sentence on the page, name: text, widget: string }
+      - label: Colored-in pages
+        name: colored
+        widget: list
+        required: false
+        summary: "{{fields.text}}"
+        fields:
+          - { label: Picture, name: image, widget: image }
+          - { label: Sentence on the page, name: text, widget: string }
+      - { label: "Pinterest picture (tall, 1000 x 1500)", name: pin, widget: image, required: false }
+      - { label: "Link preview picture (1200 x 630)", name: og_image, widget: image, required: false }
+      - label: Reviews
+        name: reviews
+        widget: list
+        required: false
+        hint: Only real reviews, with the person’s permission.
+        summary: "{{fields.name}}"
+        fields:
+          - { label: Quote, name: quote, widget: text }
+          - { label: "Name (e.g. Sarah, mom of two)", name: name, widget: string }
+
+  - name: store
+    label: Store settings
+    editor:
+      preview: false
+    files:
+      - name: settings
+        label: Store settings
+        file: store/content/settings.json
+        fields:
+          - { label: Store name, name: name, widget: string }
+          - { label: Tagline, name: tagline, widget: string }
+          - { label: "Description (for Google and link previews)", name: description, widget: text }
+          - label: Site address
+            name: url
+            widget: string
+            required: false
+            hint: "Leave empty on Netlify (it fills this in). Or your domain, e.g. https://littlecrayontales.com"
+          - { label: "Announcement bar (leave empty to hide)", name: announcement, widget: string, required: false }
+          - { label: Home page title, name: hero_title, widget: string }
+          - { label: Home page text, name: hero_text, widget: text }
+          - label: More books on the way
+            name: more_coming
+            widget: list
+            required: false
+            field: { label: Book name, name: name, widget: string }
+          - label: Color-in slider (home page)
+            name: compare
+            widget: object
+            fields:
+              - { label: "Book id (e.g. benny)", name: book, widget: string }
+              - { label: Black and white page, name: before, widget: image }
+              - { label: Same page colored in, name: after, widget: image }
+              - { label: Caption, name: caption, widget: string }
+          - label: Social links
+            name: social
+            widget: object
+            fields:
+              - { label: TikTok, name: tiktok, widget: string, required: false }
+              - { label: Instagram, name: instagram, widget: string, required: false }
+              - { label: YouTube, name: youtube, widget: string, required: false }
+              - { label: Pinterest, name: pinterest, widget: string, required: false }
+              - { label: Facebook, name: facebook, widget: string, required: false }
+          - label: Amazon
+            name: amazon
+            widget: object
+            fields:
+              - { label: "Default store (com, co.uk, de, ...)", name: default_store, widget: string, default: com }
+              - { label: "Open each visitor’s own Amazon country store", name: detect_store, widget: boolean, default: true }
+              - { label: "Bag checks out on Amazon in one go", name: bag_checkout, widget: boolean, default: true }
+              - { label: "Amazon author page link (used by yoursite.com/amazon)", name: author_page, widget: string, required: false }
+              - label: Amazon Associates tags (optional)
+                name: tags
+                widget: object
+                collapsed: true
+                hint: Only if you joined Amazon Associates. The footer then shows the required disclosure.
+                fields:
+                  - { label: amazon.com, name: com, widget: string, required: false }
+                  - { label: amazon.co.uk, name: co_uk, widget: string, required: false }
+                  - { label: amazon.ca, name: ca, widget: string, required: false }
+                  - { label: amazon.com.au, name: com_au, widget: string, required: false }
+                  - { label: amazon.de, name: de, widget: string, required: false }
+                  - { label: amazon.fr, name: fr, widget: string, required: false }
+                  - { label: amazon.es, name: es, widget: string, required: false }
+                  - { label: amazon.it, name: it, widget: string, required: false }
+          - label: Free coloring pages
+            name: free_pages
+            widget: object
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Text, name: text, widget: text }
+              - { label: "PDF (path inside store/public)", name: file, widget: string }
+              - label: Preview pictures
+                name: preview
+                widget: list
+                field: { label: Picture, name: picture, widget: image }
+          - label: Questions and answers
+            name: faq
+            widget: list
+            summary: "{{fields.q}}"
+            fields:
+              - { label: Question, name: q, widget: string }
+              - { label: "Answer (links: [text](books/))", name: a, widget: text }
+          - label: Legal notice
+            name: legal_notice
+            widget: text
+            required: false
+            hint: "Only if your country requires one (for example an Impressum in Germany). Adds a Legal notice page."

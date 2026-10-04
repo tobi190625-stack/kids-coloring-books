@@ -17,6 +17,8 @@ on TikTok, Instagram/Facebook Reels and YouTube Shorts.
 | `marketing/ad-scripts.md` | Ready-to-film TikTok / Reels / Shorts scripts and hooks |
 | `prompts/line-art.md` | Prompts for AI image generators that give clean coloring-page line art |
 | `CLAUDE.md` | Instructions Claude follows when you say "make a new book about ..." |
+| `store/` → `site/` | The online store (Netlify-ready): book pages, bag that checks out on Amazon, free pages signup, `/admin/` editor. See `store/README.md` |
+| `tools/make_store_assets.py` | Web pictures, link previews and the free coloring-pages PDF for the store |
 
 ## Make a book (3 commands)
 

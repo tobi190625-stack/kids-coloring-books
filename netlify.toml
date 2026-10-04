@@ -1,0 +1,8 @@
+# Netlify builds the online store from store/ into site/ (see store/README.md).
+# Short links, headers and caching live in site/_redirects and site/_headers (made by the build).
+[build]
+  command = "node store/build.mjs"
+  publish = "site"
+
+[build.environment]
+  NODE_VERSION = "22"

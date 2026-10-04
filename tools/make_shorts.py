@@ -4,7 +4,7 @@
 Usage: python3 tools/make_shorts.py benny          flip-through + 3 reasons
        python3 tools/make_shorts.py nico batch2   the second batch (read-along, before/after,
                                                    which page, gift idea; plus YouTube versions)
-Writes marketing/<slug>/videos/*.mp4 (YouTube versions start with "yt-" and end on "Link in bio").
+Writes campaigns/<slug>/videos/*.mp4 (YouTube versions start with "yt-" and end on "Link in bio").
 No sound: add one in the app.
 All text stays inside the safe zone (x 60-940, y 120-1520) so the app buttons don't cover it.
 """
@@ -331,7 +331,7 @@ def batch2(slug, cfg, out):
 
 def main(slug, which="batch1"):
     cfg = BOOKS[slug]
-    out = ROOT / "marketing" / slug / "videos"
+    out = ROOT / "campaigns" / slug / "videos"
     out.mkdir(parents=True, exist_ok=True)
     if which == "batch2":
         batch2(slug, cfg, out)

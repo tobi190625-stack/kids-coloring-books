@@ -14,7 +14,8 @@ on TikTok, Instagram/Facebook Reels and YouTube Shorts.
 | `books/001-leo-the-lion/` | Finished sample book: story, 8 drawings, `out/interior.pdf`, `out/cover.pdf` |
 | `kdp/specs.md` | KDP print rules (sizes, margins, spine, DPI, AI disclosure) |
 | `kdp/listing-template.md` | Title / subtitle / keywords / description template for the Amazon listing |
-| `marketing/ad-scripts.md` | Ready-to-film TikTok / Reels / Shorts scripts and hooks |
+| `campaigns/` | **One folder per book: every ad (videos, carousels, pins) + ready-to-paste captions + posting log.** Start with `campaigns/THIS-WEEK.md` |
+| `marketing/` | Shared brand pictures, music, coloring color maps, account setup plan, video ideas |
 | `prompts/line-art.md` | Prompts for AI image generators that give clean coloring-page line art |
 | `CLAUDE.md` | Instructions Claude follows when you say "make a new book about ..." |
 

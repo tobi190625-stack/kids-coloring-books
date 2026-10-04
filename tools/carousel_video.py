@@ -2,7 +2,7 @@
 """Turn a carousel (6 slides, 4:5) into a 9:16 Reel/Short: slides one after another with a soft zoom,
 crossfades and background music.
 
-Usage: python3 tools/carousel_video.py marketing/nico/carousel-gift marketing/music/nico-soft.wav OUT.mp4 [bg]
+Usage: python3 tools/carousel_video.py campaigns/nico/carousel-gift marketing/music/nico-soft.wav OUT.mp4 [bg]
 """
 import subprocess
 import sys

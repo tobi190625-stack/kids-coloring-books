@@ -50,7 +50,14 @@ Book 001-leo-the-lion is an old SVG test book, ignore.
 - Every book has its OWN ISBN (free KDP ISBN). Books are linked on Amazon by the AUTHOR NAME, not the ISBN.
 - No trademarked characters/brands (no brainrot characters, Monster Jam, CAT look, My Little Pony, Kittycorn...).
 
-## Marketing toolkit (all in tools/, outputs in marketing/<slug>/)
+## Campaign system (the weekly routine)
+- `campaigns/<slug>/CAMPAIGN.md` = everything for one book: link, every ad file + its caption per platform, posting log, Sunday results.
+- `campaigns/WEEKLY-SYSTEM.md` = the repeatable week (Mon stories+prompts, Tue-Wed art, Thu KDP upload, Fri-Sun ad pack; daily: 1 video to TikTok/YT/IG/FB + 1 pin + story; carousels Tue+Sat; Sunday check).
+- `campaigns/THIS-WEEK.md` = day-by-day plan for the current week. **Rewrite it every Sunday.**
+- New book: `python3 tools/new_campaign.py books/<NNN-book> [amazon link]`, then make the ad pack into campaigns/<slug>/.
+- When the owner says "posted X", tick it in that book's posting log.
+
+## Marketing toolkit (all in tools/, ad outputs in campaigns/<slug>/, shared stuff in marketing/)
 - `make_marketing.py` pins + square ad · `make_carousel.py` 6-slide 4:5 carousels
 - `paint.py` hand-picked realistic coloring maps (marketing/paint/<slug>-p<N>.json) · `make_video.py` coloring videos
   (`--yt` = "Link in bio" end card) · `make_shorts.py` flip-through, 3 reasons, read-along, before/after, which-page, gift
@@ -69,7 +76,6 @@ Book 001-leo-the-lion is an old SVG test book, ignore.
 - Pinterest: 3 Nico pins prepared (free pins, Amazon link in Destination field).
 
 ## Open tasks
-- Build the weekly system (campaigns/ folder: one campaign file per book with ads, captions, schedule, results).
 - Rocco + Posy art (owner generates) → build → publish → campaigns.
 - Author Central page; fix Linktree username; confirm social handles.
 - Possible upgrades: Claude Code on desktop + "Claude in Chrome" extension (browser access); Whisper for

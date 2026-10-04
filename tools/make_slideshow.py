@@ -4,7 +4,7 @@ aloud, a "what's inside" card and the end card.
 
 Usage: python3 tools/make_slideshow.py benny [voice]     (voice default af_heart)
 Needs: kokoro-onnx + model files in /root/kokoro (see marketing/README), colored page maps in
-marketing/paint/. Writes marketing/<slug>/videos/slideshow-voice.mp4
+marketing/paint/. Writes campaigns/<slug>/videos/slideshow-voice.mp4
 """
 import subprocess
 import sys
@@ -112,7 +112,7 @@ def main(slug, voice="af_heart"):
 
     sr = slides[0][1][1]
     name = cfg.get("out", "slideshow")
-    out = ROOT / "marketing" / cfg.get("slug", slug) / "videos" / f"{name}-voice.mp4"
+    out = ROOT / "campaigns" / cfg.get("slug", slug) / "videos" / f"{name}-voice.mp4"
     tmp_v = out.with_suffix(".tmp.mp4")
     w = imageio_ffmpeg.write_frames(str(tmp_v), (W, H), fps=FPS, codec="libx264", quality=8,
                                     macro_block_size=8, output_params=["-pix_fmt", "yuv420p"])

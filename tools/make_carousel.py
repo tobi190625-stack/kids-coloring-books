@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Build a 6-slide Instagram/Facebook/Threads carousel (1080x1350) for a book.
 
-Usage: python3 tools/make_carousel.py marketing/dex/carousel.json
+Usage: python3 tools/make_carousel.py campaigns/dex/carousel.json
 Config keys: slug, title, cover, art_dir, bg, headline [2 lines], pages [art files],
 texts {art file: caption}, benefits [4-5 lines], ages.
-Writes marketing/<slug>/carousel/slide1..6.png
+Writes campaigns/<slug>/carousel/slide1..6.png
 """
 import json
 import sys

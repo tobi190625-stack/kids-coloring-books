@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Build the Pinterest pins and the square ad for a book (same look as marketing/benny).
+"""Build the Pinterest pins and the square ad for a book (same look as campaigns/benny).
 
 Usage: python3 tools/make_marketing.py books/003-nico-the-reindeer
 Needs in book.json: "marketing": {"title", "pin1_head", "pin2_pages": [4 art files],
 "pin3_pages": [2 art files], "colors": {"pin1","pin2","pin3","ad"}} and cover/front.png.
-Writes marketing/<slug>/images/{pin1-cover,pin2-pages,pin3-gift,ad-square}.png
+Writes campaigns/<slug>/images/{pin1-cover,pin2-pages,pin3-gift,ad-square}.png
 """
 import json
 import sys
@@ -131,7 +131,7 @@ def main(book_dir):
     book_dir = Path(book_dir).resolve()
     book = json.loads((book_dir / "book.json").read_text())
     m = book["marketing"]
-    out = ROOT / "marketing" / m["slug"] / "images"
+    out = ROOT / "campaigns" / m["slug"] / "images"
     out.mkdir(parents=True, exist_ok=True)
     cover = Image.open(book_dir / "cover" / "front.png").convert("RGB")
     title = m["title"]

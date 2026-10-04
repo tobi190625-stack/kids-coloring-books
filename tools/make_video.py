@@ -4,7 +4,7 @@
 Usage: python3 tools/make_video.py books/004-dex-the-dinosaur 22 "Watch Dex come to life"
 The page is rendered from out/interior.pdf, its white areas get filled with crayon colors one by
 one, then the cover appears with the title. No sound: add a sound in the app.
-Writes marketing/<slug>/videos/color-page-<N>.mp4 (add --yt for the YouTube end card: yt-color-page-<N>.mp4)
+Writes campaigns/<slug>/videos/color-page-<N>.mp4 (add --yt for the YouTube end card: yt-color-page-<N>.mp4)
 """
 import json
 import random
@@ -173,7 +173,7 @@ def main(book_dir, page_no, hook, yt=False):
     if book_dir.name.startswith("kdp-"):
         slug = book_dir.parent.name.split("-")[1]
     title = book["title"]
-    out_dir = ROOT / "marketing" / slug / "videos"
+    out_dir = ROOT / "campaigns" / slug / "videos"
     out_dir.mkdir(parents=True, exist_ok=True)
 
     import paint

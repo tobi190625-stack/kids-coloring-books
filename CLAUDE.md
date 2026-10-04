@@ -1,5 +1,8 @@
 # Kids Color & Read Books – instructions for Claude
 
+**Start every session by reading `PROJECT-MEMORY.md`** (owner, books, links, decisions, lessons, open tasks).
+Update it whenever something changes.
+
 This folder produces Amazon KDP paperback coloring/story books. Read `README.md` and
 `kdp/specs.md` before changing anything.
 

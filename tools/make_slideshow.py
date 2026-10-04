@@ -30,6 +30,14 @@ BOOKS = {
                   inside=("Big pictures. Big letters.", "Every page has one big picture to color, and one short "
                           "sentence in big, easy letters. Perfect for ages three to six."),
                   outro="Find Benny the Bear's Cozy Day on Amazon. Link in bio!"),
+    "nico": dict(dir="books/003-nico-the-reindeer", bg=("#EEF7FF", "#D3E9FB"),
+                 title="Nico the Little Reindeer\u2019s Snowy Day",
+                 intro=("Meet Nico the reindeer!", "Meet Nico the little reindeer! A cozy Christmas story your "
+                        "kids color, and read."),
+                 pages=[8, 13, 17, 31],
+                 inside=("The stocking stuffer that isn't candy", "Every page has one big picture to color, and one "
+                         "short sentence in big, easy letters. The perfect stocking stuffer for ages three to six."),
+                 outro="Find Nico the Little Reindeer's Snowy Day on Amazon. Link in bio!"),
 }
 
 
@@ -124,6 +132,14 @@ def main(slug, voice="af_heart"):
                     "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-af", "volume=1.5,alimiter=limit=0.95",
                     "-shortest", "-movflags", "+faststart", str(out)], check=True)
     tmp_v.unlink(); wav.unlink()
+    music = ROOT / "marketing" / "music" / f"{slug}-soft.wav"
+    if music.exists():  # soft background music under the voice
+        final = out.with_name("slideshow-voice-music.mp4")
+        subprocess.run([ff, "-loglevel", "error", "-y", "-i", str(out), "-i", str(music), "-filter_complex",
+                        "[1:a]volume=0.22[m];[0:a][m]amix=inputs=2:duration=first:normalize=0,alimiter=limit=0.95[a]",
+                        "-map", "0:v", "-map", "[a]", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k",
+                        "-movflags", "+faststart", str(final)], check=True)
+        print("\u2713", final)
     print("✓", out)
 
 

@@ -1,7 +1,7 @@
 # Marketing plan: Benny the Bear's Cozy Day
 
 Goal: send traffic to the Amazon listing. Amazon does the selling, printing and shipping.
-Link everywhere: the Amazon product page (get it from KDP Bookshelf once the book is live).
+Link everywhere: https://www.amazon.com/dp/B0HLVSLXK7 (live).
 
 ## 1. Pinterest (free, slow burn, lasts for months)
 Images: `images/pin1-cover.png`, `pin2-pages.png`, `pin3-gift.png` (1000x1500).

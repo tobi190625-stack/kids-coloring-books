@@ -30,6 +30,18 @@ BOOKS = {
                   inside=("Big pictures. Big letters.", "Every page has one big picture to color, and one short "
                           "sentence in big, easy letters. Perfect for ages three to six."),
                   outro="Find Benny the Bear's Cozy Day on Amazon. Link in bio!"),
+    "benny2": dict(dir="books/002-benny-the-bear/kdp-8.5x8.5", bg=("#FFF6E0", "#FFE3B8"), slug="benny",
+                   out="slideshow2", music="benny-soft",
+                   title="Benny the Bear\u2019s Cozy Day",
+                   intro=("A day with Benny the bear", "Want to spend a cozy day with Benny the bear? Come on, "
+                          "let's take a peek inside!"),
+                   pages=[16, 21, 23],
+                   reads={16: "Oh, look! A butterfly lands on Benny's nose. Hello!",
+                          21: "Whee! Benny rolls down the grassy hill.",
+                          23: "Found you! Bella hides behind a mushroom."},
+                   inside=("Kids color it. Then read it.", "Your little one colors every page, and reads one short, "
+                           "easy sentence. Perfect for ages three to six."),
+                   outro="Benny the Bear's Cozy Day is on Amazon. Link in bio!"),
     "nico": dict(dir="books/003-nico-the-reindeer", bg=("#EEF7FF", "#D3E9FB"),
                  title="Nico the Little Reindeer\u2019s Snowy Day",
                  intro=("Meet Nico the reindeer!", "Meet Nico the little reindeer! A cozy Christmas story your "
@@ -56,16 +68,15 @@ def paint_hex(h):
 
 
 def main(slug, voice="af_heart"):
-    from kokoro_onnx import Kokoro
     cfg = BOOKS[slug]
     book_dir = ROOT / cfg["dir"]
-    k = Kokoro("/root/kokoro/kokoro-v1.0.int8.onnx", "/root/kokoro/voices-v1.0.bin")
     import pymupdf as fitz
     pdf = fitz.open(book_dir / "out" / "interior.pdf")
 
+    import voice as vmod
+
     def say(text):
-        a, sr = k.create(text, voice=voice, speed=1.0, lang="en-us")
-        return a.astype(np.float32), sr
+        return vmod.speak(text, voice, seed=len(text)), vmod.SR
 
     slides = []  # (image, audio)
     base = bg_img(*cfg["bg"])
@@ -79,7 +90,7 @@ def main(slug, voice="af_heart"):
     for n in cfg["pages"]:
         img, labels, _, _ = paint.regions(book_dir, n)
         col = paint.paint_full(img, labels, paint.load_map(book_dir, n))
-        text = " ".join(pdf[n - 1].get_text().split())
+        text = cfg.get("reads", {}).get(n) or " ".join(pdf[n - 1].get_text().split())
         im = base.copy(); d = ImageDraw.Draw(im)
         centered(d, cfg["title"], 170, 48, width=W, max_w=960)
         card_in_box(im, Image.fromarray(col), (60, 290), (960, 960), 34)
@@ -100,7 +111,8 @@ def main(slug, voice="af_heart"):
     slides.append((end_card(book_dir, cfg["bg"][0], yt=True), say(cfg["outro"])))
 
     sr = slides[0][1][1]
-    out = ROOT / "marketing" / slug / "videos" / "slideshow-voice.mp4"
+    name = cfg.get("out", "slideshow")
+    out = ROOT / "marketing" / cfg.get("slug", slug) / "videos" / f"{name}-voice.mp4"
     tmp_v = out.with_suffix(".tmp.mp4")
     w = imageio_ffmpeg.write_frames(str(tmp_v), (W, H), fps=FPS, codec="libx264", quality=8,
                                     macro_block_size=8, output_params=["-pix_fmt", "yuv420p"])
@@ -126,17 +138,19 @@ def main(slug, voice="af_heart"):
         audio.append(seg)
     w.close()
     wav = out.with_suffix(".wav")
-    sf.write(wav, np.concatenate(audio), sr)
+    sf.write(wav.with_suffix(".raw.wav"), np.concatenate(audio), sr)
+    vmod.warm(wav.with_suffix(".raw.wav"), wav)
+    wav.with_suffix(".raw.wav").unlink()
     ff = imageio_ffmpeg.get_ffmpeg_exe()
     subprocess.run([ff, "-loglevel", "error", "-y", "-i", str(tmp_v), "-i", str(wav), "-map", "0:v", "-map", "1:a",
                     "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-af", "volume=1.5,alimiter=limit=0.95",
                     "-shortest", "-movflags", "+faststart", str(out)], check=True)
     tmp_v.unlink(); wav.unlink()
-    music = ROOT / "marketing" / "music" / f"{slug}-soft.wav"
+    music = ROOT / "marketing" / "music" / f"{cfg.get('music', slug + '-soft')}.wav"
     if music.exists():  # soft background music under the voice
-        final = out.with_name("slideshow-voice-music.mp4")
+        final = out.with_name(f"{name}-voice-music.mp4")
         subprocess.run([ff, "-loglevel", "error", "-y", "-i", str(out), "-i", str(music), "-filter_complex",
-                        "[1:a]volume=0.22[m];[0:a][m]amix=inputs=2:duration=first:normalize=0,alimiter=limit=0.95[a]",
+                        "[1:a]volume=0.2,afade=t=in:d=0.4[m];[0:a][m]amix=inputs=2:duration=first:normalize=0,alimiter=limit=0.95[a]",
                         "-map", "0:v", "-map", "[a]", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k",
                         "-movflags", "+faststart", str(final)], check=True)
         print("\u2713", final)

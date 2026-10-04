@@ -22,8 +22,8 @@ Last updated: 2026-10-04. Keep this file current: add decisions, links and lesso
 | 1 | books/002-benny-the-bear (final files in kdp-8.5x8.5/) | Benny the Bear's Cozy Day | 8.5x8.5 no bleed | LIVE | https://www.amazon.com/dp/B0HLVSLXK7 |
 | 2 | books/003-nico-the-reindeer | Nico the Little Reindeer's Snowy Day | 8.5x8.5 no bleed | LIVE | https://www.amazon.com/dp/B0HLVTTK7T |
 | 3 | books/004-dex-the-dinosaur | Dex the Little Dinosaur's Big Day | 8.5x11 no bleed | built; owner said NOT to post/market it | - |
-| 4 | books/005-rocco-monster-truck (branch books/rocco-and-posy) | Rocco the Little Monster Truck's Big Jump | 8.5x8.5 | prompts ready, waiting for art | - |
-| 5 | books/006-posy-the-unicorn (branch books/rocco-and-posy) | Posy the Little Unicorn's Rainbow Birthday | 8.5x8.5 | prompts ready, waiting for art | - |
+| 4 | books/005-rocco-monster-truck (copied into main 2026-10-04) | Rocco the Little Monster Truck's Big Jump | 8.5x8.5 | BUILT 2026-10-04, check_kdp passed; final files out/Rocco-INSIDE-manuscript.pdf + out/Rocco-COVER.pdf; publish 2026-10-05 | - |
+| 5 | books/006-posy-the-unicorn (copied into main 2026-10-04) | Posy the Little Unicorn's Rainbow Birthday | 8.5x8.5 | BUILT 2026-10-04, check_kdp passed; final files out/Posy-INSIDE-manuscript.pdf + out/Posy-COVER.pdf (front v2, back v2) | - |
 Book 001-leo-the-lion is an old SVG test book, ignore.
 
 ## Accounts / links
@@ -31,8 +31,21 @@ Book 001-leo-the-lion is an old SVG test book, ignore.
   Should show the 2 book links FIRST (big "featured" cards), socials below.
 - Socials: TikTok, Instagram, YouTube, Pinterest, Facebook Page "Little Crayon Tales" (handles assumed
   @littlecrayontales; confirm exact handles with the owner before using them in links).
-- Amazon Author Central: not set up yet (books may show different author names; check "by ..." on both pages).
+- Amazon Author Central: not set up yet.
+- Author name (checked 2026-10-04): Nico = "František Chobot" (correct), Benny = "Františkek Chobot" (TYPO).
+  Paperback author field locks 72 h after publishing, so the fix is a KDP Support typo request from the
+  friend's KDP account (not a new edition). Use exactly "František Chobot" for every future book.
 - Own landing page (Netlify-ready): `site/` (drag the folder onto app.netlify.com/drop). Social URLs in it are guesses.
+
+## Owner's Windows laptop (local Claude Code session, since 2026-10-04)
+- Project at `C:\Users\tobi1\Documents\GitHub\kids-coloring-books` (downloaded as zip; git is NOT installed, so changes
+  don't sync to GitHub yet). Unmerged branch copies in `..\kids-coloring-books-branches\` (online-store).
+- Python: `%LOCALAPPDATA%\Programs\Python\Python312\python.exe` (not on PATH). Always set `PYTHONUTF8=1` first,
+  or the tools crash reading book.json (Windows cp1252).
+- Claude in Chrome works: Claude can open ChatGPT in its own tab and paste the prompts, then download the images via
+  ChatGPT's backend (files in order: title, belongs, pages 1-29, end, then covers).
+  Don't poll /backend-api/conversation often: ChatGPT returns 429 "Too many requests"; watch the page text instead.
+  ChatGPT often makes 2 versions of a cover; compare them side by side and pick.
 
 ## How we make a book (proven pipeline)
 1. Story + prompts: book.json (29 story pages + title/belongs/end art = 32 pictures), `chatgpt-prompts.md`

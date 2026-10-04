@@ -1,0 +1,180 @@
+{
+  "title": "Rocco the Little Monster Truck’s Big Jump",
+  "subtitle": "A Bold & Easy Color & Read Story Book for Kids Ages 3-6",
+  "title_page_subtitle": "A Color & Read Story Book",
+  "author": "",
+  "trim": "8.5x8.5",
+  "bleed": false,
+  "paper": "white",
+  "font": "fonts/Grandstander-ExtraBold.ttf",
+  "layout": "fullbleed",
+  "text_style": "bubble",
+  "text_size": 41,
+  "blank_backs": false,
+  "title_art": "art/title.png",
+  "belongs_art": "art/belongs.png",
+  "end_art": "art/end.png",
+  "ending": "The End",
+  "pages": [
+    {
+      "text": "Rocco the monster truck wakes up. It is Mud Day!",
+      "art": "art/01.png",
+      "scene": "waking up in his cozy garage, eyes wide and happy, sunshine coming through the garage window"
+    },
+    {
+      "text": "Rocco washes his big, round tires. Scrub, scrub!",
+      "art": "art/02.png",
+      "scene": "being washed with a big sponge and soap bubbles, his giant tires shiny, a bucket nearby"
+    },
+    {
+      "text": "Honk, honk! Rocco drives to the big show.",
+      "art": "art/03.png",
+      "scene": "driving happily down a country road toward a big show arena with flags far away"
+    },
+    {
+      "text": "Look! The track has big ramps and lots of mud.",
+      "art": "art/04.png",
+      "scene": "looking amazed at a dirt track with two big ramps, muddy puddles and cones"
+    },
+    {
+      "text": "The big trucks are SO tall. Rocco is small.",
+      "art": "art/05.png",
+      "scene": "standing next to two huge friendly monster trucks, looking up at them, he is much smaller"
+    },
+    {
+      "text": "Zoom! A big truck flies over the ramp.",
+      "art": "art/06.png",
+      "scene": "watching a big friendly monster truck flying high over a ramp, motion lines behind it"
+    },
+    {
+      "text": "Rocco tries the big ramp. His wheels wobble.",
+      "art": "art/07.png",
+      "scene": "at the bottom of a very tall ramp, wobbling nervously, little wobble lines around his tires"
+    },
+    {
+      "text": "Splat! Rocco lands in the mud.",
+      "art": "art/08.png",
+      "scene": "landed in a big mud puddle with funny mud splashes flying, eyes squeezed shut, still smiling a little"
+    },
+    {
+      "text": "Rocco feels a little sad.",
+      "art": "art/09.png",
+      "scene": "sitting still with mud spots on his body, looking a bit sad, a small puddle around his tires"
+    },
+    {
+      "text": "Dot the digger rolls over to help.",
+      "art": "art/10.png",
+      "scene": "and Dot the digger rolling up beside him on her tracks, Dot smiling kindly"
+    },
+    {
+      "text": "Dot builds a little ramp. Dig, dig, dig!",
+      "art": "art/11.png",
+      "scene": "watching while Dot the digger scoops dirt with her bendy arm to build a small ramp"
+    },
+    {
+      "text": "Gus the garbage truck says, “You can do it!”",
+      "art": "art/12.png",
+      "scene": "with Gus the garbage truck cheering happily next to him, small heart shapes around Gus"
+    },
+    {
+      "text": "Rocco tries the little ramp. Bump!",
+      "art": "art/13.png",
+      "scene": "driving up a small dirt ramp, a little bump line under his tires, Dot and Gus watching"
+    },
+    {
+      "text": "He tries again. Bounce! A bit higher!",
+      "art": "art/14.png",
+      "scene": "bouncing a little off the small ramp, all four tires in the air, big smile"
+    },
+    {
+      "text": "One more time. Whee! Rocco flies!",
+      "art": "art/15.png",
+      "scene": "flying off the small ramp with a huge happy smile, motion lines behind him"
+    },
+    {
+      "text": "Rocco, Dot and Gus cheer together.",
+      "art": "art/16.png",
+      "scene": ", Dot the digger and Gus the garbage truck cheering together, little stars and hearts in the air"
+    },
+    {
+      "text": "Oh no! Gus is stuck in the deep mud.",
+      "art": "art/17.png",
+      "scene": "looking worried at Gus the garbage truck whose wheels are stuck deep in a big mud puddle"
+    },
+    {
+      "text": "Rocco pushes with his big tires. Push, push!",
+      "art": "art/18.png",
+      "scene": "pushing Gus the garbage truck from behind with his big tires, effort lines around him"
+    },
+    {
+      "text": "Dot pulls with her long arm. Pull, pull!",
+      "art": "art/19.png",
+      "scene": "and Dot the digger helping: Dot pulls Gus with her long bendy arm while Rocco pushes"
+    },
+    {
+      "text": "Pop! Gus is free. Hooray!",
+      "art": "art/20.png",
+      "scene": "and Dot cheering as Gus the garbage truck pops out of the mud with a happy face, mud drops flying"
+    },
+    {
+      "text": "Now it is time for the big jump.",
+      "art": "art/21.png",
+      "scene": "at the bottom of the very tall ramp again, looking brave and determined, flags on the ramp"
+    },
+    {
+      "text": "Rocco zooms up the big ramp. Vroom!",
+      "art": "art/22.png",
+      "scene": "racing up the tall ramp at full speed, speed lines and a little puff of dust behind him"
+    },
+    {
+      "text": "He flies high up in the sky!",
+      "art": "art/23.png",
+      "scene": "flying high in the sky above the ramp with a big happy smile, clouds and a few stars around him"
+    },
+    {
+      "text": "Bump! Rocco lands on all four wheels.",
+      "art": "art/24.png",
+      "scene": "landing on all four giant tires, a small dust cloud around him, a big proud smile"
+    },
+    {
+      "text": "Everyone cheers for little Rocco.",
+      "art": "art/25.png",
+      "scene": "surrounded by Dot, Gus and two big friendly monster trucks cheering, confetti in the air"
+    },
+    {
+      "text": "Rocco gets a shiny gold star.",
+      "art": "art/26.png",
+      "text_pos": "bottom",
+      "text_align": "center",
+      "scene": "proudly holding up a big shiny star trophy with his tire, little sparkles around it"
+    },
+    {
+      "text": "The friends clean up the muddy track.",
+      "art": "art/27.png",
+      "scene": ", Dot the digger and Gus the garbage truck cleaning up the track together, Gus collecting trash, Dot smoothing the dirt"
+    },
+    {
+      "text": "Rocco is tired. What a big day!",
+      "art": "art/28.png",
+      "scene": "driving back into his cozy garage at sunset, yawning, the sun going down behind him"
+    },
+    {
+      "text": "Goodnight, Rocco. Sweet dreams!",
+      "art": "art/29.png",
+      "scene": "fast asleep in his cozy garage under a soft blanket, eyes closed, a crescent moon and stars outside the window"
+    }
+  ],
+  "special": {
+    "title": "Rocco the little monster truck, Dot the digger and Gus the garbage truck standing together happily at a dirt track with a big ramp, cones and a few flags; keep the top third of the picture open sky with only a few simple clouds",
+    "belongs": "Rocco the little monster truck smiling and waving one tire from inside his cozy garage, a toolbox and a tire nearby; keep the bottom third of the picture calm (just the plain garage floor) with nothing small or busy",
+    "end": "Rocco, Dot and Gus waving goodbye together on the dirt track at sunset, smiling at the viewer; keep the top third of the picture open sky with only a few simple clouds"
+  },
+  "cover": {
+    "front_image": "cover/front.png",
+    "back_image": "cover/back.png",
+    "front_erase": [],
+    "back_erase": [],
+    "text_color": "#3B4A63",
+    "blurb": "Color and read along with Rocco!\n\nIt’s Mud Day, and Rocco is the smallest monster truck at the big show. With help from Dot the digger and Gus the garbage truck, he practices, bounces, saves a stuck friend and makes the biggest jump of all.\n\nEvery page has one short sentence in BIG, easy letters and one bold, thick-lined picture that’s easy to color. Perfect for ages 3-6."
+  }
+}

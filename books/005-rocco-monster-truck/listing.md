@@ -10,7 +10,7 @@ Rocco the Little Monster Truck's Big Jump
 
 **Subtitle:**
 ```
-A Monster Truck Coloring Book for Kids Ages 3-6 | Color & Read Story with Big Easy Words | Bold and Easy Pages for Toddlers & Preschool
+A Monster Truck Coloring Book for Kids Ages 3-6: Color & Read Story
 ```
 (Search-phrase-first formula from `marketing/ad-research/07-amazon-ads.md`: shoppers type "monster truck coloring book", not "Rocco".)
 

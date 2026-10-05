@@ -10,7 +10,7 @@ Posy the Little Unicorn's Rainbow Birthday
 
 **Subtitle:**
 ```
-A Unicorn Coloring Book for Girls Ages 3-6 | Color & Read Story with Big Easy Words | Cute Bold and Easy Pages with Kittens & Rainbows
+A Unicorn Coloring Book for Girls Ages 3-6: Color & Read Story
 ```
 (Search-phrase-first formula from `marketing/ad-research/07-amazon-ads.md`: shoppers type "unicorn coloring book for girls", not "Posy".)
 

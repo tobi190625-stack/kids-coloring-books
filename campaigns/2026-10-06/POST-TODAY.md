@@ -1,5 +1,7 @@
 # Tuesday Oct 6: what to post (all videos already have voice + soft music, all in the book's real colors)
 
+**Posting board with all videos + copy buttons:** https://claude.ai/artifact/9xz8frpo8BjgyrLMjyPrQ2 · spreadsheet: `POSTING-PLAN-Tue-Oct-6.xlsx`
+
 Captions to copy: the `CAPTIONS.md` in each folder. **Don't add another sound** to the videos.
 
 | Time (CZ) | Instagram + Facebook (Business Suite, tick both) | TikTok | YouTube Shorts | Pinterest |

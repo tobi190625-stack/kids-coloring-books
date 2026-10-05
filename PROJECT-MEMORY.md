@@ -95,7 +95,8 @@ Book 001-leo-the-lion is an old SVG test book, ignore.
 - Pinterest: 3 Nico pins prepared (free pins, Amazon link in Destination field).
 
 ## Open tasks
-- Rocco + Posy art (owner generates) → build → publish → campaigns.
+- Rocco + Posy: owner publishes on KDP (Oct 5), sends the amazon links → make their campaigns (tools/new_campaign.py + ad pack).
+- KDP fix list for Benny/Nico (price $8.99, series, Author Central, A+, keywords): see marketing/ad-research/SUMMARY.md.
 - Author Central page; fix Linktree username; confirm social handles.
 - Possible upgrades: Claude Code on desktop + "Claude in Chrome" extension (browser access); Whisper for
   speech-to-text in reels; owner can export Instagram "Saved" via Accounts Center → Download your information.

@@ -147,7 +147,7 @@ def page_text(pdf, n):
     return " ".join(fitz.open(pdf)[n - 1].get_text().split())
 
 
-def read_along(cfg, out, page_nos, yt=False):
+def read_along(cfg, out, page_nos, yt=False, header=None):
     """Pages one by one; the sentence underneath lights up word by word, like reading together."""
     book_dir = ROOT / cfg["dir"]
     pdf = book_dir / "out" / "interior.pdf"
@@ -159,7 +159,7 @@ def read_along(cfg, out, page_nos, yt=False):
         words = page_text(pdf, n).split()
         base = Image.new("RGBA", (W, H), bg)
         d = ImageDraw.Draw(base)
-        centered(d, "Read along with " + cfg["hero"], 125, 74, width=W, max_w=880)
+        centered(d, header or "Read along with " + cfg["hero"], 125, 74, width=W, max_w=880)
         centered(d, cfg["title"], 228, 42, width=W, max_w=880)
         paste_card(base, im, ((W - im.width) // 2, 320), im.size, 28)
         ty0 = 320 + im.height + 45

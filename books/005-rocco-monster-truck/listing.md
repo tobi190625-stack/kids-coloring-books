@@ -10,10 +10,11 @@ Rocco the Little Monster Truck's Big Jump
 
 **Subtitle:**
 ```
-A Bold & Easy Color & Read Story Book for Boys Ages 3-6 | 29 Monster Truck & Construction Coloring Pages with Big Easy Words
+A Monster Truck Coloring Book for Kids Ages 3-6 | Color & Read Story with Big Easy Words | Bold and Easy Pages for Toddlers & Preschool
 ```
+(Search-phrase-first formula from `marketing/ad-research/07-amazon-ads.md`: shoppers type "monster truck coloring book", not "Rocco".)
 
-**Series:** leave empty  ·  **Edition number:** leave empty
+**Series:** create/choose **`Little Crayon Tales: Color & Read Story Books`** (KDP: Series > Add to series; add Benny and Nico to it too, from their Bookshelf "..." menu)  ·  **Edition number:** leave empty
 **Author:** First name `František`, Last name `Chobot` (exactly like Nico; check the spelling twice, it locks 72 hours after publishing)
 **Contributors:** leave empty
 

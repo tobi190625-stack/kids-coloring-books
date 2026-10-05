@@ -10,10 +10,11 @@ Posy the Little Unicorn's Rainbow Birthday
 
 **Subtitle:**
 ```
-A Bold & Easy Color & Read Story Book for Girls Ages 3-6 | 29 Cute Unicorn, Kitten & Rainbow Coloring Pages with Big Easy Words
+A Unicorn Coloring Book for Girls Ages 3-6 | Color & Read Story with Big Easy Words | Cute Bold and Easy Pages with Kittens & Rainbows
 ```
+(Search-phrase-first formula from `marketing/ad-research/07-amazon-ads.md`: shoppers type "unicorn coloring book for girls", not "Posy".)
 
-**Series:** leave empty  ·  **Edition number:** leave empty
+**Series:** choose **`Little Crayon Tales: Color & Read Story Books`** (same series as Rocco, Benny and Nico)  ·  **Edition number:** leave empty
 **Author:** First name `František`, Last name `Chobot` (exactly like Nico; check the spelling twice, it locks 72 hours after publishing)
 **Contributors:** leave empty
 

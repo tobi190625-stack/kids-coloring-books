@@ -37,9 +37,15 @@ Book 001-leo-the-lion is an old SVG test book, ignore.
   friend's KDP account (not a new edition). Use exactly "František Chobot" for every future book.
 - Own landing page (Netlify-ready): `site/` (drag the folder onto app.netlify.com/drop). Social URLs in it are guesses.
 
+## Ad research verdict (Oct 2026): `marketing/ad-research/SUMMARY.md` (10 platform reports next to it)
+- Post Mon-Fri 19:00-21:00 Czech time (= US afternoon), Sat-Sun 15:00-16:00. Nico 2 of every 3 posts until Dec 10.
+- Formats: `tools/make_ads.py` guess (coloring timelapse + question), three (same page 3 ways, 1/2/3), readit
+  ("Can your 4-year-old read this?"), pin (2:3 before/after with keyword title). Daily packs go in `campaigns/<date>/<platform>/`.
+- Amazon showed Benny and Nico at $12.00 (plan $8.99): the owner should check the KDP price. Series: "Little Crayon Tales: Color & Read Story Books".
+
 ## Owner's Windows laptop (local Claude Code session, since 2026-10-04)
-- Project at `C:\Users\tobi1\Documents\GitHub\kids-coloring-books` (downloaded as zip; git is NOT installed, so changes
-  don't sync to GitHub yet). Unmerged branch copies in `..\kids-coloring-books-branches\` (online-store).
+- Project at `C:\Users\tobi1\Documents\GitHub\kids-coloring-books`, a git clone of github.com/tobi190625-stack/kids-coloring-books
+  (Git at `C:\Program Files\Git\cmd\git.exe`, sign-in saved). Commit + push to main after work. Online-store branch copy in `..\kids-coloring-books-branches\`.
 - Python: `%LOCALAPPDATA%\Programs\Python\Python312\python.exe` (not on PATH). Always set `PYTHONUTF8=1` first,
   or the tools crash reading book.json (Windows cp1252).
 - Claude in Chrome works: Claude can open ChatGPT in its own tab and paste the prompts, then download the images via

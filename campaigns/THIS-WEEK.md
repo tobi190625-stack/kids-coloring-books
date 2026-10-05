@@ -1,6 +1,7 @@
 # This week: Mon Oct 5 to Sun Oct 11, 2026
 
-Post at 15:00-17:00 Czech time. Captions are in that book's CAMPAIGN.md: copy the TikTok, YouTube, Instagram or Facebook box.
+**NEW (ad research, Oct 5): post Mon-Fri at 19:00-21:00 Czech time, Sat-Sun at 15:00-16:00** (15:00 on weekdays is still morning in the US). Nico gets 2 of every 3 posts until Dec 10. See `marketing/ad-research/SUMMARY.md`.
+**Monday Oct 5 uses the NEW ad pack in `campaigns/2026-10-05/` instead of the Mon 5 row below** (open `POST-TODAY.md` there). Captions are in that book's CAMPAIGN.md: copy the TikTok, YouTube, Instagram or Facebook box.
 The same video goes to TikTok, Instagram Reel and Facebook Reel. YouTube gets the `yt-` file.
 Nico (Christmas) gets every 2nd day. Dex is on hold. If a YouTube file was already posted, skip YouTube that day.
 

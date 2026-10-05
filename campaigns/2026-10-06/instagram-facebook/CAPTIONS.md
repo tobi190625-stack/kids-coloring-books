@@ -9,9 +9,10 @@ Get it on Amazon: https://www.amazon.com/dp/B0HLVTTK7T (Instagram: link in bio)
 ```
 **Story right after:** open the Reel > paper-plane icon > "Add to story" > sticker > **Link** > `https://www.amazon.com/dp/B0HLVTTK7T` > link text `Read Nico's story` > Share. Do it on Facebook too.
 
-## 21:00 (optional, only if you have time) · 2-OPTIONAL-benny-find-bella.mp4 (Reel)
+## 21:00 · 2-benny-find-bella.mp4 (Reel)
 ```
 Can you find Bella before the end? 🐻🐰 Benny is playing hide and seek, and the whole page gets colored. Kids color every page of this story AND read it. Ages 3-6.
 Get it on Amazon: https://www.amazon.com/dp/B0HLVSLXK7 (Instagram: link in bio)
 #coloringbook #kidsactivities #screenfree #toddleractivities #colorwithme
 ```
+**Story right after (Benny):** share the Reel to your Story > Link sticker > `https://www.amazon.com/dp/B0HLVSLXK7` > link text `Find Bella's book`.

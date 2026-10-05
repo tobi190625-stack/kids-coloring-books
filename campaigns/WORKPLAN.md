@@ -9,8 +9,8 @@ Being consistent (same time, every day) matters more than posting a lot.
 |---|---|---|---|
 | **TikTok** | **2** (19:00 and 21:00) | **+1 photo carousel** on Mon, Thu, Sat | pin a question comment under video 1 |
 | **YouTube Shorts** | **2** (the `yt-` files) | YouTube has no carousels. A few times a week one of the 2 Shorts is a carousel **video** (`carousel-...-voice.mp4`), never a 3rd | - |
-| **Instagram** | **1 Reel** (19:00) | **+1 carousel post** on Mon, Thu, Sat (20:00) | Story with Link sticker after every post |
-| **Facebook** | **1 Reel** (same as Instagram) | **+1 carousel post** on Mon, Thu, Sat | post via Meta Business Suite = IG + FB in one go; Story with link |
+| **Instagram** | **2 Reels**: one per live book (19:00 + 21:00) | **+1 carousel post** on Mon, Thu, Sat (20:00) | Story with Link sticker after every post |
+| **Facebook** | **2 Reels** (the same 2 as Instagram) | **+1 carousel post** on Mon, Thu, Sat | post via Meta Business Suite = IG + FB in one go; Story with link |
 | **Pinterest** | **1 pin** (video pin or image pin) | - | Destination link = Amazon |
 
 **Times (Czech):** Mon-Fri 19:00-21:00 · Sat-Sun 15:00-16:00 (= when US parents are on their phones).
@@ -18,7 +18,7 @@ Being consistent (same time, every day) matters more than posting a lot.
 ## Per week
 | | TikTok | YouTube Shorts | Instagram | Facebook | Pinterest |
 |---|---|---|---|---|---|
-| Videos | 14 | 14 | 7 Reels | 7 Reels | - |
+| Videos | 14 | 14 | 14 Reels | 14 Reels | - |
 | Carousels | 3 (photo posts) | 2-3 (as video, inside the 14) | 3 | 3 | - |
 | Pins | - | - | - | - | 7 |
 

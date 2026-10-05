@@ -32,9 +32,13 @@ Being consistent (same time, every day) matters more than posting a lot.
 - **Carousel (photo)** = 6 slides posted as a photo post (Instagram/Facebook carousel, TikTok photo mode). Swipe = more time on the post = more reach.
 - **Carousel video** = the same 6 slides turned into a video with voice (`carousel-...-voice.mp4`). Post it as a Short / Reel on another day than the photo version.
 
+## Rule: real book colors only
+Every coloring video uses the page's color map (`marketing/paint/<book>-p<N>.json`), so it looks like the cover and the book.
+No random, rainbow or "2-crayon" colors (tested Oct 5, the owner said it looks bad). "Same page, 3 ways" is retired for that reason.
+
 ## Formats to rotate (from the research, best first)
 1. Guess the colors before the end (coloring timelapse)
-2. Same page, 3 ways: comment 1, 2 or 3
+2. Story slideshow in parts (bedtime story part 1, 2, 3...: "follow for part 2")
 3. Can your 4-year-old read this? (read-along)
 4. Parent problem hook: "30 minutes. Zero screens." (slideshow + voice)
 5. Carousel / carousel video (gift angle for Nico)

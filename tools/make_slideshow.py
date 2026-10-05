@@ -77,6 +77,20 @@ BOOKS = {
                         inside=None,
                         outro="Find out in part two, tomorrow! The whole story is a coloring book your kids "
                               "color, and read. Link in bio!"),
+    # part 2 answers part 1's question ("What could they be making?"), ends on a new cliffhanger + the book link
+    "nico-story2": dict(dir="books/003-nico-the-reindeer", bg=("#EEF7FF", "#D3E9FB"), slug="nico",
+                        out="bedtime-story-part2", music="nico-soft",
+                        title="Bedtime story: Nico, part 2",
+                        intro=("Bedtime story: part 2", "Welcome back! Yesterday, Nico and Tilly rolled a big, "
+                               "round snowball. Can you guess what they are making?"),
+                        pages=[14, 15, 16, 17],
+                        reads={14: "A snowman! They stack the snowballs, one on top of the other.",
+                               15: "But the snowman has no face. He needs a nose. A carrot!",
+                               16: "Tilly climbs up on a little stool, and adds two shiny button eyes.",
+                               17: "And Nico gives the snowman his very own red scarf. Now he's perfect!"},
+                        inside=None,
+                        outro="What will Nico and Tilly do next? Part three is tomorrow. Or color and read "
+                              "the whole story tonight. Link in bio!"),
 }
 
 

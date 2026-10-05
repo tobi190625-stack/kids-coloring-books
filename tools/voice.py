@@ -18,7 +18,11 @@ def kokoro():
     global _K
     if _K is None:
         from kokoro_onnx import Kokoro
-        _K = Kokoro("/root/kokoro/kokoro-v1.0.int8.onnx", "/root/kokoro/voices-v1.0.bin")
+        # cloud sessions: /root/kokoro · owner's Windows laptop: ~/kokoro · or set KOKORO_DIR
+        import os
+        dirs = [os.environ.get("KOKORO_DIR", ""), str(Path.home() / "kokoro"), "/root/kokoro"]
+        d = next(Path(x) for x in dirs if x and (Path(x) / "voices-v1.0.bin").exists())
+        _K = Kokoro(str(d / "kokoro-v1.0.int8.onnx"), str(d / "voices-v1.0.bin"))
     return _K
 
 

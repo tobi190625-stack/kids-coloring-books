@@ -7,7 +7,7 @@ Every day has its own pack folder `campaigns/<date>/` (one folder per platform +
 | Day | Pack | Main video (all platforms) | 2nd video (TikTok + Shorts) | Carousel | Pin |
 |---|---|---|---|---|---|
 | Mon 5 | `2026-10-05/` READY | Nico guess the colors (voice) | Benny 3 ways / Benny can-they-read (voice) | Nico gift | Nico video pin |
-| Tue 6 | files ready, pack on request | Nico "30 minutes. Zero screens." `nico/videos/screenfree-voice-music.mp4` | Benny can-they-read `benny/videos/can-they-read-voice.mp4` (YT: `yt-3-ways-voice.mp4`) | - | Nico before/after |
+| Tue 6 | files ready, pack on request | **Nico bedtime story PART 2 (promised in Mon Reel!)** + Nico "30 minutes. Zero screens." `nico/videos/screenfree-voice-music.mp4` | Benny can-they-read `benny/videos/can-they-read-voice.mp4` (YT: `yt-3-ways-voice.mp4`) | - | Nico before/after |
 | Wed 7 | made Tue | Nico carousel video `nico/videos/carousel-gift-voice.mp4` | Benny | - | Benny before/after |
 | Thu 8 | made Wed | Nico (new coloring page, voice) | Benny | Benny gift | Nico pin |
 | Fri 9 | made Thu | Nico | Nico | - | Nico pin |

@@ -21,3 +21,10 @@ The stocking stuffer that isn't candy 🎁 Nico the Little Reindeer's Snowy Day:
 Same page, 3 ways. Which one would your kid pick: 1, 2 or 3? 🧸🪁 Comment your number! From Benny the Bear's Cozy Day, a color & read story book for ages 3-6. Link in bio
 #coloringbook #kidsactivities #screenfree #preschool #colorwithme
 ```
+
+## 21:00 · 4-nico-bedtime-story-part1.mp4 (Reel, Instagram + Facebook via Business Suite)
+```
+Bedtime story: Nico's Snowy Day, part 1 🦌❄️ What are Nico and Tilly building? Part 2 tomorrow! Follow so you don't miss it. The whole story is a Christmas coloring book kids color AND read, ages 3-6.
+Get it on Amazon: https://www.amazon.com/dp/B0HLVTTK7T (Instagram: link in bio)
+#bedtimestory #christmascoloring #kidsbooks #toddleractivities #storytime
+```

@@ -63,6 +63,20 @@ BOOKS = {
                             inside=("Color it. Then read it.", "They color the picture, then read the sentence. "
                                     "And it makes a great stocking stuffer."),
                             outro="Nico the Little Reindeer's Snowy Day. It's on Amazon, link in bio!"),
+    # research format #6 (ad-research/03 + SUMMARY): faceless narrated story slideshow, "part 1" = follow for part 2
+    "nico-story1": dict(dir="books/003-nico-the-reindeer", bg=("#EEF7FF", "#D3E9FB"), slug="nico",
+                        out="bedtime-story-part1", music="nico-soft",
+                        title="Bedtime story: Nico, part 1",
+                        intro=("Bedtime story: part 1", "Time for a cozy bedtime story. This is Nico, the little "
+                               "reindeer, and today is his very first snowy day."),
+                        pages=[7, 8, 9, 13],
+                        reads={7: "Whoosh! The door opens to a snowy world.",
+                               8: "Nico lies down in the soft snow, and makes his very first snow angel.",
+                               9: "And look who comes waddling by. It's Tilly the penguin!",
+                               13: "Together, they roll a big, round snowball. What could they be making?"},
+                        inside=None,
+                        outro="Find out in part two, tomorrow! The whole story is a coloring book your kids "
+                              "color, and read. Link in bio!"),
 }
 
 
@@ -108,9 +122,9 @@ def main(slug, voice="af_heart"):
         centered(d, cfg["title"], 170, 48, width=W, max_w=960)
         card_in_box(im, Image.fromarray(col), (60, 290), (960, 960), 34)
         slides.append((im, say(text)))
-    # what's inside
+    # what's inside (skipped when a config sets inside=None, e.g. story episodes)
     im = base.copy(); d = ImageDraw.Draw(im)
-    centered(d, cfg["inside"][0], 160, 76, width=W, max_w=960)
+    centered(d, (cfg.get("inside") or ("",))[0], 160, 76, width=W, max_w=960)
     ty = 330
     for line in ["One big picture on every page", "One short sentence in BIG letters",
                  "Kids color the story AND read it", "Perfect for ages 3-6"]:
@@ -119,7 +133,8 @@ def main(slug, voice="af_heart"):
         for k2, ln in enumerate(wrap(d, line, 58, 760)):
             d.text((220, ty + 8 + k2 * 70), ln, font=font(58), fill=NAVY)
         ty += 190
-    slides.append((im, say(cfg["inside"][1])))
+    if cfg.get("inside"):
+        slides.append((im, say(cfg["inside"][1])))
     # end
     slides.append((end_card(book_dir, cfg["bg"][0], yt=True), say(cfg["outro"])))
 

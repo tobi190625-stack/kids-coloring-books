@@ -50,6 +50,19 @@ BOOKS = {
                  inside=("The stocking stuffer that isn't candy", "Every page has one big picture to color, and one "
                          "short sentence in big, easy letters. The perfect stocking stuffer for ages three to six."),
                  outro="Find Nico the Little Reindeer's Snowy Day on Amazon. Link in bio!"),
+    # research hook #1 (marketing/ad-research/03 + 10): parent problem first, age call-out, no "brand" voice
+    "nico-screenfree": dict(dir="books/003-nico-the-reindeer", bg=("#EEF7FF", "#D3E9FB"), slug="nico",
+                            out="screenfree", music="nico-soft",
+                            title="Nico the Little Reindeer’s Snowy Day",
+                            intro=("30 minutes. Zero screens.", "If you have a three to six year old, try this "
+                                   "instead of the tablet."),
+                            pages=[8, 9, 17],
+                            reads={8: "Nico makes his very first snow angel.",
+                                   9: "Nico meets Tilly the penguin.",
+                                   17: "Nico gives the snowman his red scarf."},
+                            inside=("Color it. Then read it.", "They color the picture, then read the sentence. "
+                                    "And it makes a great stocking stuffer."),
+                            outro="Nico the Little Reindeer's Snowy Day. It's on Amazon, link in bio!"),
 }
 
 

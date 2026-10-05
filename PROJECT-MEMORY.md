@@ -72,6 +72,7 @@ Book 001-leo-the-lion is an old SVG test book, ignore.
 ## Campaign system (the weekly routine)
 - `campaigns/<slug>/CAMPAIGN.md` = everything for one book: link, every ad file + its caption per platform, posting log, Sunday results.
 - `campaigns/WEEKLY-SYSTEM.md` = the repeatable week (Mon stories+prompts, Tue-Wed art, Thu KDP upload, Fri-Sun ad pack; daily: 1 video to TikTok/YT/IG/FB + 1 pin + story; carousels Tue+Sat; Sunday check).
+- `campaigns/WORKPLAN.md` = how many posts where (TikTok 2 videos/day, YT 2 Shorts/day, IG+FB 1 Reel/day, carousels Mon/Thu/Sat, Pinterest 1 pin/day). Daily packs in `campaigns/<date>/` (one folder per platform + CAPTIONS.md); owner says "pack for tomorrow". All videos get voice + soft music: `tools/add_voice.py <video> <music> <out> "0.2:line" ...`.
 - `campaigns/THIS-WEEK.md` = day-by-day plan for the current week. **Rewrite it every Sunday.**
 - New book: `python3 tools/new_campaign.py books/<NNN-book> [amazon link]`, then make the ad pack into campaigns/<slug>/.
 - When the owner says "posted X", tick it in that book's posting log.

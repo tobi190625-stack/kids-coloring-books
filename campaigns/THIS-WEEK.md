@@ -1,10 +1,24 @@
 # This week: Mon Oct 5 to Sun Oct 11, 2026
 
-**NEW (ad research, Oct 5): post Mon-Fri at 19:00-21:00 Czech time, Sat-Sun at 15:00-16:00** (15:00 on weekdays is still morning in the US). Nico gets 2 of every 3 posts until Dec 10. See `marketing/ad-research/SUMMARY.md`.
-**Monday Oct 5 uses the NEW ad pack in `campaigns/2026-10-05/` instead of the Mon 5 row below** (open `POST-TODAY.md` there). Captions are in that book's CAMPAIGN.md: copy the TikTok, YouTube, Instagram or Facebook box.
-The same video goes to TikTok, Instagram Reel and Facebook Reel. YouTube gets the `yt-` file.
-Nico (Christmas) gets every 2nd day. Dex is on hold. If a YouTube file was already posted, skip YouTube that day.
+**How many posts where: `campaigns/WORKPLAN.md`** (TikTok 2 videos/day, YouTube 2 Shorts/day, Instagram + Facebook 1 Reel/day,
+carousels Mon/Thu/Sat, Pinterest 1 pin/day). Post Mon-Fri 19:00-21:00 Czech time, Sat-Sun 15:00-16:00. Nico gets 2 of every 3 posts.
+Every day has its own pack folder `campaigns/<date>/` (one folder per platform + CAPTIONS.md). Say "pack for tomorrow" and Claude makes it.
 
+| Day | Pack | Main video (all platforms) | 2nd video (TikTok + Shorts) | Carousel | Pin |
+|---|---|---|---|---|---|
+| Mon 5 | `2026-10-05/` READY | Nico guess the colors (voice) | Benny 3 ways / Benny can-they-read (voice) | Nico gift | Nico video pin |
+| Tue 6 | files ready, pack on request | Nico "30 minutes. Zero screens." `nico/videos/screenfree-voice-music.mp4` | Benny can-they-read `benny/videos/can-they-read-voice.mp4` (YT: `yt-3-ways-voice.mp4`) | - | Nico before/after |
+| Wed 7 | made Tue | Nico carousel video `nico/videos/carousel-gift-voice.mp4` | Benny | - | Benny before/after |
+| Thu 8 | made Wed | Nico (new coloring page, voice) | Benny | Benny gift | Nico pin |
+| Fri 9 | made Thu | Nico | Nico | - | Nico pin |
+| Sat 10 | made Fri | Nico | Benny | Nico story carousel | Benny pin |
+| Sun 11 | made Sat | Nico | Benny | - | Nico pin + **Sunday check** |
+
+## Books this week
+Rocco + Posy were uploaded to KDP on Oct 5. When they're live, send Claude the amazon.com/dp/... links: they get their own campaigns and a launch week (1 video a day each).
+
+---
+## Old plan (before the research, kept for the file list)
 | Day | Book | TikTok + IG Reel + FB Reel | YouTube Shorts | Pinterest pin (Destination = Amazon link) | Extra |
 |---|---|---|---|---|---|
 | Mon 5 | Nico | `nico/videos/color-page-17.mp4` (snowman scarf) | `nico/videos/yt-color-page-31.mp4` | `nico/images/pin1-cover.png`: "Christmas coloring book for kids ages 3-6: color the story and learn to read" | |

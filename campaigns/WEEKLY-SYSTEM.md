@@ -17,20 +17,11 @@ Time for you: about 30-45 min a day. Claude does the writing, building, checking
 - 1-2 slideshows with voiceover + soft music
 - All captions ready to paste in CAMPAIGN.md (TikTok, YouTube, Instagram, Facebook, Pinterest)
 
-## Daily marketing (every day, 15:00-17:00 Czech time)
-| Slot | What | Where |
-|---|---|---|
-| 1 | **1 video**, the same file to 4 places | TikTok, YouTube Shorts (yt- version), Instagram Reel, Facebook Reel |
-| 2 | **1 Pinterest pin** (link in the Destination field) | Pinterest |
-| 3 | **Story:** share the day's post to Instagram + Facebook Story with a Link sticker | IG/FB Stories |
-
-Plus **2x a week (Tue + Sat):** 1 carousel to Instagram + Facebook + TikTok (photo post).
-
-### Which book gets the day? (rotation)
-1. **New book launch week:** a book that just went live gets the video slot for 7 days in a row.
-2. **Season first:** Nico (Christmas) gets every 2nd day until Dec 15. Spring/Easter books in March-April, and so on.
-3. **Everything else:** take turns. The book with the fewest posts in its log goes next.
-4. **Winner rule:** a video with 2x the normal views gets re-posted 7 days later with a new hook.
+## Daily marketing
+**See `WORKPLAN.md`** (from the ad research): TikTok 2 videos/day, YouTube 2 Shorts/day, Instagram + Facebook 1 Reel/day,
+carousels Mon/Thu/Sat, Pinterest 1 pin/day, Stories with a link after every IG/FB post.
+Times (Czech): Mon-Fri 19:00-21:00, Sat-Sun 15:00-16:00. Nico gets 2 of every 3 posts until Dec 10; new books get a launch week.
+Every video gets voiceover + soft music (`tools/add_voice.py`, `tools/make_slideshow.py`). Each day's files are in `campaigns/<date>/`.
 
 ## Sunday check (15 min)
 1. KDP Reports > units sold per book. Write it in each CAMPAIGN.md Results table (or send Claude a screenshot).

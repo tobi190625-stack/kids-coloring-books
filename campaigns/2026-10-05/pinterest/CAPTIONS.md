@@ -1,7 +1,7 @@
 # Pinterest: Monday Oct 5
 Create Pin > upload the file > fill **Title**, **Description**, **Destination link** (the Amazon link), pick the **Board**. Pinterest search works on words, so the titles start with what parents type.
 
-## 1-nico-video-pin.mp4 (video pin)
+## 1-nico-video-pin.mp4 (video pin, has voice + music)
 - Title: `Easy Christmas Coloring Pages for Kids 3-6: Color + Read`
 - Description:
 ```

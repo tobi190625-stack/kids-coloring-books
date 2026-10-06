@@ -99,6 +99,16 @@ Book 001-leo-the-lion is an old SVG test book, ignore.
   flip-through), end; `"motion": ["bounce", "wobble"]` = cartoon motion made in code, no AI, no limits.
   Laptop can't run any AI video model (GTX 1050 2 GB, needs 6 GB+). Free HF quota = ~2 AI clips/day. Owner rejected paid
   Open-Generative-AI (Muapi, ~$0.30/clip) and caveman (not installed; Node.js 24 IS installed now).
+- **Oct 6 evening: owner disliked the cartoon + read-along + screen-free ads; only liked "guess the colors" a little.
+  Wants FRESH formats every day (no reusing), lots of posts for all 4 books, and a better voice than Kokoro.**
+- Voice now = `tools/tts.py` (edge-tts, Microsoft neural voices, free, needs internet, exact word times for captions).
+  Voices: ava (default), emma, andrew, brian. Unofficial use of Edge's read-aloud service (no API key).
+- `tools/fresh_ads.py` = new interactive formats, all in real book colors on the CLEAN picture (no text bubble):
+  color quiz (Posy), I spy (Nico, Benny), spot the difference (Rocco), crayon ASMR (Nico, Benny; synthesized crayon
+  sound, no voice), which book would your kid pick 1-4 (all books). TikTok-style captions synced per word.
+  `python tools/fresh_ads.py <name>` (~4 min each) -> campaigns/fresh/. Stills: `tools/fresh_stills.py` (pins, carousel).
+  Posy quiz maps are inline in fresh_ads.py (POSY_ROUNDS); ids leaking into the sky can be clipped to a circle.
+- Wed Oct 7 plan = campaigns/2026-10-07/POST-TODAY.md (TikTok 5, YT 5, IG+FB 4, Pinterest 2); old Wed files in not-used/.
 - **`tools/cartoon.py` = real cartoons in code (Oct 6, the owner's favorite idea):** the character is cut out of its
   painted page (needs a paint map; cut from the clean picture in the PDF, so text bubbles don't hide anything), then
   animated on a code-drawn world with a moving camera: drive, ramp, mud SPLAT, flying arc, BUMP landing, comic words,

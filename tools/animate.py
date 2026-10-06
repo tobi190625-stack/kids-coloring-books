@@ -47,7 +47,7 @@ def generate(image, prompt, secs, seed):
             client = Client(space, verbose=False)
             if space.startswith("r3gm"):
                 out = client.predict(handle_file(image), None, STYLE + prompt, 6, NEGATIVE, secs,
-                                     1, 1, seed, seed < 0, api_name="/generate_video")
+                                     1, 1, max(seed, 0), seed < 0, api_name="/generate_video")
                 video = out[1] or out[0]["video"]
             else:
                 out = client.predict(handle_file(image), STYLE + prompt, 6, NEGATIVE, secs,

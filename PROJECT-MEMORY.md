@@ -95,6 +95,13 @@ Book 001-leo-the-lion is an old SVG test book, ignore.
   GPUs via gradio_client (laptop GPU = GTX 1050 2 GB, too small to run it locally; no Node.js installed). Chosen Oct 6 over
   Higgsfield-style paid apps / HyperFrames / Remotion (our Python pipeline already does code-made video). Free quota = a few
   clips/day. First test: campaigns/rocco/videos/alive-p10.mp4 (seed 718782066), looked clean. Check frames; label as AI when posting.
+- `render_script.py` scene types (Oct 6): title, page, bwpage, clip (AI clip), read (karaoke sentence), flip (fast
+  flip-through), end; `"motion": ["bounce", "wobble"]` = cartoon motion made in code, no AI, no limits.
+  Laptop can't run any AI video model (GTX 1050 2 GB, needs 6 GB+). Free HF quota = ~2 AI clips/day. Owner rejected paid
+  Open-Generative-AI (Muapi, ~$0.30/clip) and caveman (not installed; Node.js 24 IS installed now).
+- **Rocco 30 s test ads (Oct 6):** campaigns/rocco/videos/ad-A-alive (story tease, AI clips), ad-B-readit ("Can your
+  4-year-old read this?"), ad-C-screenfree ("20 quiet minutes, no screen", flip-through). Plan: one per day Wed/Thu/Fri
+  19:00, compare after 48 h on watch time + profile visits/link clicks; the winner's style becomes the template.
 - Video frames are checked by extracting frames with ffmpeg (imageio_ffmpeg) and looking at them.
 - Rules learned: TikTok business account (Commercial music only), YouTube Shorts "not made for kids", post at
   15:00-17:00 Czech time, English only, no location tag, captions say "link in bio". Pixabay music is free.

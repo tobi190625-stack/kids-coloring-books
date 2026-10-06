@@ -7,6 +7,12 @@ Usage: python3 tools/render_script.py campaigns/nico/scripts/snowman-steps.json
 2. Makes the voice for every scene first (Kokoro TTS), so each scene lasts exactly as long as its line.
 3. Draws every frame as a PNG (30 per second): gentle zoom, text fading in, pages that color themselves
    with a crayon sweep, and subtitles that light up word by word.
+   Scene types: title (cover), page (colors itself, needs a paint map), bwpage (black-and-white page),
+   clip (an AI "comes alive" video from tools/animate.py: "video": path), read (the picture + its
+   sentence in big letters that light up as the voice reads it: "say" = the sentence), flip (fast
+   flip-through: "pages": [book pages]), end (cover + link). Any picture scene can have a "step" badge on top.
+   Cartoon motion made in code (no AI) for page/bwpage scenes: "motion": ["bounce", "wobble"]
+   (bounce = the page hops with squash and stretch, wobble = hand-drawn lines that gently wiggle).
 4. Merges the frames into an MP4 (ffmpeg), adds the voice + soft music.
 5. Writes the transcript: <out>.srt (subtitles with times) and <out>.txt (plain text).
 """
@@ -86,6 +92,85 @@ def subtitle(img, words, t, y=SUB_Y, size=62):
     return img
 
 
+def badge(d, text, y=140):
+    """Navy pill with white text on top of the frame; shrinks long hooks to fit the safe zone."""
+    size = 80
+    while d.textlength(text, font=font(size)) > 900 and size > 44:
+        size -= 2
+    half = max(210, int(d.textlength(text, font=font(size))) // 2 + 60)
+    d.rounded_rectangle([W // 2 - half, y, W // 2 + half, y + size + 50], (size + 50) // 2, fill=NAVY)
+    centered(d, text, y + 20, size, width=W, fill="white")
+
+
+def paste_card(im, page, y=320):
+    """A picture as a rounded card with a soft shadow, centered at height y."""
+    shadow = Image.new("RGBA", (page.width + 40, page.height + 40), (0, 0, 0, 0))
+    ImageDraw.Draw(shadow).rounded_rectangle([20, 26, page.width + 20, page.height + 26], 40,
+                                             fill=(40, 60, 90, 60))
+    im.alpha_composite(shadow.filter(ImageFilter.GaussianBlur(14)), ((W - page.width) // 2 - 20, y - 20))
+    card = Image.new("RGBA", page.size, (0, 0, 0, 0))
+    m = Image.new("L", page.size, 0)
+    ImageDraw.Draw(m).rounded_rectangle([0, 0, page.width, page.height], 40, fill=255)
+    card.paste(page.convert("RGB"), (0, 0), m)
+    im.alpha_composite(card, ((W - page.width) // 2, y))
+
+
+def clip_frames(path, size=900):
+    reader = imageio_ffmpeg.read_frames(str(ROOT / path))
+    meta = reader.__next__()
+    w, h = meta["size"]
+    return [Image.frombytes("RGB", (w, h), fr).resize((size, size), Image.LANCZOS) for fr in reader]
+
+
+def big_sentence(im, words, t, y=1110, size=78):
+    """The book sentence in big letters; the word being read lights up (karaoke style)."""
+    d = ImageDraw.Draw(im)
+    f = font(size)
+    lines, cur = [], []
+    for i in range(len(words)):
+        if cur and d.textlength(" ".join(words[j][0] for j in cur + [i]), font=f) > 940:
+            lines.append(cur)
+            cur = []
+        cur.append(i)
+    lines.append(cur)
+    now = next((i for i, (_, a, b) in enumerate(words) if a <= t < b), None)
+    for li, idx in enumerate(lines):
+        x = (W - d.textlength(" ".join(words[j][0] for j in idx), font=f)) / 2
+        yy = y + li * (size + 34)
+        for j in idx:
+            wd = d.textlength(words[j][0], font=f)
+            if j == now:
+                d.rounded_rectangle([x - 12, yy - 6, x + wd + 12, yy + size + 18], 20, fill="#FFD95A")
+            done = (now is not None and j <= now) or t >= words[-1][2]
+            d.text((x, yy), words[j][0], font=f, fill=NAVY if done else "#8A97AD")
+            x += wd + d.textlength(" ", font=f)
+
+
+def wobble_frames(img, n=3, amp=2.6, seed=7):
+    """n copies of a picture with its lines nudged by smooth random noise; cycling them looks hand-drawn."""
+    from scipy import ndimage
+    a = np.asarray(img).astype(np.float32)
+    h, w = a.shape[:2]
+    rng = np.random.default_rng(seed)
+    yy, xx = np.mgrid[0:h, 0:w].astype(np.float32)
+    out = []
+    for _ in range(n):
+        dx, dy = (np.asarray(Image.fromarray(rng.uniform(-1, 1, (10, 10)).astype(np.float32)).resize((w, h), Image.BICUBIC))
+                  * amp for _ in range(2))
+        warped = np.stack([ndimage.map_coordinates(a[..., c], [yy + dy, xx + dx], order=1, mode="nearest")
+                           for c in range(3)], -1)
+        out.append(Image.fromarray(warped.clip(0, 255).astype(np.uint8)))
+    return out
+
+
+def bounce(t, period=0.9, height=45):
+    """Hop height and squash for time t: up in an arc, squash a little on landing."""
+    ph = (t % period) / period
+    hop = np.sin(np.pi * ph) * height
+    squash = max(0.0, 1 - ph / 0.12) * 0.07 + max(0.0, (ph - 0.9) / 0.1) * 0.05
+    return hop, squash
+
+
 def page_images(book_dir, page):
     """Black-and-white page and the same page in the book's real colors."""
     img, labels, _, _ = paint.regions(book_dir, page)
@@ -135,6 +220,15 @@ def render(script_path):
             bw, col = bw.resize((900, 900)), col.resize((900, 900))
             # soft crayon edge for the color sweep
             ramp = np.clip((np.arange(900)[None, :] - np.arange(900)[:, None] * 0.25), 0, None)
+            motion = s.get("motion", [])
+            if "wobble" in motion:
+                bws, cols = wobble_frames(bw), wobble_frames(col)
+        elif s["type"] == "clip":
+            clip = clip_frames(s["video"])
+        elif s["type"] == "read":
+            art = Image.open(book_dir / "art" / f"{s['page']:02d}.png").convert("RGB").resize((760, 760), Image.LANCZOS)
+        elif s["type"] == "flip":  # book page N is PDF page N + 2 (title + "belongs to" come first)
+            flips = [pdf_page(book_dir, p + 2).resize((900, 900), Image.LANCZOS) for p in s["pages"]]
         frames = int(round(s["_dur"] * FPS))
         for f in range(frames):
             t = s["_start"] + f / FPS
@@ -150,30 +244,51 @@ def render(script_path):
                 im.alpha_composite(c.convert("RGBA"), ((W - c.width) // 2, 420 - int(20 * z)))
                 if a < 1:  # fade in from the background
                     im = Image.blend(bg.convert("RGBA"), im, a)
+            elif s["type"] == "clip":  # the AI clip, stretched to the length of the voice line
+                fr = clip[min(int(k * len(clip)), len(clip) - 1)]
+                z = 1.0 + 0.03 * k
+                paste_card(im, fr.resize((int(900 * z), int(900 * z))), 320)
+                if s.get("step"):
+                    badge(d, s["step"])
+            elif s["type"] == "read":
+                paste_card(im, art, 310)
+                if s.get("step"):
+                    badge(d, s["step"])
+                # "text" (optional) = a sentence shown gray while the voice says something else (the hook)
+                big_sentence(im, [(w, 1e9, 1e9) for w in s["text"].split()] if s.get("text") else s["_words"], t)
+            elif s["type"] == "flip":  # pages slide in from the right, one after another
+                share = 1 / len(flips)
+                i = min(int(k / share), len(flips) - 1)
+                slide = ease((k - i * share) / share / 0.3) if i else 1.0
+                if i:
+                    paste_card(im, flips[i - 1], 320)
+                layer = Image.new("RGBA", im.size, (0, 0, 0, 0))
+                paste_card(layer, flips[i], 320)
+                im.alpha_composite(layer.transform(im.size, Image.AFFINE, (1, 0, -int((1 - slide) * W), 0, 1, 0)))
+                if s.get("step"):
+                    badge(ImageDraw.Draw(im), s["step"])
             elif s["type"] in ("page", "bwpage"):
-                if s.get("step"):  # badge on top
-                    half = max(210, int(d.textlength(s["step"], font=font(80))) // 2 + 60)
-                    d.rounded_rectangle([W // 2 - half, 140, W // 2 + half, 270], 65, fill=NAVY)
-                    centered(d, s["step"], 160, 80, width=W, fill="white")
                 # the page colors itself with a diagonal crayon sweep (first 70% of the scene)
                 p = ease(k / 0.7) * 1250
                 mask = Image.fromarray(np.clip((p - ramp) * 6, 0, 255).astype(np.uint8))
-                page = Image.composite(col, bw, mask)
+                if "wobble" in motion:  # new line drawing 8 times a second, like a cartoon
+                    w = (f // 4) % len(bws)
+                    page = Image.composite(cols[w], bws[w], mask)
+                else:
+                    page = Image.composite(col, bw, mask)
                 z = 1.0 + 0.04 * k
-                page = page.resize((int(900 * z), int(900 * z)))
-                shadow = Image.new("RGBA", (page.width + 40, page.height + 40), (0, 0, 0, 0))
-                ImageDraw.Draw(shadow).rounded_rectangle([20, 26, page.width + 20, page.height + 26], 40,
-                                                         fill=(40, 60, 90, 60))
-                im.alpha_composite(shadow.filter(ImageFilter.GaussianBlur(14)),
-                                   ((W - page.width) // 2 - 20, 320 - 20))
-                card = Image.new("RGBA", page.size, (0, 0, 0, 0))
-                m = Image.new("L", page.size, 0)
-                ImageDraw.Draw(m).rounded_rectangle([0, 0, page.width, page.height], 40, fill=255)
-                card.paste(page, (0, 0), m)
-                im.alpha_composite(card, ((W - page.width) // 2, 320))
+                if "bounce" in motion:
+                    hop, sq = bounce(t - s["_start"])
+                    pw, ph = int(900 * z * (1 + sq)), int(900 * z * (1 - sq))
+                    paste_card(im, page.resize((pw, ph)), int(320 + 900 * z - ph - hop))
+                else:
+                    paste_card(im, page.resize((int(900 * z), int(900 * z))), 320)
+                if s.get("step"):  # badge on top (after the page, so a bouncing page never covers it)
+                    badge(d, s["step"])
             else:  # end card
                 im = end_card(book_dir, sc["background"][0]).convert("RGBA")
-            im = subtitle(im, s["_words"], t, *((1440, 54) if s["type"] == "end" else (SUB_Y, 62)))
+            if s["type"] != "read":  # read scenes already show the words big
+                im = subtitle(im, s["_words"], t, *((1440, 54) if s["type"] == "end" else (SUB_Y, 62)))
             im.convert("RGB").save(frames_dir / f"frame_{n:05d}.png")
             n += 1
     print(f"drew {n} frames ({total:.1f} s)")

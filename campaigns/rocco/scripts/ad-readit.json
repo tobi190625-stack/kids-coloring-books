@@ -1,0 +1,21 @@
+{
+  "title": "Rocco ad B (test): can your 4-year-old read this?",
+  "book": "books/005-rocco-monster-truck",
+  "out": "campaigns/rocco/videos/ad-B-readit",
+  "background": ["#FFF6DA", "#FFE9B8"],
+  "music": "soft-music-box",
+  "scenes": [
+    {"type": "read", "page": 8, "step": "Can your 4-year-old read this?", "text": "Splat! Rocco lands in the mud.",
+     "say": "Can your four year old read this? Let's try!"},
+    {"type": "read", "page": 8, "step": "Read along!",
+     "say": "Splat! Rocco lands in the mud."},
+    {"type": "read", "page": 14, "step": "Read along!",
+     "say": "He tries again. Bounce! A bit higher!"},
+    {"type": "read", "page": 23, "step": "Read along!",
+     "say": "He flies high up in the sky!"},
+    {"type": "title", "text": "Color it. Read it.", "small": "one easy sentence on every page",
+     "say": "Every page has one big picture to color, and one short sentence in big, easy letters. First they color it, then they read it!"},
+    {"type": "end",
+     "say": "Rocco the Little Monster Truck. Ages three to six. Link in bio!"}
+  ]
+}

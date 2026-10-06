@@ -1,0 +1,46 @@
+{
+ "title": "Rocco ad A (test): comes alive story tease",
+ "book": "books/005-rocco-monster-truck",
+ "out": "campaigns/rocco/videos/ad-A-alive",
+ "background": [
+  "#EAF6FF",
+  "#CFE8F7"
+ ],
+ "music": "soft-music-box",
+ "scenes": [
+  {
+   "type": "clip",
+   "video": "campaigns/rocco/videos/alive-p8.mp4",
+   "step": "Will Rocco make the big jump?",
+   "say": "This little monster truck wants to make the biggest jump. But splat! He lands in the mud."
+  },
+  {
+   "type": "clip",
+   "video": "campaigns/rocco/videos/alive-p10.mp4",
+   "step": "A friend helps",
+   "say": "Dot the digger rolls over to help."
+  },
+  {
+   "type": "bwpage",
+   "page": 17,
+   "step": "Practice!",
+   "say": "Rocco tries again and again. Whee! He flies!"
+  },
+  {
+   "type": "clip",
+   "video": "campaigns/rocco/videos/alive-p23.mp4",
+   "step": "The BIG jump!",
+   "say": "Then it's time for the big jump. Up, up, up!"
+  },
+  {
+   "type": "title",
+   "text": "Color it. Read it.",
+   "small": "Rocco the Little Monster Truck",
+   "say": "It's a story book your child colors, and reads. One big picture, one easy sentence on every page."
+  },
+  {
+   "type": "end",
+   "say": "For ages three to six. Link in bio!"
+  }
+ ]
+}

@@ -91,6 +91,10 @@ Book 001-leo-the-lion is an old SVG test book, ignore.
 - `make_slideshow.py` colored pages + voiceover · `voice.py` Kokoro TTS (natural pauses, warm EQ; model in /root/kokoro,
   re-download from github.com/thewh1teagle/kokoro-onnx releases if missing) · `make_music.py` original copyright-free
   music box (marketing/music/) · `carousel_video.py` carousel → Reel
+- `animate.py` AI "page comes alive" clips (3-5 s, B&W line art moves): open-source Wan 2.2 on free Hugging Face
+  GPUs via gradio_client (laptop GPU = GTX 1050 2 GB, too small to run it locally; no Node.js installed). Chosen Oct 6 over
+  Higgsfield-style paid apps / HyperFrames / Remotion (our Python pipeline already does code-made video). Free quota = a few
+  clips/day. First test: campaigns/rocco/videos/alive-p10.mp4 (seed 718782066), looked clean. Check frames; label as AI when posting.
 - Video frames are checked by extracting frames with ffmpeg (imageio_ffmpeg) and looking at them.
 - Rules learned: TikTok business account (Commercial music only), YouTube Shorts "not made for kids", post at
   15:00-17:00 Czech time, English only, no location tag, captions say "link in bio". Pixabay music is free.

@@ -111,6 +111,10 @@ Book 001-leo-the-lion is an old SVG test book, ignore.
 - **Daily posting sheet (owner asked for this, Oct 6):** `campaigns/<date>/posts.json` -> `python tools/day_sheet.py campaigns/<date>`
   -> `POSTS.xlsx` in that folder: time order, picture, click-to-open file, platform color, caption, pin comment, Done ✓.
   Make one for every day pack. Owner found Claude posting through the browser far too slow (3-5 min/post): don't do that.
+- **Pinterest (Oct 6 evening):** 11 pins published by Claude (campaigns/pinterest-batch-1/), all linking to
+  https://linktr.ee/littlecrayontalles (owner wants Linktree as the pin link), AI-modified label on (pin 02 Posy maybe not).
+  Boards: "Christmas Gifts for Kids" (Nico + all-4-books) and "Coloring Pages for Kids 3-6" (Rocco, Posy, Benny).
+  Pinterest web flow: upload -> title/desc/link -> wait ~4 s for autosave -> Publish (an early click doesn't register).
 - Wed Oct 7 plan = campaigns/2026-10-07/POST-TODAY.md (TikTok 5, YT 5, IG+FB 4, Pinterest 2); old Wed files in not-used/.
 - **`tools/cartoon.py` = real cartoons in code (Oct 6, the owner's favorite idea):** the character is cut out of its
   painted page (needs a paint map; cut from the clean picture in the PDF, so text bubbles don't hide anything), then

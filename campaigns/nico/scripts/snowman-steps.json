@@ -1,0 +1,23 @@
+{
+  "title": "How Nico builds a snowman (4 steps)",
+  "book": "books/003-nico-the-reindeer",
+  "out": "campaigns/nico/videos/snowman-steps",
+  "background": ["#EEF7FF", "#D3E9FB"],
+  "music": "nico-soft",
+  "voice": "af_heart",
+  "scenes": [
+    {"type": "title", "image": "cover", "text": "How Nico builds a snowman",
+     "small": "in 4 easy steps",
+     "say": "How do you build the perfect snowman? Nico the little reindeer shows you, in four easy steps."},
+    {"type": "page", "page": 13, "step": "Step 1",
+     "say": "Step one. Roll a big, round snowball."},
+    {"type": "page", "page": 14, "step": "Step 2",
+     "say": "Step two. Stack the snowballs, one on top of the other."},
+    {"type": "page", "page": 15, "step": "Step 3",
+     "say": "Step three. A snowman needs a nose. A carrot!"},
+    {"type": "page", "page": 17, "step": "Step 4",
+     "say": "And step four. Give him a cozy red scarf. Ta-da!"},
+    {"type": "end",
+     "say": "Your kids can color every page of Nico's snowy day, and read it too. Link in bio!"}
+  ]
+}

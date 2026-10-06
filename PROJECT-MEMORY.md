@@ -99,6 +99,14 @@ Book 001-leo-the-lion is an old SVG test book, ignore.
   flip-through), end; `"motion": ["bounce", "wobble"]` = cartoon motion made in code, no AI, no limits.
   Laptop can't run any AI video model (GTX 1050 2 GB, needs 6 GB+). Free HF quota = ~2 AI clips/day. Owner rejected paid
   Open-Generative-AI (Muapi, ~$0.30/clip) and caveman (not installed; Node.js 24 IS installed now).
+- **`tools/cartoon.py` = real cartoons in code (Oct 6, the owner's favorite idea):** the character is cut out of its
+  painted page (needs a paint map; cut from the clean picture in the PDF, so text bubbles don't hide anything), then
+  animated on a code-drawn world with a moving camera: drive, ramp, mud SPLAT, flying arc, BUMP landing, comic words,
+  synthesized sound effects, Kokoro voice, captions, cover + end card. `python tools/cartoon.py rocco-jump` (~4 min).
+  Paint maps: rocco-p25 (flying), rocco-p26 (standing; "scenery" key = ground ids left out of the cut-out).
+  Upbeat music: marketing/music/rocco-upbeat.wav (make_music.py, 132 bpm). New characters = new paint maps + a timeline.
+- **Wed Oct 7 = Rocco launch day:** 20:00 cartoon everywhere, 21:00 guess-the-colors (TikTok/YT) + read-along (IG/FB);
+  Benny kite moved to Thursday. AD-SCHEDULE.xlsx is NOT updated for this (POST-TODAY.md is the truth for Wed).
 - **Rocco 30 s test ads (Oct 6):** campaigns/rocco/videos/ad-A-alive (story tease, AI clips), ad-B-readit ("Can your
   4-year-old read this?"), ad-C-screenfree ("20 quiet minutes, no screen", flip-through). Plan: one per day Wed/Thu/Fri
   19:00, compare after 48 h on watch time + profile visits/link clicks; the winner's style becomes the template.

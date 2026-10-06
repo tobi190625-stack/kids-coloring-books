@@ -12,6 +12,7 @@ make_video.py and make_shorts.py use the map automatically when it exists.
 """
 import json
 import sys
+import tempfile
 from pathlib import Path
 
 import numpy as np
@@ -243,7 +244,7 @@ def ids_image(book_dir, page_no, path):
 
 if __name__ == "__main__":
     mode, book, n = sys.argv[1], find_dir(sys.argv[2]), int(sys.argv[3])
-    S = Path("/tmp/claude-0/-home-user-emil-kowalski/dad0fc95-c17a-51fc-b393-54fe27ba2afa/scratchpad/paint")
+    S = Path(tempfile.gettempdir()) / "paint"  # scratch images, works on any computer
     S.mkdir(parents=True, exist_ok=True)
     if mode == "ids":
         ids_image(book, n, S / f"{slug_of(book)}-p{n}-ids.png")

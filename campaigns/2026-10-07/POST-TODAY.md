@@ -1,5 +1,16 @@
-# Wed 2026-10-07: what to post (open AD-SCHEDULE.xlsx for the whole week)
-Videos already have voice + soft music: **don't add another sound**. Instagram + Facebook: Meta Business Suite, tick both.
+# Wed 2026-10-07: what to post
+Videos already have voice + music: **don't add another sound**. Instagram + Facebook: Meta Business Suite, tick both.
+**New today: Rocco's launch.** 3 Rocco videos (20:00 and 21:00). Benny's kite video moved to Thursday (`moved-to-thursday/`)
+so TikTok stays at 3 posts today.
+
+| Time (CZ) | TikTok | Instagram + Facebook | YouTube Shorts |
+|---|---|---|---|
+| **19:00** | `2-nico-story-part2.mp4` | `1-nico-story-part3.mp4` | `2-nico-story-part2.mp4` |
+| **20:00** | `5-rocco-cartoon-big-jump.mp4` | `5-rocco-cartoon-big-jump.mp4` | `5-rocco-cartoon-big-jump.mp4` |
+| **21:00** | `6-rocco-guess-colors.mp4` | `7-rocco-read-along.mp4` | `6-rocco-guess-colors.mp4` |
+| any | Pinterest: `4-pin-benny-before-after.png` | | |
+
+---
 
 ## 19:00 · IG + FB · 1-nico-story-part3.mp4
 Reel: bedtime story PART 3 (the end) · Story with link after posting
@@ -28,32 +39,65 @@ Get it on Amazon: https://www.amazon.com/dp/B0HLVTTK7T
 #bedtimestory #christmascoloring #kidsbooks
 ```
 
-## 21:00 · TikTok · 3-benny-guess-kite.mp4
-Video: guess the colors (kite) · Pin comment: What color did you guess for the kite? 👇
+---
+
+## 20:00 · TikTok · 5-rocco-cartoon-big-jump.mp4
+Cartoon: Rocco's big jump · Pin comment: `Did you think he'd make it? 🛻👇`
 ```
-Coloring page for kids: guess the colors before the end 🪁🧸 Benny and Bella fly a kite. Kids color every page AND read the sentence. Ages 3-6, best with crayons. Link in bio
-#coloringbook #colorwithme #satisfying #toddleractivities #screenfree
+Monster truck story for kids: can little Rocco make the BIG jump? 🛻💨 Try #1 ends in the mud... Every page of his book is a picture kids color AND a sentence they read. Ages 3-6. Link in bio
+#monstertruck #kidsbooks #toddleractivities #coloringbook #learningtoread
 ```
 
-## 21:00 · IG + FB · 3-benny-guess-kite.mp4
-Reel: guess the colors (kite)
+## 20:00 · IG + FB · 5-rocco-cartoon-big-jump.mp4
+Reel · Story with the link sticker after posting
 ```
-Guess the colors before the end! 🪁🧸 Benny and Bella fly a kite high up in the sky. Kids color every page AND read the short sentence. Ages 3-6.
-Get it on Amazon: https://www.amazon.com/dp/B0HLVSLXK7 (Instagram: link in bio)
-#coloringbook #kidsactivities #screenfree #toddleractivities
+Can little Rocco make the BIG jump? 🛻💨 Our new monster truck book: kids color every page AND read one easy sentence. Ages 3-6, best with crayons.
+Get it on Amazon: https://www.amazon.com/dp/B0HLZWLS5J (Instagram: link in bio)
+#monstertruck #kidsbooks #toddleractivities #learningtoread
 ```
 
-## 21:00 · YouTube Shorts · 3-yt-benny-guess-kite.mp4
-Short: guess the colors (kite) · Not made for kids
+## 20:00 · YouTube Shorts · 5-rocco-cartoon-big-jump.mp4
+Short · Not made for kids
 ```
 TITLE:
-Guess the colors before the end! 🪁 #shorts #coloringbook
+Can little Rocco make the BIG jump? 🛻 Monster truck story for kids #shorts
 
 DESCRIPTION:
-Benny the Bear's Cozy Day: a color & read story book for kids ages 3-6.
-Get it on Amazon: https://www.amazon.com/dp/B0HLVSLXK7
-#coloringbook #kidsactivities #satisfying
+Rocco the little monster truck tries the big ramp... twice! From the color & read story book "Rocco the Little Monster Truck's Big Jump" for kids ages 3-6.
+Get it on Amazon: https://www.amazon.com/dp/B0HLZWLS5J
+#monstertruck #kidsbooks #coloringbook
 ```
+
+---
+
+## 21:00 · TikTok · 6-rocco-guess-colors.mp4
+Guess the colors · Pin comment: `What color did you guess for Rocco? 🎨👇`
+```
+Monster truck coloring page for kids: guess Rocco's colors before the end 🛻🖍️ Kids color every page AND read the sentence. Ages 3-6, best with crayons. Link in bio
+#monstertruck #coloringbook #colorwithme #satisfying #toddleractivities
+```
+
+## 21:00 · IG + FB · 7-rocco-read-along.mp4
+Reel: read-along · Story with the link sticker after posting
+```
+Can your 4-year-old read this? 📖🛻 Every page of Rocco's book has one big picture to color and one short sentence in big, easy letters. First they color it, then they read it! Ages 3-6.
+Get it on Amazon: https://www.amazon.com/dp/B0HLZWLS5J (Instagram: link in bio)
+#learningtoread #monstertruck #kidsbooks #toddleractivities
+```
+
+## 21:00 · YouTube Shorts · 6-rocco-guess-colors.mp4
+Short · Not made for kids
+```
+TITLE:
+Guess the monster truck's colors before the end! 🛻 #shorts #coloringbook
+
+DESCRIPTION:
+Rocco the Little Monster Truck's Big Jump: a color & read story book for kids ages 3-6.
+Get it on Amazon: https://www.amazon.com/dp/B0HLZWLS5J
+#monstertruck #coloringbook #satisfying
+```
+
+---
 
 ## any · Pinterest · 4-pin-benny-before-after.png
 Image pin: before/after
@@ -63,3 +107,7 @@ DESCRIPTION: Before and after: a cute bear coloring page. Benny the Bear's Cozy 
 DESTINATION LINK: https://www.amazon.com/dp/B0HLVSLXK7
 BOARD: Cozy Animal Stories
 ```
+
+## After posting
+Tell Claude "posted Wed". On Friday compare the 3 Rocco videos: **watch time + profile visits / link clicks**, not only views.
+The winner's style is what we make for Posy next.

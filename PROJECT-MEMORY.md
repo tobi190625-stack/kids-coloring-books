@@ -42,10 +42,15 @@ Book 001-leo-the-lion is an old SVG test book, ignore.
 - Formats: `tools/make_ads.py` guess (coloring timelapse + question), three (same page 3 ways, 1/2/3), readit
   ("Can your 4-year-old read this?"), pin (2:3 before/after with keyword title). Daily packs go in `campaigns/<date>/<platform>/`.
 - Amazon showed Benny and Nico at $12.00 (plan $8.99): the owner should check the KDP price. Series: "Little Crayon Tales: Color & Read Story Books".
+- **Coloring videos use REAL book colors only** (paint maps). The owner rejected random / 2-crayon / rainbow colors on Oct 5:
+  never again ("three" mode = 3 ways is retired).
+- Nico bedtime story series: IG+FB got part 1 Mon Oct 5, part 2 Tue; TikTok + YT run 1 day behind (part 1 Tue, part 2 Wed).
+  Each part = 4 pages via `tools/make_slideshow.py nico-storyN`; part 3 = next pages (18+), needs new paint maps.
 
 ## Owner's Windows laptop (local Claude Code session, since 2026-10-04)
 - Project at `C:\Users\tobi1\Documents\GitHub\kids-coloring-books`, a git clone of github.com/tobi190625-stack/kids-coloring-books
   (Git at `C:\Program Files\Git\cmd\git.exe`, sign-in saved). Commit + push to main after work. Online-store branch copy in `..\kids-coloring-books-branches\`.
+- Kokoro voice model in `C:\Users\tobi1\kokoro` (tools/voice.py finds it; cloud sessions use /root/kokoro).
 - Python: `%LOCALAPPDATA%\Programs\Python\Python312\python.exe` (not on PATH). Always set `PYTHONUTF8=1` first,
   or the tools crash reading book.json (Windows cp1252).
 - Claude in Chrome works: Claude can open ChatGPT in its own tab and paste the prompts, then download the images via

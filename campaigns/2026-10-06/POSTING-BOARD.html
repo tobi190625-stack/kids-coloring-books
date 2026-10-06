@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tuesday Posting Board</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Grandstander:wght@600;800&family=Nunito+Sans:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a day sheet. Summary strip, then two time slots (19:00, 21:00), each a stack of "upload cards": video left, what to post right. */
+:root{
+  --bg:#F6F4EF; --surface:#FFFFFF; --ink:#2F3B52; --muted:#6A7386; --line:#E2DED5; --accent:#E5484D;
+  --ig:#D9467A; --fb:#3D6FD6; --tt:#1F2430; --yt:#E23B33; --pin:#C8323B;
+  --must:#2E8B57; --must-bg:#E6F4EC; --chip-ink:#FFFFFF; --code-bg:#F1EEE7;
+  --display:"Grandstander","Comic Sans MS",system-ui,sans-serif;
+  --body:"Nunito Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#171B24; --surface:#212736; --ink:#E9ECF3; --muted:#A3ABBD; --line:#343C4E; --accent:#FF6B6F;
+  --ig:#F06A9B; --fb:#6E97F0; --tt:#E9ECF3; --yt:#FF5E57; --pin:#F0626A;
+  --must:#5ED39A; --must-bg:#1E3A2C; --chip-ink:#171B24; --code-bg:#2A3142; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#171B24; --surface:#212736; --ink:#E9ECF3; --muted:#A3ABBD; --line:#343C4E; --accent:#FF6B6F;
+  --ig:#F06A9B; --fb:#6E97F0; --tt:#E9ECF3; --yt:#FF5E57; --pin:#F0626A;
+  --must:#5ED39A; --must-bg:#1E3A2C; --chip-ink:#171B24; --code-bg:#2A3142; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:15px/1.5 var(--body);margin:0}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:16px;padding-block:28px 64px;display:flex;flex-direction:column;gap:28px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.15}
+h1{font-size:clamp(28px,5vw,40px);font-weight:800}
+.lede{color:var(--muted);margin:6px 0 0;max-width:65ch}
+.lede b{color:var(--ink)}
+/* summary */
+.summary{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 14px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.tile .p{font-weight:700;font-size:13px;display:flex;align-items:center;gap:6px}
+.tile .n{font-family:var(--display);font-size:30px;font-weight:800;font-variant-numeric:tabular-nums}
+.tile .s{color:var(--muted);font-size:12.5px}
+.dot{width:10px;height:10px;border-radius:50%;flex:none}
+@media (max-width:720px){.summary{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* slots */
+.slot{display:flex;flex-direction:column;gap:14px}
+.slot-head{display:flex;align-items:baseline;gap:12px;border-bottom:2px solid var(--ink);padding-bottom:6px}
+.slot-head .t{font-family:var(--display);font-size:30px;font-weight:800;font-variant-numeric:tabular-nums}
+.slot-head .w{color:var(--muted)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;display:grid;grid-template-columns:240px minmax(0,1fr);gap:20px}
+@media (max-width:700px){.card{grid-template-columns:minmax(0,1fr)}}
+.media{display:flex;flex-direction:column;gap:8px;align-items:center}
+.media video,.media img{width:100%;max-width:240px;aspect-ratio:9/16;object-fit:contain;background:#000;border-radius:12px;display:block}
+.media img{aspect-ratio:2/3;background:var(--code-bg)}
+.file{font-family:var(--mono);font-size:11.5px;color:var(--muted);word-break:break-all;text-align:center}
+.info{display:flex;flex-direction:column;gap:14px;min-width:0}
+.info h3{font-size:22px;font-weight:800}
+.what{color:var(--muted);margin:-8px 0 0}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:3px 10px 3px 4px;font-size:12.5px;font-weight:700;color:var(--chip-ink)}
+.chip input{width:16px;height:16px;margin:0;accent-color:var(--must)}
+.chip label{display:inline-flex;align-items:center;gap:6px;cursor:pointer}
+.chip.ig{background:var(--ig)}.chip.fb{background:var(--fb)}.chip.tt{background:var(--tt)}.chip.yt{background:var(--yt)}.chip.pin{background:var(--pin)}
+.must{font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--must);background:var(--must-bg);border-radius:6px;padding:2px 8px;align-self:center}
+.block{display:flex;flex-direction:column;gap:6px;min-width:0}
+.block .lab{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;align-items:center;gap:8px}
+pre{margin:0;background:var(--code-bg);border-radius:10px;padding:10px 12px;font:13.5px/1.5 var(--body);white-space:pre-wrap;word-break:break-word;max-height:220px;overflow:auto}
+.copy{font:700 12px var(--body);border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:4px 10px;cursor:pointer;text-transform:none;letter-spacing:0}
+.copy:focus-visible,.chip input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.copy.done{border-color:var(--must);color:var(--must)}
+.note{font-size:13.5px;color:var(--muted);border-left:3px solid var(--line);padding-left:10px;margin:0}
+.foot{color:var(--muted);font-size:13.5px}
+</style>
+
+</head><body>
+<div class="wrap">
+  <header>
+    <h1>Tuesday, Oct 6</h1>
+    <p class="lede">Everything to post, with the videos to play right here. Times are <b>Czech time</b>. The videos already have voice and soft music, so <b>don't add another sound</b>. Tick a platform's box once it's posted (your ticks are saved on this phone or laptop).</p>
+  </header>
+
+  <section class="summary" aria-label="Posts per platform">
+    <div class="tile"><span class="p"><span class="dot" style="background:var(--ig)"></span>Instagram</span><span class="n">2</span><span class="s">Reels + 2 Stories</span></div>
+    <div class="tile"><span class="p"><span class="dot" style="background:var(--fb)"></span>Facebook</span><span class="n">2</span><span class="s">Reels + 2 Stories</span></div>
+    <div class="tile"><span class="p"><span class="dot" style="background:var(--tt)"></span>TikTok</span><span class="n">2</span><span class="s">videos</span></div>
+    <div class="tile"><span class="p"><span class="dot" style="background:var(--yt)"></span>YouTube</span><span class="n">2</span><span class="s">Shorts</span></div>
+    <div class="tile"><span class="p"><span class="dot" style="background:var(--pin)"></span>Pinterest</span><span class="n">1</span><span class="s">pin</span></div>
+  </section>
+
+  <!-- ===================== 19:00 ===================== -->
+  <section class="slot">
+    <div class="slot-head"><span class="t">19:00</span><span class="w">Nico first (Christmas book gets 2 of every 3 posts)</span></div>
+
+    <article class="card">
+      <div class="media">
+        <video src="instagram-facebook/1-nico-story-part2.mp4" controls playsinline preload="metadata"></video>
+        <span class="file">instagram-facebook/1-nico-story-part2.mp4</span>
+      </div>
+      <div class="info">
+        <h3>Nico bedtime story, part 2</h3>
+        <p class="what">35 s · story slideshow · answers yesterday's "what are they making?" (a snowman!)</p>
+        <div class="chips">
+          <span class="chip ig"><label><input type="checkbox" id="t-p2-ig">Instagram Reel</label></span>
+          <span class="chip fb"><label><input type="checkbox" id="t-p2-fb">Facebook Reel</label></span>
+          <span class="must">Must</span>
+        </div>
+        <p class="note">Meta Business Suite: Create reel, tick <b>both</b> accounts, paste the caption, schedule 19:00.</p>
+        <div class="block"><div class="lab">Caption (Instagram + Facebook)<button class="copy" data-copy="c1">Copy</button></div>
+<pre id="c1">Bedtime story: Nico's Snowy Day, part 2 🦌⛄ Yesterday Nico and Tilly rolled a big snowball... today we find out what they made! Part 3 tomorrow, follow so you don't miss it. The whole story is a Christmas coloring book kids color AND read, ages 3-6.
+Get it on Amazon: https://www.amazon.com/dp/B0HLVTTK7T (Instagram: link in bio)
+#bedtimestory #christmascoloring #kidsbooks #toddleractivities #storytime</pre></div>
+        <div class="block"><div class="lab">Then the Story (Instagram + Facebook)<span class="chips"><span class="chip ig"><label><input type="checkbox" id="t-p2-igs">IG Story</label></span><span class="chip fb"><label><input type="checkbox" id="t-p2-fbs">FB Story</label></span></span></div>
+<pre>Share the Reel to your Story › Link sticker › https://www.amazon.com/dp/B0HLVTTK7T › link text: Read Nico's story</pre></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="media">
+        <video src="tiktok/1-nico-story-part1.mp4" controls playsinline preload="metadata"></video>
+        <span class="file">tiktok/1-nico-story-part1.mp4 · youtube/1-nico-story-part1.mp4</span>
+      </div>
+      <div class="info">
+        <h3>Nico bedtime story, part 1</h3>
+        <p class="what">32 s · TikTok and YouTube run one day behind, so the "part two tomorrow" in the video stays true</p>
+        <div class="chips">
+          <span class="chip tt"><label><input type="checkbox" id="t-p1-tt">TikTok</label></span>
+          <span class="chip yt"><label><input type="checkbox" id="t-p1-yt">YouTube Short</label></span>
+          <span class="must">Must</span>
+        </div>
+        <div class="block"><div class="lab">TikTok caption<button class="copy" data-copy="c2">Copy</button></div>
+<pre id="c2">Christmas bedtime story for kids: Nico's Snowy Day, part 1 🦌❄️ What are Nico and Tilly making? Part 2 tomorrow, follow so you don't miss it! Every page is a coloring page kids color AND read. Ages 3-6. Link in bio
+#bedtimestory #christmascoloring #storytime #kidsbooks #toddleractivities</pre></div>
+        <div class="block"><div class="lab">TikTok pinned comment<button class="copy" data-copy="c3">Copy</button></div>
+<pre id="c3">What do you think they're building? ⛄👇</pre></div>
+        <div class="block"><div class="lab">YouTube title<button class="copy" data-copy="c4">Copy</button></div>
+<pre id="c4">Christmas bedtime story for kids: Nico's Snowy Day, part 1 🦌 #shorts #storytime</pre></div>
+        <div class="block"><div class="lab">YouTube description<button class="copy" data-copy="c5">Copy</button></div>
+<pre id="c5">Nico the little reindeer has his very first snowy day! Part 2 tomorrow. The whole story is a color &amp; read Christmas book for kids ages 3-6: one big picture and one short sentence on every page.
+Get it on Amazon: https://www.amazon.com/dp/B0HLVTTK7T
+#bedtimestory #christmascoloring #kidsbooks #storytime</pre></div>
+        <p class="note">YouTube: channel <b>Little Crayon Tales</b> (not "Tobiáš Veselý"), audience "No, it's not made for kids".</p>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="media">
+        <img src="pinterest/1-nico-pin-before-after.png" alt="Pinterest pin: Nico coloring page before and after, with the book cover">
+        <span class="file">pinterest/1-nico-pin-before-after.png</span>
+      </div>
+      <div class="info">
+        <h3>Nico before/after pin</h3>
+        <p class="what">Image pin · keyword title so parents find it in Pinterest search</p>
+        <div class="chips">
+          <span class="chip pin"><label><input type="checkbox" id="t-pin">Pinterest</label></span>
+          <span class="must">Must</span>
+        </div>
+        <div class="block"><div class="lab">Title<button class="copy" data-copy="c6">Copy</button></div>
+<pre id="c6">Cute Reindeer Christmas Coloring Book for Kids 3-6</pre></div>
+        <div class="block"><div class="lab">Description<button class="copy" data-copy="c7">Copy</button></div>
+<pre id="c7">Before and after: a cozy reindeer Christmas coloring page for preschool and kindergarten. Kids color the picture, then read the short sentence. A stocking stuffer for toddlers that isn't candy.</pre></div>
+        <div class="block"><div class="lab">Destination link<button class="copy" data-copy="c8">Copy</button></div>
+<pre id="c8">https://www.amazon.com/dp/B0HLVTTK7T</pre></div>
+        <p class="note">Board: Stocking Stuffers (or Christmas Gifts for Kids).</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- ===================== 21:00 ===================== -->
+  <section class="slot">
+    <div class="slot-head"><span class="t">21:00</span><span class="w">Benny's turn</span></div>
+
+    <article class="card">
+      <div class="media">
+        <video src="tiktok/2-benny-find-bella.mp4" controls playsinline preload="metadata"></video>
+        <span class="file">instagram-facebook/2-benny-find-bella.mp4 · tiktok/2-benny-find-bella.mp4</span>
+      </div>
+      <div class="info">
+        <h3>Benny: "Can you find Bella before the end?"</h3>
+        <p class="what">17 s · the hide-and-seek page colors itself in the book's colors · a little search game for comments</p>
+        <div class="chips">
+          <span class="chip ig"><label><input type="checkbox" id="t-b-ig">Instagram Reel</label></span>
+          <span class="chip fb"><label><input type="checkbox" id="t-b-fb">Facebook Reel</label></span>
+          <span class="chip tt"><label><input type="checkbox" id="t-b-tt">TikTok</label></span>
+          <span class="must">Must</span>
+        </div>
+        <div class="block"><div class="lab">Caption (Instagram + Facebook)<button class="copy" data-copy="c9">Copy</button></div>
+<pre id="c9">Can you find Bella before the end? 🐻🐰 Benny is playing hide and seek, and the whole page gets colored. Kids color every page of this story AND read it. Ages 3-6.
+Get it on Amazon: https://www.amazon.com/dp/B0HLVSLXK7 (Instagram: link in bio)
+#coloringbook #kidsactivities #screenfree #toddleractivities #colorwithme</pre></div>
+        <div class="block"><div class="lab">Then the Story (Instagram + Facebook)<span class="chips"><span class="chip ig"><label><input type="checkbox" id="t-b-igs">IG Story</label></span><span class="chip fb"><label><input type="checkbox" id="t-b-fbs">FB Story</label></span></span></div>
+<pre>Share the Reel to your Story › Link sticker › https://www.amazon.com/dp/B0HLVSLXK7 › link text: Find Bella's book</pre></div>
+        <div class="block"><div class="lab">TikTok caption<button class="copy" data-copy="c10">Copy</button></div>
+<pre id="c10">Can you find Bella before the end? 🐻🐰 A coloring book page that colors itself. Kids color the story AND read it. Ages 3-6, best with crayons. Link in bio
+#coloringbook #colorwithme #satisfying #toddleractivities #screenfree</pre></div>
+        <div class="block"><div class="lab">TikTok pinned comment<button class="copy" data-copy="c11">Copy</button></div>
+<pre id="c11">Did you find her? 👀👇</pre></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="media">
+        <video src="youtube/2-yt-benny-find-bella.mp4" controls playsinline preload="metadata"></video>
+        <span class="file">youtube/2-yt-benny-find-bella.mp4</span>
+      </div>
+      <div class="info">
+        <h3>Benny: "Find Bella", YouTube version</h3>
+        <p class="what">Same video, but the ending says "Link in bio · link also in the description"</p>
+        <div class="chips">
+          <span class="chip yt"><label><input type="checkbox" id="t-b-yt">YouTube Short</label></span>
+          <span class="must">Must</span>
+        </div>
+        <div class="block"><div class="lab">YouTube title<button class="copy" data-copy="c12">Copy</button></div>
+<pre id="c12">Can you find Bella before the end? 🐻 #shorts #coloringbook</pre></div>
+        <div class="block"><div class="lab">YouTube description<button class="copy" data-copy="c13">Copy</button></div>
+<pre id="c13">Benny the Bear's Cozy Day: a color &amp; read story book for kids ages 3-6. Watch a page from the book get colored, and find Bella!
+Get it on Amazon: https://www.amazon.com/dp/B0HLVSLXK7
+#coloringbook #kidsactivities #toddleractivities</pre></div>
+      </div>
+    </article>
+  </section>
+
+  <p class="foot">No carousel today (carousel days are Mon, Thu, Sat). Wednesday: Instagram + Facebook get Nico part 3, TikTok + YouTube get part 2. The same files are on GitHub in <span style="font-family:var(--mono)">campaigns/2026-10-06/</span>.</p>
+</div>
+
+<script>
+document.querySelectorAll('.copy').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var el=document.getElementById(btn.dataset.copy); var txt=el.innerText;
+    function ok(){btn.textContent='Copied';btn.classList.add('done');setTimeout(function(){btn.textContent='Copy';btn.classList.remove('done')},1600)}
+    function fallback(){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='Selected: copy it';}
+    try{navigator.clipboard.writeText(txt).then(ok,fallback)}catch(e){fallback()}
+  });
+});
+document.querySelectorAll('input[type=checkbox]').forEach(function(cb){
+  var k='lct-'+cb.id;
+  try{cb.checked=localStorage.getItem(k)==='1'}catch(e){}
+  cb.addEventListener('change',function(){try{localStorage.setItem(k,cb.checked?'1':'0')}catch(e){}});
+});
+</script>
+
+</body></html>

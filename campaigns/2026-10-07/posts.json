@@ -1,58 +1,160 @@
 {
  "day": "Wednesday Oct 7, 2026",
  "posts": [
-  {"time": "17:30", "platform": "TikTok", "book": "Nico", "file": "A-nico-i-spy.mp4", "status": "SCHEDULED",
+  {
+   "time": "17:30",
+   "platform": "TikTok",
+   "book": "Nico",
+   "file": "A-nico-i-spy.mp4",
+   "status": "SCHEDULED",
    "caption": "I spy Christmas game for toddlers 🦌⛄ Can your kid find it before I count to 3? Play it together! From a Christmas coloring book kids color AND read. Ages 3-6. Link in bio\n#ispy #toddleractivities #christmascoloring #preschool #kidsgames",
-   "pin": "How many did your little one find? 👀👇"},
-  {"time": "17:30", "platform": "YouTube Shorts", "book": "Nico", "file": "D-nico-crayon-asmr.mp4", "status": "SCHEDULED (fix: set NOT made for kids)",
+   "pin": "How many did your little one find? 👀👇"
+  },
+  {
+   "time": "17:30",
+   "platform": "YouTube Shorts",
+   "book": "Nico",
+   "file": "D-nico-crayon-asmr.mp4",
+   "status": "SCHEDULED (fix: set NOT made for kids)",
    "title": "Crayon ASMR: coloring a Christmas page 🖍️ (sound on) #shorts",
-   "caption": "Relaxing crayon sounds while Nico the reindeer gets colored. From \"Nico the Little Reindeer's Snowy Day\", a Christmas coloring book kids color AND read, ages 3-6.\nGet it on Amazon: https://www.amazon.com/dp/B0HLVTTK7T\n#asmr #coloring #christmascoloring"},
-  {"time": "any", "platform": "Pinterest", "book": "Rocco", "file": "pin-1-rocco.png",
+   "caption": "Relaxing crayon sounds while Nico the reindeer gets colored. From \"Nico the Little Reindeer's Snowy Day\", a Christmas coloring book kids color AND read, ages 3-6.\nGet it on Amazon: https://www.amazon.com/dp/B0HLVTTK7T\n#asmr #coloring #christmascoloring"
+  },
+  {
+   "time": "any",
+   "platform": "Pinterest",
+   "book": "Rocco",
+   "file": "pin-1-rocco.png",
    "title": "Spot 3 Differences: Monster Truck Activity for Kids 3-6",
    "caption": "A free spot the difference puzzle with Rocco the little monster truck. Screen-free activity for preschoolers. From a color & read story book for ages 3-6.",
-   "link": "https://www.amazon.com/dp/B0HLZWLS5J", "note": "Board: Kids Activities. Link goes in the Destination field."},
-  {"time": "18:00", "platform": "Instagram + Facebook", "book": "Posy", "file": "B-posy-color-quiz.mp4",
+   "link": "https://www.amazon.com/dp/B0HLZWLS5J",
+   "note": "Board: Kids Activities. Link goes in the Destination field."
+  },
+  {
+   "time": "18:00",
+   "platform": "Instagram + Facebook",
+   "book": "Posy",
+   "file": "B-posy-color-quiz.mp4",
    "caption": "Color quiz for little ones 🌈🦄 Can your 3-year-old name all 3 colors? Posy's book teaches every color of the rainbow, and kids read one easy sentence on every page. Ages 3-6.\nGet it on Amazon: https://www.amazon.com/dp/B0HLZF8NMX (Instagram: link in bio)\n#learncolors #toddlerlearning #unicorn #preschoolactivities",
-   "pin": "1, 2 or all 3? 🌈👇", "note": "Reel. Then share to Story with a link sticker."},
-  {"time": "18:30", "platform": "TikTok", "book": "Posy", "file": "B-posy-color-quiz.mp4", "status": "SCHEDULED",
+   "pin": "1, 2 or all 3? 🌈👇",
+   "note": "Reel. Then share to Story with a link sticker."
+  },
+  {
+   "time": "18:30",
+   "platform": "TikTok",
+   "book": "Posy",
+   "file": "B-posy-color-quiz.mp4",
+   "status": "SCHEDULED",
    "caption": "Color quiz for toddlers 🌈 Can your little one name all 3 before the timer? Unicorn coloring book that teaches colors AND reading. Ages 3-6. Link in bio\n#learncolors #toddlerlearning #unicorn #preschool #kidsquiz",
-   "pin": "How many did your kid get? 🌈👇"},
-  {"time": "18:30", "platform": "YouTube Shorts", "book": "Posy", "file": "B-posy-color-quiz.mp4", "status": "SCHEDULED (fix: set NOT made for kids)",
+   "pin": "How many did your kid get? 🌈👇"
+  },
+  {
+   "time": "18:30",
+   "platform": "YouTube Shorts",
+   "book": "Posy",
+   "file": "B-posy-color-quiz.mp4",
+   "status": "SCHEDULED (fix: set NOT made for kids)",
    "title": "Color quiz for toddlers: can your kid name all 3? 🌈 #shorts",
-   "caption": "Learn colors with Posy the little unicorn! From \"Posy the Little Unicorn's Rainbow Birthday\", a color & read book for kids 3-6.\nGet it on Amazon: https://www.amazon.com/dp/B0HLZF8NMX\n#learncolors #toddlerlearning #unicorn"},
-  {"time": "19:00", "platform": "Instagram + Facebook", "book": "All 4", "file": "F-which-book.mp4",
+   "caption": "Learn colors with Posy the little unicorn! From \"Posy the Little Unicorn's Rainbow Birthday\", a color & read book for kids 3-6.\nGet it on Amazon: https://www.amazon.com/dp/B0HLZF8NMX\n#learncolors #toddlerlearning #unicorn"
+  },
+  {
+   "time": "19:00",
+   "platform": "Instagram + Facebook",
+   "book": "All 4",
+   "file": "F-which-book.mp4",
    "caption": "Which one would your kid pick? 1, 2, 3 or 4? 🦌🐻🛻🦄 Every page: one big picture to color + one easy sentence to read. Ages 3-6.\n1 Nico: https://www.amazon.com/dp/B0HLVTTK7T\n2 Benny: https://www.amazon.com/dp/B0HLVSLXK7\n3 Rocco: https://www.amazon.com/dp/B0HLZWLS5J\n4 Posy: https://www.amazon.com/dp/B0HLZF8NMX\n(Instagram: links in bio)\n#kidsbooks #coloringbook #learningtoread #giftideasforkids",
-   "pin": "Comment 1, 2, 3 or 4! 👇", "note": "Reel. Then share to Story with a link sticker."},
-  {"time": "19:30", "platform": "TikTok", "book": "Rocco", "file": "C-rocco-spot-difference.mp4", "status": "SCHEDULED",
+   "pin": "Comment 1, 2, 3 or 4! 👇",
+   "note": "Reel. Then share to Story with a link sticker."
+  },
+  {
+   "time": "19:30",
+   "platform": "TikTok",
+   "book": "Rocco",
+   "file": "C-rocco-spot-difference.mp4",
+   "status": "SCHEDULED",
    "caption": "Spot the difference: monster truck edition 🛻🔍 3 differences, 8 seconds. Can your kid beat the timer? Link in bio\n#spotthedifference #monstertruck #kidsgames #toddleractivities #puzzle",
-   "pin": "How many did you find? 1, 2 or 3? 👇"},
-  {"time": "19:30", "platform": "YouTube Shorts", "book": "Rocco", "file": "C-rocco-spot-difference.mp4",
+   "pin": "How many did you find? 1, 2 or 3? 👇"
+  },
+  {
+   "time": "19:30",
+   "platform": "YouTube Shorts",
+   "book": "Rocco",
+   "file": "C-rocco-spot-difference.mp4",
    "title": "Spot 3 differences in 8 seconds! Monster truck edition 🛻 #shorts",
    "caption": "Can your kid find all 3? From \"Rocco the Little Monster Truck's Big Jump\", a color & read book for kids 3-6.\nGet it on Amazon: https://www.amazon.com/dp/B0HLZWLS5J\n#spotthedifference #monstertruck #kidsgames",
-   "note": "Audience: NOT made for kids."},
-  {"time": "20:00", "platform": "Instagram + Facebook", "book": "Rocco", "file": "carousel-rocco-1.png",
-   "caption": "Spot 3 differences! 🛻🔍 Answers on slide 2 (no peeking). From Rocco's Big Jump: kids color every page AND read one easy sentence. Ages 3-6.\nGet it on Amazon: https://www.amazon.com/dp/B0HLZWLS5J (Instagram: link in bio)\n#spotthedifference #monstertruck #kidsactivities #toddleractivities",
-   "pin": "Found all 3? 👇", "note": "Photo post with 3 pictures in order: carousel-rocco-1, -2, -3."},
-  {"time": "any", "platform": "Pinterest", "book": "Posy", "file": "pin-2-posy.png",
+   "note": "Audience: NOT made for kids."
+  },
+  {
+   "time": "20:00",
+   "platform": "Instagram + Facebook",
+   "book": "Rocco",
+   "file": "carousel-rocco-1.png",
+   "caption": "Spot 3 differences! 🛻🔍 Answers on slide 2 (no peeking), then swipe to see a real page from the book. From Rocco's Big Jump: kids color every page AND read one easy sentence. Ages 3-6.\nGet it on Amazon: https://www.amazon.com/dp/B0HLZWLS5J (Instagram: link in bio)\n#spotthedifference #monstertruck #kidsactivities #toddleractivities",
+   "pin": "Found all 3? 👇",
+   "note": "Photo post with 5 pictures in order: carousel-rocco-1, -2, -3, -4, -5."
+  },
+  {
+   "time": "any",
+   "platform": "Pinterest",
+   "book": "Posy",
+   "file": "pin-2-posy.png",
    "title": "Learn Colors with a Unicorn: Coloring Page for Kids 3-6",
    "caption": "Red strawberries! Posy the little unicorn teaches every color of the rainbow. A coloring book kids color AND read, ages 3-6.",
-   "link": "https://www.amazon.com/dp/B0HLZF8NMX", "note": "Board: Learning Colors. Link goes in the Destination field."},
-  {"time": "20:30", "platform": "TikTok", "book": "Nico", "file": "D-nico-crayon-asmr.mp4", "status": "SCHEDULED",
+   "link": "https://www.amazon.com/dp/B0HLZF8NMX",
+   "note": "Board: Learning Colors. Link goes in the Destination field."
+  },
+  {
+   "time": "20:30",
+   "platform": "TikTok",
+   "book": "Nico",
+   "file": "D-nico-crayon-asmr.mp4",
+   "status": "SCHEDULED",
    "caption": "Crayon ASMR 🖍️ sound on. Coloring Nico the reindeer, Christmas edition ⛄ Link in bio\n#asmr #coloringasmr #satisfying #christmascoloring #coloringbook",
-   "pin": "What should we color next? 🖍️👇"},
-  {"time": "20:30", "platform": "YouTube Shorts", "book": "Nico", "file": "A-nico-i-spy.mp4",
+   "pin": "What should we color next? 🖍️👇"
+  },
+  {
+   "time": "20:30",
+   "platform": "YouTube Shorts",
+   "book": "Nico",
+   "file": "A-nico-i-spy.mp4",
    "title": "I spy with my little eye... Christmas game for toddlers ⛄ #shorts",
    "caption": "Play I spy with Nico the little reindeer! From \"Nico the Little Reindeer's Snowy Day\", a Christmas coloring book kids color AND read, ages 3-6.\nGet it on Amazon: https://www.amazon.com/dp/B0HLVTTK7T\n#ispy #christmascoloring #toddleractivities",
-   "note": "Audience: NOT made for kids."},
-  {"time": "21:00", "platform": "Instagram + Facebook", "book": "Nico", "file": "A-nico-i-spy.mp4",
+   "note": "Audience: NOT made for kids."
+  },
+  {
+   "time": "21:00",
+   "platform": "Instagram + Facebook",
+   "book": "Nico",
+   "file": "A-nico-i-spy.mp4",
    "caption": "I spy, with my little eye... 🦌 Play this with your toddler tonight! Nico's Snowy Day is a Christmas coloring book kids color AND read. Ages 3-6.\nGet it on Amazon: https://www.amazon.com/dp/B0HLVTTK7T (Instagram: link in bio)\n#ispy #toddleractivities #christmascoloring #stockingstuffer",
-   "pin": "Did they get all 3? 👇", "note": "Reel. Then share to Story with a link sticker."},
-  {"time": "21:30", "platform": "TikTok", "book": "Benny", "file": "E-benny-i-spy.mp4", "status": "SCHEDULED",
+   "pin": "Did they get all 3? 👇",
+   "note": "Reel. Then share to Story with a link sticker."
+  },
+  {
+   "time": "21:30",
+   "platform": "TikTok",
+   "book": "Benny",
+   "file": "E-benny-i-spy.mp4",
+   "status": "SCHEDULED",
    "caption": "I spy for toddlers 🐻🦋 Find it before I count to 3! A cozy coloring book kids color AND read. Ages 3-6. Link in bio\n#ispy #toddleractivities #preschool #kidsgames #coloringbook",
-   "pin": "Did your toddler find Benny first? 🐻👇"},
-  {"time": "21:30", "platform": "YouTube Shorts", "book": "Benny", "file": "G-benny-crayon-asmr.mp4",
+   "pin": "Did your toddler find Benny first? 🐻👇"
+  },
+  {
+   "time": "21:30",
+   "platform": "YouTube Shorts",
+   "book": "Benny",
+   "file": "G-benny-crayon-asmr.mp4",
    "title": "Crayon ASMR: coloring Benny the bear and his kite 🖍️ (sound on) #shorts",
    "caption": "Relaxing crayon sounds. From \"Benny the Bear's Cozy Day\", a color & read book for kids 3-6.\nGet it on Amazon: https://www.amazon.com/dp/B0HLVSLXK7\n#asmr #coloring #satisfying",
-   "note": "Audience: NOT made for kids."}
+   "note": "Audience: NOT made for kids."
+  },
+  {
+   "time": "18:30",
+   "platform": "Instagram + Facebook",
+   "book": "Benny",
+   "file": "E-benny-i-spy.mp4",
+   "caption": "I spy, with my little eye... 🐻🦋 Can your toddler find it before I count to 3? Benny the Bear's Cozy Day is a coloring book kids color AND read. Ages 3-6.\nGet it on Amazon: https://www.amazon.com/dp/B0HLVSLXK7 (Instagram: link in bio)\n#ispy #toddleractivities #preschoolactivities #coloringbook",
+   "pin": "Did your toddler find Benny first? 🐻👇",
+   "note": "Reel. Then share to Story with a link sticker."
+  }
  ]
 }

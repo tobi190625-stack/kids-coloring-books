@@ -64,14 +64,30 @@ def rocco_carousel(page, changes, n):
         else:
             centered(d, "swipe for the answers >>", 1282, 42, w=1080)
         im.convert("RGB").save(S / f"carousel-rocco-{slide}.png")
+    # slides 3 + 4: a real page from the book, black and white, then colored in the book's own colors
+    import paint
+    from PIL import Image as PILImage
+    img, labels, _, _ = paint.regions(book_dir("rocco"), 26)
+    bw = PILImage.fromarray(img).convert("RGB")
+    col = PILImage.fromarray(paint.paint_full(img, labels, paint.load_map(book_dir("rocco"), 26))).convert("RGB")
+    for n, (pic, top, sub) in ((3, (bw, "A real page from the book", "one big picture + one easy sentence")),
+                               (4, (col, "Kids color it...", "...then they read it!"))):
+        im = canvas(1080, 1350, "#EAF6FF", "#CFE8F7")
+        d = ImageDraw.Draw(im)
+        comic(d, top, 540, 85, 78)
+        centered(d, sub, 150, 46, w=1080, max_w=980)
+        card(im, pic.resize((940, 940)), 70, 230)
+        d = ImageDraw.Draw(im)
+        centered(d, "swipe >>", 1235, 42, w=1080)
+        im.convert("RGB").save(S / f"carousel-rocco-{n}.png")
     im = canvas(1080, 1350, "#EAF6FF", "#CFE8F7")
     d = ImageDraw.Draw(im)
     comic(d, "Color it. Read it.", 540, 110, 96)
     card(im, find_cover(book_dir("rocco")).resize((760, 760)), 160, 230)
     d = ImageDraw.Draw(im)
-    centered(d, "One big picture + one easy sentence on every page", 1040, 42, w=1080, max_w=980)
-    centered(d, "Ages 3-6  •  find it on Amazon (link in bio)", 1110, 42, w=1080, max_w=980)
-    im.convert("RGB").save(S / "carousel-rocco-3.png")
+    centered(d, "29 pages  •  ages 3-6  •  best with crayons", 1040, 42, w=1080, max_w=980)
+    centered(d, "Find it on Amazon (link in bio)", 1110, 46, w=1080, max_w=980)
+    im.convert("RGB").save(S / "carousel-rocco-5.png")
 
 
 def posy_pin():

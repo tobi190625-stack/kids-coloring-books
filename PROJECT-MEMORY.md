@@ -108,6 +108,9 @@ Book 001-leo-the-lion is an old SVG test book, ignore.
   sound, no voice), which book would your kid pick 1-4 (all books). TikTok-style captions synced per word.
   `python tools/fresh_ads.py <name>` (~4 min each) -> campaigns/fresh/. Stills: `tools/fresh_stills.py` (pins, carousel).
   Posy quiz maps are inline in fresh_ads.py (POSY_ROUNDS); ids leaking into the sky can be clipped to a circle.
+- **Daily posting sheet (owner asked for this, Oct 6):** `campaigns/<date>/posts.json` -> `python tools/day_sheet.py campaigns/<date>`
+  -> `POSTS.xlsx` in that folder: time order, picture, click-to-open file, platform color, caption, pin comment, Done ✓.
+  Make one for every day pack. Owner found Claude posting through the browser far too slow (3-5 min/post): don't do that.
 - Wed Oct 7 plan = campaigns/2026-10-07/POST-TODAY.md (TikTok 5, YT 5, IG+FB 4, Pinterest 2); old Wed files in not-used/.
 - **`tools/cartoon.py` = real cartoons in code (Oct 6, the owner's favorite idea):** the character is cut out of its
   painted page (needs a paint map; cut from the clean picture in the PDF, so text bubbles don't hide anything), then

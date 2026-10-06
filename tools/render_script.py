@@ -94,6 +94,13 @@ def page_images(book_dir, page):
     return bw, Image.fromarray(col).convert("RGB")
 
 
+def pdf_page(book_dir, page):
+    import pymupdf
+    pg = pymupdf.open(book_dir / "out" / "interior.pdf")[page - 1]
+    pix = pg.get_pixmap(dpi=120)
+    return Image.frombytes("RGB", (pix.width, pix.height), pix.samples)
+
+
 def render(script_path):
     sc = json.loads(Path(script_path).read_text())
     book_dir = ROOT / sc["book"]
@@ -120,8 +127,11 @@ def render(script_path):
     cover = find_cover(book_dir)
     n = 0
     for s in sc["scenes"]:
-        if s["type"] == "page":
-            bw, col = page_images(book_dir, s["page"])
+        if s["type"] in ("page", "bwpage"):
+            if s["type"] == "page":
+                bw, col = page_images(book_dir, s["page"])
+            else:  # no color map yet: show the black-and-white page kids will color
+                bw = col = pdf_page(book_dir, s["page"])
             bw, col = bw.resize((900, 900)), col.resize((900, 900))
             # soft crayon edge for the color sweep
             ramp = np.clip((np.arange(900)[None, :] - np.arange(900)[:, None] * 0.25), 0, None)
@@ -140,10 +150,11 @@ def render(script_path):
                 im.alpha_composite(c.convert("RGBA"), ((W - c.width) // 2, 420 - int(20 * z)))
                 if a < 1:  # fade in from the background
                     im = Image.blend(bg.convert("RGBA"), im, a)
-            elif s["type"] == "page":
-                # step badge
-                d.rounded_rectangle([W // 2 - 210, 140, W // 2 + 210, 270], 65, fill=NAVY)
-                centered(d, s["step"], 160, 80, width=W, fill="white")
+            elif s["type"] in ("page", "bwpage"):
+                if s.get("step"):  # badge on top
+                    half = max(210, int(d.textlength(s["step"], font=font(80))) // 2 + 60)
+                    d.rounded_rectangle([W // 2 - half, 140, W // 2 + half, 270], 65, fill=NAVY)
+                    centered(d, s["step"], 160, 80, width=W, fill="white")
                 # the page colors itself with a diagonal crayon sweep (first 70% of the scene)
                 p = ease(k / 0.7) * 1250
                 mask = Image.fromarray(np.clip((p - ramp) * 6, 0, 255).astype(np.uint8))
@@ -177,7 +188,7 @@ def render(script_path):
     raw, warm = frames_dir / "voice.raw.wav", frames_dir / "voice.wav"
     sf.write(raw, np.concatenate(audio), voice.SR)
     voice.warm(raw, warm)
-    music = ROOT / "marketing" / "music" / f"{sc['music']}.wav"
+    music = ROOT / "marketing" / "music" / f"{sc.get('music', 'soft-music-box')}.wav"
     subprocess.run([ff, "-loglevel", "error", "-y", "-i", str(silent), "-i", str(warm), "-stream_loop", "-1", "-i",
                     str(music), "-filter_complex",
                     f"[1:a]volume=1.5[v];[2:a]atrim=0:{total:.2f},volume=0.18,afade=t=in:d=0.5,"

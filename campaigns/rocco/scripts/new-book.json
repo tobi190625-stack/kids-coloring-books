@@ -1,0 +1,22 @@
+{
+  "title": "NEW: Rocco the Little Monster Truck's Big Jump",
+  "book": "books/005-rocco-monster-truck",
+  "out": "campaigns/rocco/videos/new-book",
+  "background": ["#EAF6FF", "#CFE8F7"],
+  "music": "soft-music-box",
+  "scenes": [
+    {"type": "title", "image": "cover", "text": "NEW monster truck book!",
+     "small": "a story kids color AND read",
+     "say": "Got a little one who loves monster trucks? Meet Rocco, the little monster truck!"},
+    {"type": "bwpage", "page": 9, "step": "Uh oh!",
+     "say": "Rocco tries the big ramp. His wheels wobble!"},
+    {"type": "bwpage", "page": 10,
+     "say": "Splat! Rocco lands in the mud."},
+    {"type": "bwpage", "page": 14, "step": "Friends help",
+     "say": "But his friends say, you can do it!"},
+    {"type": "bwpage", "page": 25, "step": "Big jump!",
+     "say": "And Rocco flies high up in the sky!"},
+    {"type": "end",
+     "say": "Big pictures to color, and one easy sentence on every page. Ages three to six. Link in bio!"}
+  ]
+}

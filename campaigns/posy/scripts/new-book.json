@@ -1,0 +1,22 @@
+{
+  "title": "NEW: Posy the Little Unicorn's Rainbow Birthday",
+  "book": "books/006-posy-the-unicorn",
+  "out": "campaigns/posy/videos/new-book",
+  "background": ["#FDEEF6", "#EADFF8"],
+  "music": "soft-music-box",
+  "scenes": [
+    {"type": "title", "image": "cover", "text": "NEW unicorn book!",
+     "small": "a story kids color AND read",
+     "say": "Does your little girl love unicorns? Meet Posy, the little unicorn!"},
+    {"type": "bwpage", "page": 4, "step": "Oh no!",
+     "say": "It's Posy's birthday, but oh no! The rainbow has no colors."},
+    {"type": "bwpage", "page": 7, "step": "Magic!",
+     "say": "Bibi the butterfly has a magic paintbrush."},
+    {"type": "bwpage", "page": 25, "step": "Swish!",
+     "say": "Together they paint the rainbow. Swish, swish, swish!"},
+    {"type": "bwpage", "page": 30,
+     "say": "Happy birthday, Posy! Make a wish!"},
+    {"type": "end",
+     "say": "Your little one colors every page, and brings the rainbow back. Ages three to six. Link in bio!"}
+  ]
+}

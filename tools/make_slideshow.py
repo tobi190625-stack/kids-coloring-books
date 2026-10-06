@@ -91,6 +91,18 @@ BOOKS = {
                         inside=None,
                         outro="What will Nico and Tilly do next? Part three is tomorrow. Or color and read "
                               "the whole story tonight. Link in bio!"),
+    # part 3 = the ending of the story series (pages 30-31), points to the book for the rest
+    "nico-story3": dict(dir="books/003-nico-the-reindeer", bg=("#EEF7FF", "#D3E9FB"), slug="nico",
+                        out="bedtime-story-part3", music="nico-soft",
+                        title="Bedtime story: Nico, part 3",
+                        intro=("Bedtime story: the end", "Welcome back! Nico and Tilly built the best snowman ever. "
+                               "But now, the sun is going down."),
+                        pages=[30, 31],
+                        reads={30: "Nico is sleepy after his big snowy day. Mama tucks Nico into his warm bed.",
+                               31: "Goodnight, Nico. Sweet dreams!"},
+                        inside=None,
+                        outro="The end. And there's so much more of Nico's snowy day in the book, waiting for "
+                              "your little one to color. Link in bio!"),
 }
 
 

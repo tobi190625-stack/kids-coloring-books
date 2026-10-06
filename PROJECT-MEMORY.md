@@ -22,8 +22,8 @@ Last updated: 2026-10-04. Keep this file current: add decisions, links and lesso
 | 1 | books/002-benny-the-bear (final files in kdp-8.5x8.5/) | Benny the Bear's Cozy Day | 8.5x8.5 no bleed | LIVE | https://www.amazon.com/dp/B0HLVSLXK7 |
 | 2 | books/003-nico-the-reindeer | Nico the Little Reindeer's Snowy Day | 8.5x8.5 no bleed | LIVE | https://www.amazon.com/dp/B0HLVTTK7T |
 | 3 | books/004-dex-the-dinosaur | Dex the Little Dinosaur's Big Day | 8.5x11 no bleed | built; owner said NOT to post/market it | - |
-| 4 | books/005-rocco-monster-truck (copied into main 2026-10-04) | Rocco the Little Monster Truck's Big Jump | 8.5x8.5 | BUILT 2026-10-04, check_kdp passed; final files out/Rocco-INSIDE-manuscript.pdf + out/Rocco-COVER.pdf; publish 2026-10-05 | - |
-| 5 | books/006-posy-the-unicorn (copied into main 2026-10-04) | Posy the Little Unicorn's Rainbow Birthday | 8.5x8.5 | BUILT 2026-10-04, check_kdp passed; final files out/Posy-INSIDE-manuscript.pdf + out/Posy-COVER.pdf (front v2, back v2) | - |
+| 4 | books/005-rocco-monster-truck (copied into main 2026-10-04) | Rocco the Little Monster Truck's Big Jump | 8.5x8.5 | BUILT 2026-10-04, check_kdp passed; final files out/Rocco-INSIDE-manuscript.pdf + out/Rocco-COVER.pdf | LIVE (Oct 6, $8.99) | https://www.amazon.com/dp/B0HLZWLS5J |
+| 5 | books/006-posy-the-unicorn (copied into main 2026-10-04) | Posy the Little Unicorn's Rainbow Birthday | 8.5x8.5 | BUILT 2026-10-04, check_kdp passed; final files out/Posy-INSIDE-manuscript.pdf + out/Posy-COVER.pdf (front v2, back v2) | LIVE (Oct 6, $8.99) | https://www.amazon.com/dp/B0HLZF8NMX |
 Book 001-leo-the-lion is an old SVG test book, ignore.
 
 ## Accounts / links
@@ -103,7 +103,7 @@ Book 001-leo-the-lion is an old SVG test book, ignore.
 - Pinterest: 3 Nico pins prepared (free pins, Amazon link in Destination field).
 
 ## Open tasks
-- Rocco + Posy: owner publishes on KDP (Oct 5), sends the amazon links → make their campaigns (tools/new_campaign.py + ad pack).
+- Rocco + Posy are LIVE (links above, both on Linktree): make their campaigns (tools/new_campaign.py + ad pack); launch week = 1 video a day each.
 - KDP fix list for Benny/Nico (price $8.99, series, Author Central, A+, keywords): see marketing/ad-research/SUMMARY.md.
 - Author Central page; fix Linktree username; confirm social handles.
 - Possible upgrades: Claude Code on desktop + "Claude in Chrome" extension (browser access); Whisper for

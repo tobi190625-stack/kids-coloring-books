@@ -267,7 +267,7 @@ def end_card(im, key, d=None):
             card(im, c, 90 + (i % 2) * 480, 300 + (i // 2) * 470)
     comic(d, "Color it. Read it.", W / 2, 190, 96)
     pill(d, "Find it on Amazon", 1150 if len(keys) == 1 else 1290, 64)
-    t = "link in bio  •  YouTube: link in the description"
+    t = "tap the link  •  link in bio  •  link in description"
     d.text(((W - d.textlength(t, font=font(40))) / 2, (1245 if len(keys) == 1 else 1385)), t, font=font(40), fill=NAVY)
 
 

@@ -111,6 +111,15 @@ Book 001-leo-the-lion is an old SVG test book, ignore.
 - **Daily posting sheet (owner asked for this, Oct 6):** `campaigns/<date>/posts.json` -> `python tools/day_sheet.py campaigns/<date>`
   -> `POSTS.xlsx` in that folder: time order, picture, click-to-open file, platform color, caption, pin comment, Done ✓.
   Make one for every day pack. Owner found Claude posting through the browser far too slow (3-5 min/post): don't do that.
+- **Numbers Oct 7 (first real data):** FB Reels: Posy launch 262 views, Rocco launch 201 (cover on frame 1 + story hook
+  'Got a little one who loves X?'), Benny Find Bella 44, Nico story pt2 13. IG 3-30 per Reel. YouTube: Nico guess-the-colors
+  274, can-they-read 98, Nico ASMR 19 in 2 h; Oct 6 Shorts got 0. Avg watch 2-3 s. **TikTok: 0 views on every post in 7 days.**
+- Strategy lives on branch `marketing-brain` (brain/AD-STRATEGY.md etc., owner's research from school).
+- `tools/day_ads.py`: story trailers (cover pops on frame 1 + hook, real book pages, cliffhanger), guess-the-colors with
+  voice + crayon sound, reading challenge (karaoke). Oct 8 = 8 videos + 4 pins, sheet campaigns/2026-10-08/POSTS.xlsx.
+- **Benny's printed edition (kdp-8.5x8.5) has fewer pages than books/002/book.json** (no puddles/rainbow pages):
+  always find Benny pages by searching the PDF text, never by page number.
+- Owner has Meta Verified (free week from Oct 7): Reels can carry a link -> captions say 'Tap the link'.
 - **Pinterest (Oct 6 evening):** 11 pins published by Claude (campaigns/pinterest-batch-1/), all linking to
   https://linktr.ee/littlecrayontalles (owner wants Linktree as the pin link), AI-modified label on (pin 02 Posy maybe not).
   Boards: "Christmas Gifts for Kids" (Nico + all-4-books) and "Coloring Pages for Kids 3-6" (Rocco, Posy, Benny).

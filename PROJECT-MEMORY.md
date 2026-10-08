@@ -111,6 +111,14 @@ Book 001-leo-the-lion is an old SVG test book, ignore.
 - **Daily posting sheet (owner asked for this, Oct 6):** `campaigns/<date>/posts.json` -> `python tools/day_sheet.py campaigns/<date>`
   -> `POSTS.xlsx` in that folder: time order, picture, click-to-open file, platform color, caption, pin comment, Done ✓.
   Make one for every day pack. Owner found Claude posting through the browser far too slow (3-5 min/post): don't do that.
+- **Voice (Oct 8): Chatterbox** (open source, MIT), built-in warm female voice, `tts.say(text, voice="warm")`.
+  Runs locally from C:/Users/tobi1/cbvenv (needs setuptools<81 there), ~20 s/line on this CPU; cache in
+  campaigns/fresh/.voicecache. The free HF demo hits its ZeroGPU limit fast. Gaming laptop guide: marketing/GAMING-LAPTOP-SETUP.md
+  (Pinokio + Wan2GP for AI clips, Chatterbox on GPU).
+- **Owner wants problem-solving ads** (parent problem -> book as the answer -> proof -> tap the link): tools/problem_ads.py.
+  Fri Oct 9: posy-quiet, nico-gift, benny-bedtime, rocco-reading, four-car-ride + 4 pins. Boards: artifacts
+  https://claude.ai/artifact/RtSbvrbRfMVsJjZ4AKXpgx (Oct 8), https://claude.ai/artifact/EHkJLBWDczcYVpsXYYWgEY (Oct 9).
+  Owner can't open xlsx: use an artifact board + videos in chat.
 - **Numbers Oct 7 (first real data):** FB Reels: Posy launch 262 views, Rocco launch 201 (cover on frame 1 + story hook
   'Got a little one who loves X?'), Benny Find Bella 44, Nico story pt2 13. IG 3-30 per Reel. YouTube: Nico guess-the-colors
   274, can-they-read 98, Nico ASMR 19 in 2 h; Oct 6 Shorts got 0. Avg watch 2-3 s. **TikTok: 0 views on every post in 7 days.**

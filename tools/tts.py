@@ -32,7 +32,63 @@ async def _stream(text, voice, rate, pitch):
     return bytes(mp3), words
 
 
+def warm_path(text, exaggeration=0.6, cfg=0.35, seed=7):
+    import hashlib
+    from pathlib import Path
+    cache = Path(__file__).resolve().parent.parent / "campaigns" / "fresh" / ".voicecache"
+    cache.mkdir(parents=True, exist_ok=True)
+    return cache / (hashlib.md5(f"{text}|{exaggeration}|{cfg}|{seed}".encode()).hexdigest() + ".wav")
+
+
+def warm_batch(texts, exaggeration=0.6, cfg=0.35, seed=7):
+    """Make every missing line in one run of the local Chatterbox (tools/cb_batch.py in its own Python)."""
+    import json
+    import os
+    import tempfile
+    from pathlib import Path
+    jobs = {str(warm_path(t, exaggeration, cfg, seed)): {"text": t, "exaggeration": exaggeration, "cfg": cfg, "seed": seed}
+            for t in dict.fromkeys(texts) if not warm_path(t, exaggeration, cfg, seed).exists()}
+    if not jobs:
+        return
+    jf = Path(tempfile.mkdtemp()) / "jobs.json"
+    jf.write_text(json.dumps(jobs), encoding="utf-8")
+    py = os.environ.get("CB_PYTHON", str(Path.home() / "cbvenv" / "Scripts" / "python.exe"))
+    subprocess.run([py, str(Path(__file__).parent / "cb_batch.py"), str(jf)], check=True)
+
+
+def warm(text, exaggeration=0.6, cfg=0.35, seed=7):
+    """Emotional voice: Chatterbox (open source, MIT) through its free Hugging Face demo, built-in warm female
+    voice. Results are cached in campaigns/fresh/.voicecache so re-renders don't use the free GPU quota again.
+    Chatterbox gives no word times, so captions get times spread over the spoken part by word length."""
+    import hashlib
+    import shutil
+    from pathlib import Path
+    import soundfile as sf
+    cache = Path(__file__).resolve().parent.parent / "campaigns" / "fresh" / ".voicecache"
+    cache.mkdir(parents=True, exist_ok=True)
+    f = warm_path(text, exaggeration, cfg, seed)
+    if not f.exists():
+        warm_batch([text], exaggeration, cfg, seed)
+    a, sr = sf.read(f, dtype="float32")
+    if a.ndim > 1:
+        a = a.mean(1)
+    if sr != SR:
+        a = np.interp(np.arange(int(len(a) * SR / sr)) / SR, np.arange(len(a)) / sr, a).astype(np.float32)
+    loud = np.nonzero(np.abs(a) > 0.02)[0]
+    s0, s1 = (loud[0] / SR, loud[-1] / SR) if len(loud) else (0, len(a) / SR)
+    toks = text.split()
+    wts = [len(t) + 2 + (4 if t[-1] in ".!?," else 0) for t in toks]  # a little pause after punctuation
+    t, words = s0, []
+    for tok, w in zip(toks, wts):
+        d = (s1 - s0) * w / sum(wts)
+        words.append((tok.strip(".,!?\"'"), t, t + d * 0.85))
+        t += d
+    return a, words
+
+
 def say(text, voice="ava", rate="+0%", pitch="+0Hz", tries=3):
+    if voice == "warm":
+        return warm(text)
     for k in range(tries):
         try:
             mp3, words = asyncio.run(_stream(text, voice, rate, pitch))

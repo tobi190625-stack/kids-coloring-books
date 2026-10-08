@@ -188,6 +188,85 @@ def four_books(hook, agitate, cta):
     return ad
 
 
+def crayon_bg(im, t):
+    """Bright paper with thick crayon scribbles drifting at the edges (the hook frame of the all-books ad)."""
+    im.alpha_composite(gradient("#FFF8EC", "#FFE9C7"))
+    d = ImageDraw.Draw(im)
+    cols = ["#E5484D", "#F59A3D", "#FFD95A", "#6CBF4B", "#5AA7E6", "#B48AD8"]
+    for k, c in enumerate(cols):
+        y = 1500 + k * 70
+        pts = [(x, y + 26 * math.sin(x / 90 + t * 2 + k)) for x in range(-40, W + 60, 30)]
+        d.line(pts, fill=c, width=38, joint="curve")
+        y2 = 22 + k * 24
+        pts = [(x, y2 + 10 * math.sin(x / 110 - t * 2 + k)) for x in range(-40, W + 60, 30)]
+        d.line(pts, fill=c, width=16, joint="curve")
+
+
+def all_books_ad(hook, promise, lines, cta):
+    """Problem -> all four books together -> each book's goodnight page colors itself -> color it, read it -> link."""
+    ad = Ad("all", voice="warm", music="soft-music-box", music_vol=0.07)
+    keys = ["nico", "benny", "rocco", "posy"]
+    covers = [find_cover(book_dir(k)) for k in keys]
+    pages = {"nico": 31, "benny": 29, "rocco": 31, "posy": 31}
+    pg = {k: Page(k, p, groups_from_map(k, p)) for k, p in pages.items()}
+
+    def fan(im, lt, y0=560, size=430):
+        for j, c in enumerate(covers):  # the four covers drop in one after another
+            a = ease((lt - 0.12 * j) / 0.35)
+            if a <= 0:
+                continue
+            cs = c.resize((size, size)).convert("RGBA").rotate([-8, -3, 3, 8][j], resample=Image.BICUBIC, expand=True)
+            x = 40 + (j % 2) * 500 + (j // 2) * 0
+            y = y0 + (j // 2) * 430 - int(200 * (1 - a))
+            im.alpha_composite(cs, (int(x), int(y)))
+
+    def h(im, lt, dur, k):
+        crayon_bg(im, lt)
+        d = ImageDraw.Draw(im)
+        comic(d, hook[0], W / 2, 300, 104, fill="#E5484D")
+        comic(d, hook[1], W / 2, 420, 84, fill="#3B4A63")
+        fan(im, lt, y0=600)
+        return True
+    ad.beat(h, hook[2], lead=0.05, tail=0.25, sounds=[(0.0, s_ding()), (0.15, s_pop()), (0.4, s_pop())])
+
+    def pr(im, lt, dur, k):
+        crayon_bg(im, lt)
+        d = ImageDraw.Draw(im)
+        comic(d, promise[0], W / 2, 300, 100, fill="#3B4A63")
+        comic(d, promise[1], W / 2, 415, 84, fill="#E5484D")
+        fan(im, 5, y0=600)
+        return True
+    ad.beat(pr, promise[2], lead=0.05, tail=0.25)
+
+    for i, (key, line) in enumerate(zip(keys, lines)):
+        def one(im, lt, dur, kk, i=i, key=key, line=line):
+            d = ImageDraw.Draw(im)
+            page = pg[key]
+            show(im, page, [ease(min(1, lt / (dur * 0.85)))] * len(page.groups), kk)
+            card(im, covers[i].resize((230, 230)), W - 290, 1100)
+            comic(d, line[0], W / 2, 200, 92, fill="#FFD95A")
+        ad.beat(one, line[1], lead=0.1, tail=0.25, sounds=[(0.0, s_swish())])
+
+    def b(im, lt, dur, k):
+        d = ImageDraw.Draw(im)
+        comic(d, "Color it. Read it.", W / 2, 200, 100, fill="#FFD95A")
+        for j, txt in enumerate(["No screens", "Big, easy pictures", "One easy sentence", "Ages 3-6"]):
+            if ease((lt - 0.3 * j) / 0.25) <= 0:
+                continue
+            y = 420 + j * 165
+            check(d, 130, y, 100)
+            d.text((265, y + 10), txt, font=font(66), fill=NAVY)
+        return True
+    ad.beat(b, "No screens. Big, easy pictures. And one little sentence to read on every page.",
+            lead=0.1, tail=0.3, sounds=[(0.3 * j, s_pop()) for j in range(4)])
+
+    def e(im, lt, dur, k):
+        end_card(im, "all")
+        return True
+    ad.beat(e, cta, tail=0.8, sounds=[(0.0, s_tada())])
+    return ad
+
+
 BEN = ["No screens", "Big, easy pictures", "Reading practice", "Ages 3-6"]
 ADS = {
     "posy-quiet": lambda: problem_ad(
@@ -215,6 +294,26 @@ ADS = {
         "Try this one. Rocco, the little monster truck, and his big jump.",
         26, groups_from_map("rocco", 26), "First, he colors his favorite truck.", "Bump! Rocco lands on all four wheels.",
         BEN, "Tap the link, and grab it on Amazon."),
+    "rocco-bedtime": lambda: problem_ad(
+        "rocco", ("Bedtime battles", "every night?", "Bedtime battles, every single night?"),
+        ("Screens make it", "even harder", "And screens before bed only make it harder."),
+        "Try this instead. Rocco, the little monster truck, and his big day.",
+        31, groups_from_map("rocco", 31), "A calm page to color, right before bed.", "Goodnight, Rocco. Sweet dreams!",
+        BEN, "Tap the link, and grab it on Amazon.", icon="moon"),
+    "posy-bedtime": lambda: problem_ad(
+        "posy", ("Bedtime battles", "every night?", "Bedtime battles, every single night?"),
+        ("Screens make it", "even harder", "And screens before bed only make it harder."),
+        "Try this instead. Posy the little unicorn, and her rainbow birthday.",
+        31, groups_from_map("posy", 31), "A calm page to color, right before bed.", "Goodnight, Posy. Sweet dreams!",
+        BEN, "Tap the link, and grab it on Amazon.", icon="moon"),
+    "all-books-screens": lambda: all_books_ad(
+        ("Always asking", "for the tablet?", "Always asking for the tablet?"),
+        ("Hand them a story", "they color AND read", "Hand them a story instead. One they color, and read."),
+        [("Snow lovers", "For snow lovers: Nico the little reindeer."),
+         ("Cuddly ones", "For the cuddly ones: Benny the bear."),
+         ("Truck fans", "For monster truck fans: Rocco."),
+         ("Unicorn dreamers", "And for unicorn dreamers: Posy.")],
+        "Pick the one your kid will love. Tap the link, and find all four on Amazon."),
     "four-car-ride": lambda: four_books(
         ("Long car ride", "coming up?", "Long car ride coming up?"),
         ("Don't hand them", "the phone", "Don't hand them the phone. Hand them a story."),

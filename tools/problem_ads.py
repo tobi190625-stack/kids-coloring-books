@@ -202,9 +202,9 @@ def crayon_bg(im, t):
         d.line(pts, fill=c, width=16, joint="curve")
 
 
-def all_books_ad(hook, promise, lines, cta):
+def all_books_ad(hook, promise, lines, cta, music="marimba-sunny", music_vol=0.09):
     """Problem -> all four books together -> each book's goodnight page colors itself -> color it, read it -> link."""
-    ad = Ad("all", voice="warm", music="soft-music-box", music_vol=0.07)
+    ad = Ad("all", voice="warm", music=music, music_vol=music_vol)
     keys = ["nico", "benny", "rocco", "posy"]
     covers = [find_cover(book_dir(k)) for k in keys]
     pages = {"nico": 31, "benny": 29, "rocco": 31, "posy": 31}

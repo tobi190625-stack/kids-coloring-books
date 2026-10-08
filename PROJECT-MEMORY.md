@@ -111,6 +111,10 @@ Book 001-leo-the-lion is an old SVG test book, ignore.
 - **Daily posting sheet (owner asked for this, Oct 6):** `campaigns/<date>/posts.json` -> `python tools/day_sheet.py campaigns/<date>`
   -> `POSTS.xlsx` in that folder: time order, picture, click-to-open file, platform color, caption, pin comment, Done ✓.
   Make one for every day pack. Owner found Claude posting through the browser far too slow (3-5 min/post): don't do that.
+- **Owner often works from the phone** (cloud chat): put every video + a short caption .md in GitHub so it can be
+  opened in the GitHub app. Owner prefers the Linktree link (all 4 books) over 4 Amazon links in descriptions.
+  All-books ad (campaigns/2026-10-09/all-books-screens.mp4, marimba music) = Meta Oct 8, TikTok + Shorts Oct 9;
+  captions in campaigns/2026-10-09/ALL-BOOKS-POST.md. Owner liked the moon bedtime start, disliked the tablet start.
 - **Voice (Oct 8): Chatterbox** (open source, MIT), built-in warm female voice, `tts.say(text, voice="warm")`.
   Runs locally from C:/Users/tobi1/cbvenv (needs setuptools<81 there), ~20 s/line on this CPU; cache in
   campaigns/fresh/.voicecache. The free HF demo hits its ZeroGPU limit fast. Gaming laptop guide: marketing/GAMING-LAPTOP-SETUP.md

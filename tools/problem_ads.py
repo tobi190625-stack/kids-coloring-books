@@ -72,7 +72,8 @@ def check(d, x, y, s, color="#2E9E4F"):
     d.line([x + s * .25, y + s * .52, x + s * .43, y + s * .70, x + s * .76, y + s * .32], fill="white", width=max(6, s // 7))
 
 
-def problem_ad(key, hook, agitate, solution, page_no, groups, proof_color, sentence, benefits, cta, icon="tablet"):
+def problem_ad(key, hook, agitate, solution, page_no, groups, proof_color, sentence, benefits, cta, icon="tablet",
+               hook_page=None):
     """hook/agitate = (line1, line2, spoken). solution/proof_color/cta = spoken lines. sentence = the page's text."""
     ad = Ad(key, voice="warm", music="soft-music-box", music_vol=0.07)
     page = Page(key, page_no, groups)
@@ -80,20 +81,41 @@ def problem_ad(key, hook, agitate, solution, page_no, groups, proof_color, sente
     book_pdf = pdf_page(key, page_no)
     cover = find_cover(book_dir(key))
 
+    light = icon in ("crayon", "sweep")  # bright starts instead of a dark icon screen
+    hp = Page(key, hook_page, groups_from_map(key, hook_page)) if icon == "sweep" else None  # a page coloring itself
+
     def h(im, lt, dur, k):
-        dark(im)
+        if hp:
+            show(im, hp, [ease(min(1, lt / dur))] * len(hp.groups), 0, y=560, size=760)
+        elif light:
+            crayon_bg(im, lt)
+            c = cover.resize((760, 760)).convert("RGBA").rotate(-4 + 3 * math.sin(lt * 2), resample=Image.BICUBIC,
+                                                                 expand=True)
+            im.alpha_composite(c, (int((W - c.width) / 2), int(560 - 260 * (1 - ease(lt / 0.4)))))
+        else:
+            dark(im)
+            ICONS[icon](ImageDraw.Draw(im), lt)
         d = ImageDraw.Draw(im)
-        ICONS[icon](d, lt)
-        comic(d, hook[0], W / 2, 220, 104, fill="#FFD95A")
-        comic(d, hook[1], W / 2, 345, 84, fill="white")
-    ad.beat(h, hook[2], lead=0.05, tail=0.25)
+        comic(d, hook[0], W / 2, 300 if light else 220, 104, fill="#E5484D" if light else "#FFD95A")
+        comic(d, hook[1], W / 2, 420 if light else 345, 84, fill=NAVY if light else "white")
+        return light  # crayon start: the big text is the caption
+    ad.beat(h, hook[2], lead=0.05, tail=0.25, sounds=[(0.0, s_pop())] if light else [])
 
     def a(im, lt, dur, k):
-        dark(im)
+        if hp:
+            show(im, hp, [1] * len(hp.groups), lt / dur, y=560, size=760, zoom=0.06)
+        elif light:
+            crayon_bg(im, lt + 3)
+            pic = book_pdf.resize((760, 760)).convert("RGBA").rotate(3 * math.sin(lt * 3), resample=Image.BICUBIC,
+                                                                      expand=True)
+            im.alpha_composite(pic, (int((W - pic.width) / 2), 560))
+        else:
+            dark(im)
+            ICONS[icon](ImageDraw.Draw(im), lt + 3, crossed=lt > dur * 0.55)
         d = ImageDraw.Draw(im)
-        ICONS[icon](d, lt + 3, crossed=lt > dur * 0.55)
-        comic(d, agitate[0], W / 2, 220, 92, fill="white")
-        comic(d, agitate[1], W / 2, 335, 72, fill="#FFD95A")
+        comic(d, agitate[0], W / 2, 300 if light else 220, 92, fill=NAVY if light else "white")
+        comic(d, agitate[1], W / 2, 415 if light else 335, 72, fill="#E5484D" if light else "#FFD95A")
+        return light
     ad.beat(a, agitate[2], lead=0.05, tail=0.25, sounds=[(1.2, s_pop())])
 
     def s(im, lt, dur, k):
@@ -294,6 +316,27 @@ ADS = {
         "Try this one. Rocco, the little monster truck, and his big jump.",
         26, groups_from_map("rocco", 26), "First, he colors his favorite truck.", "Bump! Rocco lands on all four wheels.",
         BEN, "Tap the link, and grab it on Amazon."),
+    "nico-reading": lambda: problem_ad(
+        "nico", ("Learning to read", "this year?", "Is your little one learning to read this year?"),
+        ("Boring books", "they won't touch?", "But the reading books are so boring, they won't even touch them?"),
+        "Try this instead. Nico the little reindeer, and his snowy day.",
+        9, groups_from_map("nico", 9), "First, they color the picture.", "Nico meets Tilly the penguin.",
+        ["Reading practice", "Big, easy pictures", "No screens", "Ages 3-6"], "Tap the link, and grab it on Amazon.",
+        icon="crayon"),
+    "rocco-waiting": lambda: problem_ad(
+        "rocco", ("Long wait at", "the doctor?", "Long wait at the doctor's office?"),
+        ("Phone battery", "at 2 percent?", "And your phone battery is at two percent?"),
+        "Pack this instead. Rocco, the little monster truck, and his big jump.",
+        25, groups_from_map("rocco", 25), "He colors his favorite truck.", "He flies high up in the sky!",
+        BEN, "Tap the link, and grab it on Amazon.",
+        icon="sweep", hook_page=26),
+    "posy-restaurant": lambda: problem_ad(
+        "posy", ("Restaurant with", "a 4-year-old?", "Going to a restaurant with a four year old?"),
+        ("Waiting for food", "feels like forever?", "And waiting for the food feels like forever?"),
+        "Pack this instead. Posy the little unicorn, and her rainbow birthday.",
+        14, POSY_ROUNDS[1][1], "First, they color the picture.", "Yellow sunflowers! Swish! Yellow for the rainbow!",
+        ["No screens", "Big, easy pictures", "Reading practice", "Ages 3-6"], "Tap the link, and grab it on Amazon.",
+        icon="sweep", hook_page=31),
     "rocco-bedtime": lambda: problem_ad(
         "rocco", ("Bedtime battles", "every night?", "Bedtime battles, every single night?"),
         ("Screens make it", "even harder", "And screens before bed only make it harder."),

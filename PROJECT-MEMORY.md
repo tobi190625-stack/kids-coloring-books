@@ -161,7 +161,7 @@ Book 001-leo-the-lion is an old SVG test book, ignore.
 
 ## Open tasks
 - Rocco + Posy are LIVE (links above, both on Linktree): make their campaigns (tools/new_campaign.py + ad pack); launch week = 1 video a day each.
-- KDP fix list for Benny/Nico (price $8.99, series, Author Central, A+, keywords): see marketing/ad-research/SUMMARY.md.
+- **Amazon setup ready to paste: `amazon/AMAZON-SETUP.md`** (Benny author typo request, series 'Little Crayon Tales: Color & Read Story Books', $8.99, keywords, categories, Author Central bio, A+ modules). A+ images: `amazon/aplus/<book>/` (made by `tools/make_aplus.py`).
 - Author Central page; fix Linktree username; confirm social handles.
 - Possible upgrades: Claude Code on desktop + "Claude in Chrome" extension (browser access); Whisper for
   speech-to-text in reels; owner can export Instagram "Saved" via Accounts Center → Download your information.
